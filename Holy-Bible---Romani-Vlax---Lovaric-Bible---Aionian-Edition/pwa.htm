@@ -1,0 +1,1555 @@
+<!-- HTML: Aionian Bible Progressive Web Application PWA -->
+<!-- Publisher: https://NAINOIA-INC.signedon.net -->
+<!-- Website: https://www.AionianBible.org -->
+<!-- Resources: https://resources.AionianBible.org -->
+<!-- Repository: https://github.com/Nainoia-Inc -->
+<!-- Bible: Holy Bible Aionian Edition® Romani Lovari Bible -->
+<!-- Copyright: Creative Commons Attribution ShareAlike 4.0 International, 2018-2024 -->
+<!-- Language: Romani Vlax, Lovari -->
+<!-- Formatted: ABCMS on 12/6/2024 10:06:40 -->
+<!-- Source: Pioneers.org -->
+<!-- Source copyright: Creative Commons Attribution ShareAlike 4.0 -->
+<!-- Source version: 11/13/2024 -->
+<!-- Source text: https://ebible.org/details.php?id=rmylovari -->
+
+
+
+
+
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Holy Bible Aionian Edition® ~ Romani Lovari Bible ~ RLB</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="application-name" content="Holy Bible Aionian Edition® ~ Romani Lovari Bible ~ The world's first Holy Bible untranslation! ~ Progressive Web Application PWA">
+<meta name="description" content="Holy Bible Aionian Edition® ~ Romani Lovari Bible ~ The world's first Holy Bible untranslation! ~ Progressive Web Application PWA">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="generator" content="ABCMS™">
+<meta name="version" content="12/6/2024 10:06:40">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+<link rel="manifest" href="pwa.json">
+
+
+
+
+
+
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<style>
+/* PALETTE
+PURPLE
+#663399 purple text
+#9966CC purple highlight
+#E0D6EB purple background
+#F0EBF5 cover background
+BLUE
+#006699 blue text
+#CCE0EB blue background
+OTHER
+#191919 black text
+#C5C5C5 gray dark
+#EDEDED gray light
+#FFFFFF white
+#000000 black
+#F8F8F8 super light gray
+*/
+
+/* FONT */
+@font-face {
+	font-family:
+		'NotoSans';
+	src:
+		url('fonts/notosans-basic-regular.woff2')	format('woff2'),
+		url('fonts/notosans-basic-regular.woff')	format('woff'),
+		url('fonts/notosans-basic-regular.ttf')		format('truetype');
+}
+@font-face {
+	font-family:
+		'GentiumPlus';
+	src:
+		url('fonts/gentiumplus-r.woff2')			format('woff2'),
+		url('fonts/gentiumplus-r.woff')				format('woff'),
+		url('fonts/gentiumplus-r.ttf')				format('truetype');
+}
+
+html,body	{ font-family: 'NotoSans', 'Arial', 'sans-serif', 'GentiumPlus'; }
+
+/* BASE */
+html { height: 100%; }
+body { height: 100%; margin: 0; min-width: 360px; font-size: 100%; color: #191919; background-color: #F8F8F8; }
+h1, h2, h3, h4 { margin: 0 0 10px 0; }
+p { margin: 0 0 10px 0; }
+img { max-width: 100%; height: auto; }
+a { text-decoration: none; color: #663399; }
+a:hover { color: #9966CC; }
+.center { text-align: center; }
+
+/* THINGS */
+.title { text-align: center; }
+.title2 { font-size: 125%; font-weight: bold; }
+.chapnav { margin-bottom: 7px; }
+.chapnav a { margin-left: 2px; display: inline-block; }
+.map { text-align: center; margin: auto; }
+.map img { border: 1px solid #C5C5C5; }
+.cap { text-align: center; font-style: italic; width: 80%; margin: 0 auto; display: block; }
+.ref { font-style: normal; } 
+.bok { text-align: center; }
+.avh { background-color: #E0D6EB; }
+.num { font-weight: 700; }
+.not { font-weight: 700; color: #663399; white-space: nowrap; } 
+.rtl-tab { width: 100%; text-align: right; }
+.rtl-ref { width: 50px; text-align: right; }
+
+/* STICKY */
+#sticky-body, #sticky-push, #sticky-foot { margin: 0; padding: 0; }
+#sticky-body { min-height: 100%; height: auto !important; margin: 0 auto -33px auto; }
+#sticky-push, #sticky-foot { height: 33px; clear: both; }
+:target:before { content:""; display:block; height:110px; margin:-110px 0 0; } /* static header target adjustment */
+
+/* HOME */
+#home1 { margin: 0 auto; text-align: center; }
+#home1 a:hover #home2 { border: 1px solid #9966CC; border-radius: 7px;	background-color: #F0EBF5; }
+#home1 .black { color: #191919; }
+#home1 a { display: inline-block; }
+#home1 a:hover #aion { color: #663399; }
+#home2 { padding: 0 10px; }
+#j316 { padding: 10px 0; font-style: italic; font-size: 110%; font-weight: bold; width: 420px; margin: 0 auto; color: #191919; }
+#aion { padding: 0 0 15px 0; font-style: italic; font-size: 130%; font-weight: bold; color: #191919; }
+#moto { margin: 10px 0 0 0; color: #663399; }
+.RegisteredTM { font-size: 75%; }
+#java { text-align: center; font-weight: bold; color: red; }
+#java .red { color: red; }
+
+/* PAGE HEAD */
+#page {	height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 10px; background-color: #FFFFFF; }
+#head { position: fixed; width: 100%; max-width: 1280px; min-width: 360px; background-color: #FFFFFF; }
+#head-hi { max-height: 42px; margin-top: 10px; padding: 2px 15px; border: 1px solid #663399; border-radius: 7px; background-color: #663399; overflow: hidden; }
+#logo { }
+#logo1 { display: inline-block !important; float: left; }
+#logo2 { display: none !important; }
+#body.large { font-size: 150%; }
+#body.larger { font-size: 200%; }
+#menu { display: inline-block; float: right; white-space: nowrap; }
+#menu a { color: #FFFFFF; margin: 0px 0px 0px 10px; display: inline-block; font-size: 175%; }
+#menu a:hover { color: #E0D6EB; }
+#menu a#accessible { font-weight: bold; font-size: 200%;  }
+
+/* BODY */
+#body {	max-width: 1024px; margin: 0 auto; padding: 80px 3% 40px 3%; }
+#body h1, #body h2 { text-align: center; }
+body.word-toc  #body { max-width: 1024px; margin: 0 auto; padding: 110px 3% 2% 3%; }
+body.word-read #body { max-width: 1024px; margin: 0 auto; padding: 110px 3% 2% 3%; }
+
+/*** WORD ***/
+#word { }
+#word .word-bible a { padding: 15px 5px; border: 1px solid #EDEDED; display: block; }
+#word .word-bible.odd a { background-color: #EDEDED; }
+#word .word-bible.aionian-bible a { background-color: #E0D6EB; }
+#word .word-bible a:hover { color: #FFFFFF; background-color: #9966CC; border: 1px solid #9966CC; }
+#word .word-bible.aionian-bible a:hover { color: #FFFFFF; background-color: #9966CC; border: 1px solid #9966CC; }
+
+#word-menu { font-size: 130%; }
+#word-menu .word-tocs { margin-right: 5px; }
+#word-menu .nav { font-weight: 900; padding-left: 5px; padding-right: 5px; }
+#word-menu .sgt { font-weight: 900; padding-left: 5px; padding-right: 3px; }
+#word-menu .nup { font-weight: 900; padding-left: 5px; padding-right: 5px; }
+#word-menu .navx { font-weight: 900; padding-left: 5px; padding-right: 5px; }
+#word-menu .navxx { font-weight: 900; padding-left: 3px; padding-right: 5px; }
+#word-menu a:hover { background-color: #EDEDED; }
+#word-menu { overflow: auto; }
+#word-menu .word-menu-l { float: left; }
+#word-menu .word-menu-l .word-book { background-color: #E0D6EB; }
+#word-menu .word-menu-l .word-strongs { background-color: #CCE0EB; }
+#word-menu .word-strongs a { color: #006699; }
+#word-menu .word-menu-r { float: right; }
+
+#word-menu-float { position: fixed; width: 0px; height: 0px; bottom: 0px; left: 0px; font-size: 200%; }
+#word-menu-float a  { position: fixed; width: 32px; height: 40%; top: 30%; background-color: #D3D3D3; color: #FFFFFF; border-radius: 10px; text-align: center; display: table; }
+#word-menu-float a span  { display: table-cell; vertical-align: middle; }
+#word-menu-float a.left  { left:  7px; }
+#word-menu-float a.right { right: 7px; }
+#word-menu-float a:hover { background-color: #C5C5C5; }
+@media screen and (max-width: 1279px) {
+	#word-menu-float { display: none; }
+}
+@media screen and (min-width: 1280px) {
+	#word-menu-bottom { display: none; }
+	#word-menu-bottom.always { display: block; }
+}
+
+#word .word-para { margin-bottom: 15px; }
+#word .word-para-ref { font-weight: bold; }
+#word .word-para-ref.rtlref { text-align: right; }
+#word .word-para-one { }
+#word .word-para-one.allverses { margin-bottom: 15px; }
+#word.aionian .word-para-two { margin-left: 0; }
+#word .word-para-two { margin-left: 12px; }
+#word .word-para-two .word-text { background-color: #F0EBF5; font-style: italic; }
+#word .word-para-two .word-text .word-aionian { background-color: #F0EBF5; }
+#word .word-para-two .word-text .word-questioned { background-color: #F0EBF5; }
+#word .word-para-two.word-ltr .verse-num { margin-right: 12px; }
+#word .word-verse { font-weight: bold; }
+#word .word-verse-lang { font-weight: bold; }
+#word .word-text { }
+#word .word-questioned { background-color: #E0D6EB; }
+#word .word-questioned .word-footnote { font-weight: bold; font-style: italic; }
+#word .word-aionian { background-color: #E0D6EB; }
+#word .word-aionian .word-footnote { font-weight: bold; font-style: italic; }
+#word .word-aionian-questioned { background-color: #EDEDED; padding: 10px; }
+#word .word-text.strongs,
+#word .word-text.strongs .word-aionian { background-color: #CCE0EB; }
+
+#word .word-rtl { margin-bottom: 10px; width: 100%; }
+#word .word-rtl.allverses { margin-bottom: 15px; }
+#word .word-rtl .word-text { text-align: right; width: 100%; }
+#word .word-rtl .word-refs { width: 15px; vertical-align: top; text-align: right; white-space: nowrap; }
+#word .word-rtl .word-verse { font-weight: bold; margin-left: 5px;  margin-right: 0px; }
+#word .word-rtl .word-verse-lang { font-weight: bold; margin-left: 10px; margin-right: 0px; }
+
+#word.questioned hr { border-top: 1px solid #9966CC; border-bottom: 0px; margin-top: 35px; }
+
+/*** MAPS ***/
+#maps { text-align: center; width: 100%; }
+#maps .left { text-align: left; }
+#maps img { text-align: center; margin: 10px auto; border: solid black 1px; }
+#maps div { margin: 0 auto; }
+#maps div.portrait { max-width: 360px; }
+#maps div.timeline { max-width: 800px; }
+#maps div.map a:hover img { border: 1px solid #9966CC; }
+#maps div.caption { margin: 0 0 40px 0; }
+#maps div.caption .verse { font-style: italic; }
+
+/* TAIL */
+#tail {
+	min-width: 360px;
+	max-width: 1024px;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 80%;
+	font-style: italic;
+	padding: 2px;
+	border: 1px solid #663399;
+	border-radius: 7px;
+	color: #FFFFFF;
+	background-color: #663399;
+}
+#tail a { color: #FFFFFF; }
+#tail a:hover { color: #E0D6EB; }
+
+/* RESPONSIVE */
+@media screen and (max-width: 1279px) {
+	#head-hi { margin-top: 0; }
+	#head-hi { border: none; border-bottom: 1px solid #9966CC; border-radius: 0; }
+	#accessible { top: 10px; }
+}
+@media screen and (max-width: 1023px) {
+	#tail { border: none; border-top: 1px solid #9966CC; border-radius: 0; }
+	#sticky-foot { background-color: #663399; }
+	#page {	padding: 0; }
+}
+@media screen and (max-width: 640px) {
+	#j316 { width: 360px; }
+	#logo1 { display: none !important; }
+	#logo2 { display: inline-block !important; float: left; }
+	#word-menu .crunch { display: none; }
+	#word-menu .word-book-name { font-size: 60% !important; }
+}
+/* PRINT */
+@media print {
+	#sticky-body { margin: 0 auto !important; }
+	#body { padding: 10px 5% 2% !important; }
+	#head,
+	#word-menu-float,
+	#word-menu-bottom,
+	div.chapnav,
+	#sticky-push,
+	#sticky-foot { display: none !important; }
+}
+</style>
+
+
+
+
+
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////-->
+</head>
+<body>
+<div id='page'>
+<div id='sticky-body'>
+<div id='head'>
+<div id='head-hi'>
+<div id='logo1'><a href='?PWA' title='Aionian Bible homepage' onclick="ABDO('PWA');return false;"><img src='images/Holy-Bible-Aionian-Edition-PURPLE-LOGO-PWA.png' alt='Aionian Bible'></a></div>
+<div id='logo2'><a href='?PWA' title='Aionian Bible homepage' onclick="ABDO('PWA');return false;"><img src='images/Holy-Bible-Aionian-Edition-PURPLE-AB-PWA.png' alt='Aionian Bible'></a></div>
+<div id='menu'>
+<a href="?TOC" title="Table of Contents" onclick="ABDO('TOC');return false;">TOC</a>
+<a href='?Bookmark' title='Go to Bookmark' onclick='AionianBible_Get();return false;'>Get</a> 
+<a href='?Bookmark' title='Set Bookmark' onclick='AionianBible_Set();return false;'>Set</a>
+<a href="?Prev" title="Previous page" class="nav left" onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+<a href="?Next" title="Next page" class="nav right" onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+<a href='#' title='Font Size Accessibility' onclick='AionianBible_Accessible();' id='accessible'>+</a></div></div>
+</div>
+<div id="word-menu-float" class="notranslate">
+<a href="?Prev" title="Previous page" class="nav left" onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+<a href="?Next" title="Next page" class="nav right" onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</div>
+<div id='body' class=''>
+
+<div id='java'><span class='red'>( Javascript and cookies required )</span></div>
+<div id='home1'>
+<a title="Return to last page read or TOC" href="?Bookmark" onclick="ABDO('Bookmark'); return false;">
+<div id='home2'>
+<h2 class='title'>
+Romani Lovari Bible<br><span class='ff lan'  >Библия пэ ловарицко романы щиб</span><br>
+<span class='black'>Welcome to the <i>Holy&nbsp;Bible&nbsp;Aionian&nbsp;Edition<span class='RegisteredTM'>®</span></i></span>
+</h2>
+<div id="logo"><img src="images/Holy-Bible-Aionian-Edition-PURPLE-HOME.png" alt="Aionian Bible"></div>
+<div id='j316'>For God so loved the world that he gave his only begotten Son that whoever believes in him should not perish, but have...</div><div id='aion'>Aionian Life!</div>
+<div id='moto'>
+One of the world's first Holy Bible <u>untranslations</u><br>
+One of three hundred seventy-six versions<br>
+One of one hundred sixty-five languages<br>
+Anonymous on TOR network<br>
+100% free to copy &amp; print<br>
+Updated 12/6/2024 10:06:40<br>
+<br>
+Also known as 'The Purple Bible'
+</div>
+</div>
+</a>
+</div>
+
+</div>
+<div id='sticky-push'></div>
+</div>
+<div id='sticky-foot'> 
+<div id='tail'><a title="Table of Contents" href="?TOC" onclick="ABDO('TOC'); return false;">Romani Lovari Bible</a> ~ <a href='https://www.AionianBible.org/Read' title='AionianBible.org' target='_blank'>AionianBible.org for all Bibles</a></div>
+</div>
+</div>
+
+
+
+
+
+<script>
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Globals
+var AB_Accessible	= null;
+var AB_Bookmark		= 'TOC';
+var AB_Bookmark2	= 'TOC';
+var AB_Page			= 0;
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Bible pages map
+const AB_Map = {
+'PWA'		:	0,
+'TOC'		:	1,
+'Copyright'	:	2,
+'Preface'	:	3,
+'Aionian'	:	4,
+
+'Old':5,'Ruth':6,'Ruth-1':6,'Ruth-2':7,'Ruth-3':8,'Ruth-4':9,'Jonah':10,'Jonah-1':10,'Jonah-2':11,'Jonah-3':12,'Jonah-4':13,
+'Appendix'	:	14 +  0,
+'Jerusalem'	:	14 +  0,
+'Readers'	:	14 +  1,
+'Project'	:	14 +  2,
+'Glossary'	:	14 +  3,
+'Past'		:	14 +  4,
+'Future'	:	14 +  5,
+'Destiny'	:	14 +  6,
+'Maps'		:	14 +  7,
+'Abraham'	:	14 +  7,
+'Israel'	:	14 +  8,
+'Jesus'		:	14 +  9,
+'Paul'		:	14 +  10,
+'World'		:	14 +  11
+};
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Bible pages
+const AB_Bible = [
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Homepage populated dynamically from HTML #body on page load
+``,
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// TOC
+`
+<h2 class='title'>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+Table of Contents
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a><br>
+<a title="Return to last page read or TOC" href="?Bookmark" onclick="ABDO('Bookmark'); return false;">Romani Lovari Bible<br><span class='ff lan'  >Библия пэ ловарицко романы щиб</span></a>
+</h2>
+<a title="AionianBible.org online"		href="https://www.AionianBible.org/Read" target="_blank">AionianBible.org for all Bibles</a><br>
+<a title='Internet connection required'	href='?TOC' onclick="AionianBible_reload();return false;">Update Bible App</a><br>
+<a title="Copyright"					href="?Copyright"	onclick="ABDO('Copyright');	return false;">Copyright</a><br>
+<a title="Preface"						href="?Preface"		onclick="ABDO('Preface');	return false;">Preface</a><br>
+<a title="Aiōnios and Aïdios"			href="?Aionian"		onclick="ABDO('Aionian');	return false;">Aiōnios and Aïdios</a>
+<br>
+<br><b><a title='Old Testament' href='?Old' onclick="ABDO('Old');return false;">Old Testament</a></b><br><a title='View Book' href='?Ruth' onclick="ABDO('Ruth');return false;">Рут</a>, <a title='View Book' href='?Jonah' onclick="ABDO('Jonah');return false;">Иона</a><br>
+<br>
+<a title="Appendix"						href="?Appendix"	onclick="ABDO('Appendix');	return false;"><b>Appendix</b></a><br>
+<a title="New Jerusalem"				href="?Jerusalem"	onclick="ABDO('Jerusalem');	return false;">New Jerusalem</a><br>
+<a title="Reader's Guide"				href="?Readers"		onclick="ABDO('Readers');	return false;">Reader's Guide</a><br>
+<a title="Project History"				href="?Project"		onclick="ABDO('Project');	return false;">Project History</a><br>
+<a title="Aionian Glossary"				href="?Glossary"	onclick="ABDO('Glossary');	return false;">Aionian Glossary</a><br>
+<a title="History Past"					href="?Past"		onclick="ABDO('Past');		return false;">History Past</a><br>
+<a title="History Future"				href="?Future"		onclick="ABDO('Future');	return false;">History Future</a><br>
+<a title="Destiny"						href="?Destiny"		onclick="ABDO('Destiny');	return false;">Destiny</a><br>
+<br>
+<a title="Maps"							href="?Maps"		onclick="ABDO('Maps');		return false;"><b>Maps</b></a><br>
+<a title="Abraham's Journeys"			href="?Abraham"		onclick="ABDO('Abraham');	return false;">Abraham's Journeys</a><br>
+<a title="Israel's Exodus"				href="?Israel"		onclick="ABDO('Israel');	return false;">Israel's Exodus</a><br>
+<a title="Jesus' Journeys"				href="?Jesus"		onclick="ABDO('Jesus');		return false;">Jesus' Journeys</a><br>
+<a title="Paul's Missionary Journeys"	href="?Paul"		onclick="ABDO('Paul');		return false;">Paul's Missionary Journeys</a><br>
+<a title="World Nations"				href="?World"		onclick="ABDO('World');		return false;">World Nations</a><br>
+<br>
+<a href='https://resources.aionianbible.org/Gustave-Dore-La-Grande-Bible-de-Tours/' target='_blank' title='La Grande Bible de Tours by Gustave Doré'>Illustrations by Doré</a>.<br>
+Swipe right and left to page.
+`,
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// COPYRIGHT
+`
+<h2 class='title'>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+Copyright
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a><br>
+<a title="Return to last page read or TOC" href="?Bookmark" onclick="ABDO('Bookmark'); return false;">Romani Lovari Bible<br><span class='ff lan'  >Библия пэ ловарицко романы щиб</span></a>
+</h2>
+Publisher: Nainoia Inc<br>
+Copyright: <a href='https://creativecommons.org/licenses/by/4.0/' target='_blank'>Creative Commons Attribution 4.0 International, 2018-2024</a><br>
+Language: Romani Vlax, Lovari / <span class='ff lan'  >Lovari Romani</span><br>
+Formatted: ABCMS <a href='https://en.wikipedia.org/wiki/Progressive_web_app' target='_blank' title='Web pages designed for off-line viewing'>Progressive Web Application</a> on 12/6/2024 10:06:40<br>
+Formats:
+<a href='https://www.AionianBible.org/Bibles/Romani-Vlax---Lovaric-Bible' target='_blank' title='Read online'>Online</a>,
+<a href='https://www.AionianBible.org/TOR/Bibles/Romani-Vlax---Lovaric-Bible' target='_blank' title='Read TOR anonymously'>TOR Anonymously</a>,
+<a href='https://www.AionianBible.org/Buy' target='_blank' title='Hardcopy print at Amazon and Lulu'>print</a>,
+<a href='https://resources.AionianBible.org/Holy-Bible---Romani-Vlax---Lovaric-Bible---Aionian-Edition.epub' target='_blank' title='Download this ePub'>ePub</a>, 
+<a href='https://resources.AionianBible.org/Holy-Bible---Romani-Vlax---Lovaric-Bible---Aionian-Edition.pdf' target='_blank' title='Download PDF'>PDF</a>, 
+<a href='https://resources.AionianBible.org/Holy-Bible---Romani-Vlax---Lovaric-Bible---Aionian-Edition---STUDY.pdf' target='_blank' title='Download Study PDF'>Study PDF</a>, 
+<a href='https://resources.AionianBible.org/Holy-Bible---Romani-Vlax---Lovaric-Bible---Aionian-Edition.noia' target='_blank' title='Download Data File'>Data File</a>, and
+<a href='https://resources.AionianBible.org' target='_blank' title='Download Everything'>Everything</a><br>
+<br>
+Source: Pioneers.org<br>
+Source copyright: Creative Commons Attribution ShareAlike 4.0<br>
+Source version: 11/13/2024<br>
+Source text: <a href='https://ebible.org/details.php?id=rmylovari' target='_blank' title='Download Source File'>https://ebible.org/details.php?id=rmylovari</a><br>
+<br>
+We pray for a modern public domain translation in every language.<br>
+Report concerns to <a href='https://nainoia-inc.signedon.net/' target='_blank' title='Publisher of the Holy Bible Aionian Edition'>Nainoia Inc</a>. Volunteer help appreciated!<br>
+<br>
+Celebrate Jesus Christ’s victory of grace!<br>
+`,
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// PREFACE
+`
+<h2 class='title'>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+Preface
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+
+<p>This a Progressive Web App (PWA) format of one <i class='notranslate'>Holy Bible Aionian Edition®</i>. PWAs are special webpages designed to install an App icon and be available offline on a smart device if an Internet connection is not available. Visit <a href='https://www.AionianBible.org/Read' target='_blank' title='Select from all AionianBible.org translations'>AionianBible.org</a> for all Bibles.</p>
+
+<p>The  <i class='notranslate'>Holy Bible Aionian Edition®</i>  is the world’s first Bible <i>un-translation</i>!  What is an  <i>un-translation</i>?  Bibles are translated into each of our languages from the original Hebrew, Aramaic, and Koine Greek.  Occasionally, the best word translation cannot be found and these words are transliterated letter by letter.  Four well known transliterations are  <i>Christ</i>,  <i>baptism</i>,  <i>angel</i>, and  <i>apostle</i>.  The meaning is then preserved more accurately through context and a dictionary.  The  <span class='notranslate'>Aionian</span>  Bible un-translates and instead transliterates eleven additional <a href="?Glossary" title="Aionian glossary" onclick="ABDO('Glossary');return false;"><span class='notranslate'>Aionian</span> Glossary</a> words to help us better understand God’s love for individuals and all mankind, and the nature of afterlife destinies.</p>
+
+<p>The first three words are  <a href="?Glossary#g165" title="Aionian glossary g165" onclick="ABDO('Glossary','g165');return false;"><i class='notranslate'>aiōn</i></a>,  <a href="?Glossary#g166" title="Aionian glossary g166" onclick="ABDO('Glossary','g166');return false;"><i class='notranslate'>aiōnios</i></a>, and  <a href="?Glossary#g126" title="Aionian glossary g126" onclick="ABDO('Glossary','g126');return false;"><i class='notranslate'>aïdios</i></a>,  typically translated as  <i>eternal</i>  and also  <i>world</i>  or  <i>eon</i>. The  <span class='notranslate'>Aionian</span>  Bible is named after an alternative spelling of  <i class='notranslate'>aiōnios</i>. Consider that researchers question if  <i class='notranslate'>aiōn</i>  and  <i class='notranslate'>aiōnios</i>  actually mean <i>eternal</i>. Translating  <i class='notranslate'>aiōn</i>  as <i>eternal</i> in  Matthew 28:20  makes no sense, as all agree. The Greek word for eternal is  <i class='notranslate'>aïdios</i>, used in  Romans 1:20  about God and in  Jude 6  about demon imprisonment. Yet what about  <i class='notranslate'>aiōnios</i>  in  John 3:16? Certainly we do not question whether salvation is eternal! However,  <i class='notranslate'>aiōnios</i>  means something much more wonderful than infinite time! Ancient Greeks used  <i class='notranslate'>aiōn</i>  to mean eon or age. They also used the adjective  <i class='notranslate'>aiōnios</i>  to mean entirety, such as  <i>complete</i>  or even <i>consummate</i>, but never infinite time. Read <a href="?Aionian" title="Aiōn and Aiōnios" onclick="ABDO('Aionian');return false;">Dr. Heleen Keizer and Ramelli and Konstan</a> for proofs. So  <i class='notranslate'>aiōnios</i>  is the perfect description of God's Word which has  <i>everything</i>  we need for life and godliness! And the  <i class='notranslate'>aiōnios</i>  life promised in  John 3:16  is not simply a ticket to eternal life in the future, but the invitation through faith to the  <i>consummate</i>  life beginning now!  <i class='notranslate'>Aiōnios</i>  life with Christ is <a href='https://www.AionianBible.org/Buy#Better' target='_blank'><i>Better than Forever</i></a>.</p>
+
+<p>The next seven words are  <a href="?Glossary#h7585" title="Aionian glossary h7585" onclick="ABDO('Glossary','h7585');return false;"><i class='notranslate'>Sheol</i></a>,  <a href="?Glossary#g86" title="Aionian glossary g86" onclick="ABDO('Glossary','g86');return false;"><i class='notranslate'>Hadēs</i></a>,  <a href="?Glossary#g1067" title="Aionian glossary g1067" onclick="ABDO('Glossary','g1067');return false;"><i class='notranslate'>Geenna</i></a>,  <a href="?Glossary#g5020" title="Aionian glossary g5020" onclick="ABDO('Glossary','g5020');return false;"><i class='notranslate'>Tartaroō</i></a>,  <a href="?Glossary#g12" title="Aionian glossary g12" onclick="ABDO('Glossary','g12');return false;"><i class='notranslate'>Abyssos</i></a>, and  <a href="?Glossary#g3041" title="Aionian glossary g3041 g4442" onclick="ABDO('Glossary','g3041');return false;"><i class='notranslate'>Limnē Pyr</i></a>. These words are often translated as  <i>Hell</i>, the place of eternal punishment. However,  <i>Hell</i>  is ill-defined when compared with the Hebrew and Greek.  For example,  <i class='notranslate'>Sheol</i>  is the abode of deceased believers and unbelievers and should never be translated as  <i>Hell</i>.  <i class='notranslate'>Hadēs</i>  is a temporary place of punishment,  Revelation 20:13-14.  <i class='notranslate'>Geenna</i>  is the Valley of Hinnom, Jerusalem's refuse dump, a temporal judgment for sin.  <i class='notranslate'>Tartaroō</i>  is a prison for demons, mentioned once in  2 Peter 2:4.  <i class='notranslate'>Abyssos</i>  is a temporary prison for the Beast and Satan. Translators are also inconsistent because  <i>Hell</i>  is used by the  <a href='https://www.AionianBible.org/Bibles/English---King-James-Version' target='_blank' title='King James Version'>King James Version</a>  54 times, the  <a href='https://www.thenivbible.com/' target='_blank' title='New International Version Bible'>New International Version</a>  14 times, and the  <a href='https://www.AionianBible.org/Bibles/English---World-English-Bible' target='_blank' title='World English Bible'>World English Bible</a>  zero times.  Finally,  <i class='notranslate'>Limnē Pyr</i>  is the Lake of Fire, yet  Matthew 25:41  explains that these fires are  <a href="?Destiny" title="Lake of Fire prepared for the Devil and his angels" onclick="ABDO('Destiny');return false;">prepared for the Devil and his angels</a>. So there is reason to review our conclusions about the destinies of redeemed mankind and fallen angels.</p>
+
+<p>The eleventh word,  <a href="?Glossary#g1653" title="Aionian glossary g1653" onclick="ABDO('Glossary','g1653');return false;"><i class='notranslate'>eleēsē</i></a>, reveals the grand conclusion of grace in  Romans 11:32. Take the time to understand these eleven words.  The original translation is unaltered and a highlighted note is added to 64 Old Testament and 200 New Testament verses.  Also to help parallel study and <a href='https://www.AionianBible.org/Strongs' target='_blank' title='Strongs Enhanced Concordance and Glossary'>Strong's Enhanced Concordance</a> use, apocryphal text is removed and most variant verse numbering is mapped to the English standard.  The  <span class='notranslate'>Aionian</span>  Bible republishes public domain and Creative Common Bible texts.  We thank our sources at  <a href='https://ebible.org' target='_blank' title='eBible.org, a DBA of Wycliffe, Inc, founded by Michael Paul Johnson'>eBible.org</a>, <a href='https://crosswire.org' target='_blank' title='The Crosswire Bible Society'>Crosswire.org</a>,  <a href='https://unbound.biola.edu' target='_blank' title='The Biola University Unbound Bible Project'>unbound.Biola.edu</a>,  <a href='https://Bible4u.net' target='_blank' title='Bible4U Uncensored bible'>Bible4u.net</a>, and  <a href='https://NHEB.net' target='_blank' title='New Heart English Bible'>NHEB.net</a>.  The <span class='notranslate'>Aionian</span>  Bible is copyrighted with the <a href='https://creativecommons.org/licenses/by/4.0' target='_blank' title='Copyright license'>Creative Commons Attribution 4.0 International</a> license, allowing 100% freedom to copy and print, if respecting source text copyrights.  Review the project  <a href="?Project" title="Project History" onclick="ABDO('Project');return false;">History</a>, <a href="?Readers" title="Readers guide for the Aionian Bible" onclick="ABDO('Readers');return false;">Reader's Guide</a>, and <a href="?Maps" title="Maps, Timelines, and Illustations" onclick="ABDO('Maps');return false;">Maps</a>. Read  <a href='https://www.AionianBible.org/Read' target='_blank' title='Read and Study Bible'>online</a>  with the  <a href='https://www.AionianBible.org/Google-Play' target='_blank' target='_blank' title='Aionian Bible free online at Google Play'><span class='notranslate'>Android</span></a>  and <a href='https://www.AionianBible.org/Apple-iOS-App' target='_blank' title='Apple iOS App'><span class='notranslate'>Apple iOS App</span></a>, also the <a href='https://www.AionianBible.org/TOR' target='_blank' title='TOR Network'>TOR Network</a>, <a href='https://www.AionianBible.org/AB-CUSTOM-VERSES.txt' target='_blank'>request custom formatted verses</a>, and buy Bibles at <a href='https://www.AionianBible.org/Buy' target='_blank' title='Holy Bible Aionian Edition at Amazon.com and Lulu.com'>Amazon.com and Lulu.com</a>.  Follow at <a href='https://www.AionianBible.org/Facebook' target='_blank' title='Visit the Aionian Bible on Facebook'>Facebook/AionianBible</a>, help <a href='https://www.AionianBible.org/Promote' target='_blank' title='Promote, Sponsor, Advertise, Market'>Promote</a> and <a href='https://www.AionianBible.org/Third-Party-Publisher-Resources' target='_blank' title='Third Party Publisher Resources'>Publish</a>, review the <a href='https://www.AionianBible.org/Privacy' target='_blank' title='Privacy Policy'>Privacy Policy</a>, and contact the  <a href='https://www.AionianBible.org/Publisher' target='_blank' title='Contact Nainoia, Inc'>Publisher</a>.  The <a href='https://www.AionianBible.org/Bibles/English---Aionian-Bible' target='_blank' title='Holy Bible Aionian Edition: Aionian Bible'><span class='notranslate'>Aionian</span>  Bible</a> is the recommended English translation.</p>
+
+<p>Why purple? King Jesus’ Word is royal… and purple is the color of royalty!</p>
+`,
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// AIONIOS
+`
+<h2 class='title'>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+Aiōnios and Aïdios
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+
+<p>Dr. Heleen Keizer wrote <b><i>Life Time Entirety</i></b> to explain the meaning of the Greek word aiōn. She begins, "<i>The Greek word aiōn has a wide ranging meaning as well as a wide ranging history: it is most commonly translated as ‘eternity’ but has as its first meaning ‘life’ or ‘lifetime’; it has its place in Greek literature and philosophy, but also in the Greek Bible, where it represents the Hebrew word ‘olâm.</i>" Her 315 page PhD dissertation shows that the Greek word aiōn originally denotes life time, duration, or complete life, but not eternal. You can read her <a href='https://www.aionianbible.org/Life-Time-Entirety-Keizer' target='_blank' title='Visit Dr. Keizers dissertation online'>dissertation online</a> or an <a href='https://www.aionianbible.org/Life-Time-Entirety-Keizer-Abstract' target='_blank' title='View an abstract of Dr. Keizers dissertation'>abstract of her conclusions here</a>.</p>
+
+<p>Ilaria Ramelli and David Konstan wrote <b><i>Terms for Eternity: Aionios and Aidios in Classical and Christian Texts</i></b>, <a href='https://www.aionianbible.org/Terms-for-Eternity-Ramelli-Konstan' target='_blank' title='Purchase Ramelli and Konstan at Amazon.com'>available at Amazon</a>. This highly technical volume quotes hundreds of sources from classical literature, the Septuagint, early church fathers, and church fathers after Origen to determine the meaning and usage of <i>Aiōnios</i> and <i>Aïdios</i>.  They conclude that <i>Aïdios</i> nearly always means eternal in the absolute sense.  <i>Aïdios</i> is used twice in the Bible: Romans 1:20 concerning God and Jude 6 concerning the bonds on fallen angels.  <i>Aiōnios</i>, however, has a range of meanings including life, age, generation, and eon.  They argue that <i>Aiōnios</i> can also mean eternal, but only when God is the subject.  Ramelli and Konstan concur with Keizer and conclude saying, "<i>Needless to say, the ethical implications of this question are profound.</i>"</p>
+
+<p>Every quest for the truth must have the wisdom to eliminate what we prefer to be true and also the courage to eliminate what we fear to be true in order to discover what Christ says is actually true.</p>
+`,
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// BIBLE
+`
+<h2 class='title'>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+Old Testament
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+<div class="map"><img src="images/Gustave-Dore-Bible-Tour-Hebrew-OT-003-Adam-and-Eve-Are-Driven-out-of-Eden.jpg" alt="Adam and Eve are driven out of Eden"></div>
+<p class='cap'>“So he drove out the man; and he placed cherubim at the east of the garden of Eden, and a flaming sword which turned every way, to guard the way to the tree of life.”<br><span class='ref'>Genesis 3:24</span></p>
+`,
+`
+<h2>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+<a title='View Book Chapters' href='?Ruth' onclick="ABDO('Ruth');return false;">Ruth / <span class='ff bok'  >Рут</span></a> 1
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+<div class='chapnav'>Chapter <a title='View Chapter' href='?Ruth-2' onclick="ABDO('Ruth-2');return false;">2</a>
+ <a title='View Chapter' href='?Ruth-3' onclick="ABDO('Ruth-3');return false;">3</a>
+ <a title='View Chapter' href='?Ruth-4' onclick="ABDO('Ruth-4');return false;">4</a>
+</div>
+
+<div class='chap'>
+<span class='ff ver'  ><span class='num'>1 </span><span class='ff tex'  >Андэ дес, кана визэринас лэ вайды, андо тхэм кэрдилас бокх, ай екх мануш катар Вифлеем, андэ Иудея, традас тэ траий куса пэски ромни ай дуе щявэнца андо тхэм Моав.</span></span>
+<span class='ff ver'  ><span class='num'>2 </span><span class='ff tex'  >Кадо мануш бущёлас Элимелех, ай лэски ромни — Наоми, ай лэ дуй лэскэ щявэ — Махлон ай Килион. Вон сас катар Эфрата анда Вифлеем, кай сы андэ Иудея. Вон авилэ андо Моав ай траинас котэ.</span></span>
+<span class='ff ver'  ><span class='num'>3 </span><span class='ff tex'  >Элимелех, ром ла Наомияко, мулас, ай вой ащилас дуе щявэнца.</span></span>
+<span class='ff ver'  ><span class='num'>4 </span><span class='ff tex'  >Вон лынэ ромнян моавиатянкэн — екх лэндар бущёлас Орпа, ай э кавэр Рут. Пала кодо сар вон траисардэ котэ каринг э дэш бэрш,</span></span>
+<span class='ff ver'  ><span class='num'>5 </span><span class='ff tex'  >Ви Махлон ай Килион мулэ, ай Наоми ащилас би щявэнго ай ви би ромэско.</span></span>
+<span class='ff ver'  ><span class='num'>6 </span><span class='ff tex'  >Наоми шундас андо Моав, кэ о Рай Яхва ажутысардас пэскэ манушэнгэ ай дас лэн хабэ, ай Наоми пэскэ боранца гэтосайлас тэ болдэл-пэ кхэрэ.</span></span>
+<span class='ff ver'  ><span class='num'>7 </span><span class='ff tex'  >Пэскэ боранца вой ащядас тхан, кай траияс, ай гэлас андо дром, саво трубуяс тэ анэл лэн палпалэ андэ пхув Иудаски.</span></span>
+<span class='ff ver'  ><span class='num'>8 </span><span class='ff tex'  >Наоми пхэндас пэскэ борангэ: — Болдэн-тумэ сако андо пэска дако кхэр. Мэк о Рай Яхва авэл милошо каринг тумэ, сар ви тумэ санас милоша кай тумарэ мулэ ром ай мандэ.</span></span>
+<span class='ff ver'  ><span class='num'>9 </span><span class='ff tex'  >Мэк дэл о Рай Яхва саконакэ тумэндар тэ аракхэл пачя андо кхэр кай нэво ром. Вой чюмидас лэн, ай вон зуралэс рутэ</span></span>
+<span class='ff ver'  ><span class='num'>10 </span><span class='ff tex'  >ай пхэндэ лакэ: — Амэ жяса туса кай тирэ мануш.</span></span>
+<span class='ff ver'  ><span class='num'>11 </span><span class='ff tex'  >Алом э Наоми пхэндас: — Болдэн-тумэ палпалэ кхэрэ, мурэ щея. Состар тэ жян манца? Мандэ наштык авэн инкэ щявэ, савэ кэрдёна тумарэ ром.</span></span>
+<span class='ff ver'  ><span class='num'>12 </span><span class='ff tex'  >Болдэн-тумэ кхэрэ, мурэ щея; мэ аба сым пхури, тэ авэл ма кавэр ром. Ви тэ гиндысардэмас, кэ сы ман бизыяла, — ви андэ кады рати тэ авилэмас ромэса, ай котар кэрдэмас щявэн, –</span></span>
+<span class='ff ver'  ><span class='num'>13 </span><span class='ff tex'  >сар тумэ жутярна, жи пун вон барона? Шай ли тумэ ащен са кады врама би ромэнго? На, мурэ щея. Мури брига зуралэс пхари тумэнгэ, анда кадо кэ о васт лэ Раско лэ Яхваско болдас-пэ чёрэс каринг мандэ!</span></span>
+<span class='ff ver'  ><span class='num'>14 </span><span class='ff tex'  >Ай атунчи вон палэ зуралэс рутэ. Ай э Орпа чюмидас пэска сокра по палуныпэ, алом э Рут ащилас ласа.</span></span>
+<span class='ff ver'  ><span class='num'>15 </span><span class='ff tex'  >— Дыкх, — пхэндас Наоми, — тири бори болдэл-пэ палпалэ кай пэскэ мануш ай кай пэскэ дэвла. Болдэ-ту ви ту ласа.</span></span>
+<span class='ff ver'  ><span class='num'>16 </span><span class='ff tex'  >Алом э Рут пхэндас: — На кикидэ пэ мандэ, тэ мэкав тут вай тэ болдав-ма тутар. Кай жяса ту, котэ ви мэ, ай кай ту ащядёса, ащядював ви мэ. Тирэ мануш авна мурэ мануш, ай тиро Дэл авла муро Дэл.</span></span>
+<span class='ff ver'  ><span class='num'>17 </span><span class='ff tex'  >Кай мэрэс ту, мэрав ви мэ, ай котэ аво прахомэ. Фэри о мэрипэ лэл ман тутар. Мэк марэл ман о Рай Яхва зуралэс, тэ авла кавэрэс.</span></span>
+<span class='ff ver'  ><span class='num'>18 </span><span class='ff tex'  >Кана Наоми атярдас, со э Рут щютас-пэ зуралэс тэ жял ласа, вой ащядилас тэ марэл ла тэлэ.</span></span>
+<span class='ff ver'  ><span class='num'>19 </span><span class='ff tex'  >Ай солдуй жювля гэлэ май дур, жи пон чи авилэ андо Вифлеем. Кана вон дынэ андрэ, са о форо бугзысайлас анда лэндэ, ай лэ жювля пхэннас: — На кады э Наоми?</span></span>
+<span class='ff ver'  ><span class='num'>20 </span><span class='ff tex'  >— На акхарэн ман Наоми, — пхэндас вой лэнгэ. — Пхэнэн мангэ Мара, анда кадо кэ о Май Зурало кэрдас кэрко муро траё.</span></span>
+<span class='ff ver'  ><span class='num'>21 </span><span class='ff tex'  >Мэ гэлэмтар анда кадо форо барвалы, ай о Дэл болдас ман палпалэ би канческо. Состар тэ пхэнэн мангэ Наоми? О Рай Яхва щюдас ман андэ брига; о Май Зурало мэклас пэ ман бида.</span></span>
+<span class='ff ver'  ><span class='num'>22 </span><span class='ff tex'  >Кадэ Наоми болдас-пэ анда Моав пэска бораса, моавитянкаса ла Рутаса. Вон авилэ андо Вифлеем, кана мануш лынэ тэ кидэн ячмень.</span></span>
+
+</div>
+<div id="word-menu-bottom">
+<h2>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+<a title='View Book Chapters' href='?Ruth' onclick="ABDO('Ruth');return false;">Ruth / <span class='ff bok'  >Рут</span></a> 1
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+</div>
+`,
+`
+<h2>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+<a title='View Book Chapters' href='?Ruth' onclick="ABDO('Ruth');return false;">Ruth / <span class='ff bok'  >Рут</span></a> 2
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+
+<div class='chap'>
+<span class='ff ver'  ><span class='num'>1 </span><span class='ff tex'  >Кай лэ Наоми сас нямо па лакэ ромэски риг анда коды жэ вица, со ви о Элимелех, барвало ай пативало мануш, по анав Боаз.</span></span>
+<span class='ff ver'  ><span class='num'>2 </span><span class='ff tex'  >Моавитянка Рут пхэндас ла Наомиякэ: — Жявтар мангэ пэ маля тэ кидав па пхув сэмно пала бутяра, котэ, кай авна мануш лаще каринг мандэ. Наоми пхэндас лакэ: — Жя, мури щей.</span></span>
+<span class='ff ver'  ><span class='num'>3 </span><span class='ff tex'  >Вой гэлас ай лас тэ кидэл, со ащёлас пала бутяра. Кэрдилас кадэ, со вой авилас пэ коды риг лэ маляки, сави сас лэ Боазоски анда вица Элимелехоски.</span></span>
+<span class='ff ver'  ><span class='num'>4 </span><span class='ff tex'  >Ворта андэ коды врама анда Вифлеем авилас Боаз ай дас опрэ лэ бутярэнго дес: — Мэк тэ авэл тумэнца о Рай Яхва! — Алдый тут о Рай Яхва, — пхэндэ вон палпалэ.</span></span>
+<span class='ff ver'  ><span class='num'>5 </span><span class='ff tex'  >Боаз пущлас кай май баро пэ кидэтора: — Каски коды тэрны жювли?</span></span>
+<span class='ff ver'  ><span class='num'>6 </span><span class='ff tex'  >О баро пхэндас: — Кады моавитянка, кай болдас-пэ палпалэ э Наомияса анда Моав.</span></span>
+<span class='ff ver'  ><span class='num'>7 </span><span class='ff tex'  >Вой пхэндас: «Мангав тут, дэ ман тэ кидав опрэ сэмно, кай пэлэ пала кидэтора». Вой авилас пэ мал ай инкэрдёлас катэ катар о ғайнало жи аканак; ай фэри эк-цэра ғодоныяс тэла тэтэво.</span></span>
+<span class='ff ver'  ><span class='num'>8 </span><span class='ff tex'  >Боаз пхэндас э Рутакэ: — Шун ман, мури щей. На пхир тэ кидэс пэ кавэр мал ай на дурарту катар. Ащ катэ мурэ бутярицэнца.</span></span>
+<span class='ff ver'  ><span class='num'>9 </span><span class='ff tex'  >Дыкх, пэ сави мал кидэн мурэ мануш, ай инкэрдюв кхэтанэ лэ жювлянца. Мэ пхэндэм мурэ бутярэнгэ тэ на азбан тут. Ай кана камэса тэ пэс, жя ай пи анда кхорэ, савэ пхэрдярэн мурэ бутяра.</span></span>
+<span class='ff ver'  ><span class='num'>10 </span><span class='ff tex'  >Вой бандилас муеса каринг э пхув ай цыписардас: — Состар ту сан кадэ лащё каринг мандэ, состар сунус кадэ лэ каврэ-тхэмэска жювля?</span></span>
+<span class='ff ver'  ><span class='num'>11 </span><span class='ff tex'  >Боаз пхэндас: — Мангэ панаскодысардэ па са, со ту кэрдан тира сокракэ, кана мулас тиро ром: сар ту ащядан тирэ дадэс ай да ви пэски пхув ай авилан тэ траис кай лэ мануш, савэн ту май англал чи жянэсас.</span></span>
+<span class='ff ver'  ><span class='num'>12 </span><span class='ff tex'  >Мэк дэл тут лащипэ о Рай Яхва анда кадо, со ту кэрдан. Тэ лэс ту баро миштыпэ катар о Рай Яхва, Дэл Израилёско, каринг Саво ту авилан тэ аракхэс пачя тэла Лэскэ пхака.</span></span>
+<span class='ff ver'  ><span class='num'>13 </span><span class='ff tex'  >— Тэ аракхо ви май дур милошаго андэ тирэ якха, муро рай, — пхэндас вой. — Ту чендэшысардан ман ай ворбисас манца лащимаса, ви чи дыкхлан по кодо, кэ чи сым анда тирэ бутярицы.</span></span>
+<span class='ff ver'  ><span class='num'>14 </span><span class='ff tex'  >Боаз, кана халас, пхэндас лакэ: — Пашув катэ. Лэ манро ай бол лэс андэ шуклы мол. Кана вой бэшлас паша кидэтора, вов дас ла пэко див. Вой халас, кати камлас, ай инкэ ащилас.</span></span>
+<span class='ff ver'  ><span class='num'>15 </span><span class='ff tex'  >Кана вой ущилас тэ кидэл май дур, Боаз дас аври пэскэ бутярэнгэ: — Ви тэ кидэла вой машкар снопы, на шэртын ла.</span></span>
+<span class='ff ver'  ><span class='num'>16 </span><span class='ff tex'  >Кэрэн кавэрэс, щюдэн лакэ колосья анда кодал, со кидэ, ай ащявэн лакэ тэ ваздэл па пхув, ви на щюдэн пэ якха лакэ.</span></span>
+<span class='ff ver'  ><span class='num'>17 </span><span class='ff tex'  >Кадэ кидэлас э Рут пэ мал жи по мизмэри. Кана вой мардас аври о сэмно, саво кидас, кэрдилас каринг допаш гоно.</span></span>
+<span class='ff ver'  ><span class='num'>18 </span><span class='ff tex'  >Вой андас лэс андо форо, ай лаки сокра дыкхлас, кати бут вой кидас. Инкэ Рут лас аври ай дас ла кодо, со ащилас латэ анда хабэ.</span></span>
+<span class='ff ver'  ><span class='num'>19 </span><span class='ff tex'  >Э сокра пущлас латар: — Кай ту кидэсас адес? Кай бутязысас? Мэк тэ авэл алдымэ кодо мануш, саво ажутысардас тукэ! Рут пхэндас лакэ, кастэ вой кэрдас бути. — Мануш, кастэ мэ адес кэрос бути, бущёл Боаз, — пхэндас вой.</span></span>
+<span class='ff ver'  ><span class='num'>20 </span><span class='ff tex'  >— Алдый лэс о Рай Яхва! — пхэндас Наоми пэска боракэ. — Вов чи ащядас би милошако чи жювиндэн, чи мулэн. Котар щютас пашэ: — Кадо мануш амэнгэ пашутно нямо.</span></span>
+<span class='ff ver'  ><span class='num'>21 </span><span class='ff tex'  >Рут моавитянка пхэндас: — Вов инкэ пхэндас мангэ: «Ащ мурэ бутярэнца, жи пун кидэна са муро сэмно».</span></span>
+<span class='ff ver'  ><span class='num'>22 </span><span class='ff tex'  >Наоми пхэндас пэска боракэ ла Рутакэ: — Кадо мишто, мури щей, со ту лэса тэ пхирэс лэскэ бутярицэнца, анда кадо кэ пэ каврэски мал тут шай шэртысардо.</span></span>
+<span class='ff ver'  ><span class='num'>23 </span><span class='ff tex'  >Рут инкэрлас-пэ лэ Боазоскэ бутярицэнца, жи пон лэ мануш кидэ са о ячмень ай о див. Ай траияс кай пэски сокра.</span></span>
+
+</div>
+<div id="word-menu-bottom">
+<h2>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+<a title='View Book Chapters' href='?Ruth' onclick="ABDO('Ruth');return false;">Ruth / <span class='ff bok'  >Рут</span></a> 2
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+</div>
+`,
+`
+<h2>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+<a title='View Book Chapters' href='?Ruth' onclick="ABDO('Ruth');return false;">Ruth / <span class='ff bok'  >Рут</span></a> 3
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+
+<div class='chap'>
+<span class='ff ver'  ><span class='num'>1 </span><span class='ff tex'  >Екхвар лаки сокра Наоми пхэндас лакэ: — Ашта, мури щей, аракхав тукэ тхан, кай тэ траис андэ пачя.</span></span>
+<span class='ff ver'  ><span class='num'>2 </span><span class='ff tex'  >Дыкх аканак, о Боаз, каскэ бутярицэнца ту санас, амэнгэ нямо. Адес по мизмэри вов авла, кай ужарэн сэмно.</span></span>
+<span class='ff ver'  ><span class='num'>3 </span><span class='ff tex'  >Атунчи тхов-ту, макх-ту сагангэ улыенца ай урав тирэ май шукар гада. Жя котэ, кай ужарэн сэмно, алом на сыкадюв лэскэ, жи пун вов хала ай пэла.</span></span>
+<span class='ff ver'  ><span class='num'>4 </span><span class='ff tex'  >Кана вов пашлёла, лэ сама, кай пашлёл. Котар жя, ваздэ капа па лэскэ пунрэ ай пашлюв. Вов пхэнла тукэ, со тэ кэрэс.</span></span>
+<span class='ff ver'  ><span class='num'>5 </span><span class='ff tex'  >— Мэ кэро са, сар ту пхэнэс, — пхэндас пэ кадо э Рут.</span></span>
+<span class='ff ver'  ><span class='num'>6 </span><span class='ff tex'  >Вой гэлас по кадо тхан ай кэрдас са, со пхэндас лаки сокра.</span></span>
+<span class='ff ver'  ><span class='num'>7 </span><span class='ff tex'  >Кана о Боаз ащядилас тэ хал ай тэ пэл ай лэско ило ковлилас, вов гэлас ай пашлилас пэ дурутны риг, кай сас кидыны сулума. Рут пашылас локхорэс, ваздас э капа па лэскэ пунрэ ай пашлилас.</span></span>
+<span class='ff ver'  ><span class='num'>8 </span><span class='ff tex'  >Пэ допаш рат вов издраяс, пиписардас паша пэстэ ай аракхлас э жювля, сави пашлёлас паш лэскэ пунрэ.</span></span>
+<span class='ff ver'  ><span class='num'>9 </span><span class='ff tex'  >— Кон сан? — пущлас вов. — Мэ сым тири бутярица Рут, муро рай, – пхэндас вой. – Лэ ма андо тиро кхэр, чяк сан екх анда амарэ май пашутнэ нямо, кон фирий амэн.</span></span>
+<span class='ff ver'  ><span class='num'>10 </span><span class='ff tex'  >— Алдый тут о Рай Яхва, мури щей, — пхэндас вов. — Кадо лащё баё сы май баро, сар ту кэрдан англа кадо: ту чи лан тэ нашэс пала тэрнэ мурш, — чи пала барвалэ, чи пала чёрэ.</span></span>
+<span class='ff ver'  ><span class='num'>11 </span><span class='ff tex'  >Ай аканак, мури щей, на дара. Мэ кэрав тукэ са, со ту мангэс. Са муро форо жянэл, со ту сан пативалы жювли.</span></span>
+<span class='ff ver'  ><span class='num'>12 </span><span class='ff tex'  >Мэ сым тиро пашутно нямо, алом сы нямо инкэ май пашэ мандар.</span></span>
+<span class='ff ver'  ><span class='num'>13 </span><span class='ff tex'  >Ащ пэ рат катэ, ай ёкор, тэ камла вов тэ авэл тиро фиритори, атунчи мишто — мэк тэ авэл. Ай тэ на камла, кадо кэро мэ; кадо сы чячипэ, сар сы чячипэ, кэ о Рай Яхва сы траимэ. Сов катэ жи ко ёкор.</span></span>
+<span class='ff ver'  ><span class='num'>14 </span><span class='ff tex'  >Ай вой пашлёлас паша лэскэ пунрэ жи ко ёкор, алом ущилас, кана инкэ чи десайлас, кана инкэ наштык сас тэ пинжярэл екх мануш лэ каврэс. Боаз пхэндас пэскэ: «Мэк коник тэ на жянэл, кэ кады жювли сас катэ».</span></span>
+<span class='ff ver'  ><span class='num'>15 </span><span class='ff tex'  >Вов пхэндас лакэ: — Дэ мангэ тиро пхикэнго дыкло, саво сы пэ тутэ, ай инкэр лэс. Кана вой кэрдас кадо, вов щютас андо дыкло ячмень, шов меры, ай жутысардас лакэ тэ щёл пхарипэ пэ пхикэ. Пала кадо вов гэлас палпалэ андо форо.</span></span>
+<span class='ff ver'  ><span class='num'>16 </span><span class='ff tex'  >Кана э Рут авилас кай пэски сокра, Наоми пущлас: — Сар, мури щей? Ай вой панаскодысардас лакэ па са, со кэрдас лакэ о Боаз,</span></span>
+<span class='ff ver'  ><span class='num'>17 </span><span class='ff tex'  >ай щютас пашэ: — Вов дас мангэ кодал шов меры сэмно ворбаса: «На болдэ-ту кай тири сокра щюще вастэнца».</span></span>
+<span class='ff ver'  ><span class='num'>18 </span><span class='ff tex'  >Наоми пхэндас: — Рыбдысар эк-цэра, мури щей, жи пун жянэса, со авла май дур. Чяк кадо мануш чи чендэшыя-пэ, жи пун адес чи дэл гата кадо баё.</span></span>
+
+</div>
+<div id="word-menu-bottom">
+<h2>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+<a title='View Book Chapters' href='?Ruth' onclick="ABDO('Ruth');return false;">Ruth / <span class='ff bok'  >Рут</span></a> 3
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+</div>
+`,
+`
+<h2>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+<a title='View Book Chapters' href='?Ruth' onclick="ABDO('Ruth');return false;">Ruth / <span class='ff bok'  >Рут</span></a> 4
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+
+<div class='chap'>
+<span class='ff ver'  ><span class='num'>1 </span><span class='ff tex'  >Ай о Боаз андэ коды врама гэлас каринг о пияцо паша лэ фороски бар ай бэшлас котэ. Кана о нямо, па кастэ вов ворбияс, накхлас паша лэстэ, Боаз пхэндас: — Ав катэ, муро пайташы, ай бэш. Вов авилас ай бэшлас.</span></span>
+<span class='ff ver'  ><span class='num'>2 </span><span class='ff tex'  >О Боаз акхардас дэшэ женэн анда фороскэ барэ мануш ай пхэндас лэнгэ: — Бэшэн катэ. Ай вон бэшлэ.</span></span>
+<span class='ff ver'  ><span class='num'>3 </span><span class='ff tex'  >Пала кадо вов пхэндас кодолэ нямоскэ: — Наоми, сави болдас-пэ анда Моав, бикнэл котор э пхувако, саво сас амарэ нямоско, лэ Элимелехоско.</span></span>
+<span class='ff ver'  ><span class='num'>4 </span><span class='ff tex'  >Мэ гиндысардэм, кэ трубуй тэ пхэнав тукэ тэ кинэс лэс англа саворэ, кон бэшэн катэ, ай англа амарэ май пативалэ мануш. Алом тэ на кинэса лэс, пхэн мангэ, мэ тэ жянав. Кэ ту сан англуно васт тэ кэрэс кадо, ай мэ сым о дуйто. — Мэ кинав лэс, — пхэндас о нямо.</span></span>
+<span class='ff ver'  ><span class='num'>5 </span><span class='ff tex'  >Атунчи Боаз пхэндас: — Андо кодо дес, кана ту кинэса э пхув кай э Наоми, ту инкэ трубуя тэ лэс ромнякэ ла моавитянка, э Рута, мулэска пхивла, кэ кана авла тумэн щяво, тэ ащел кады пхув пала челэдо лэ мулэско.</span></span>
+<span class='ff ver'  ><span class='num'>6 </span><span class='ff tex'  >Алом о нямо пхэндас: — Атунчи мэ наштык кинав кадо котор пхувако, анда кадо кэ мэ шай хасарав муро барвалипэ. Кин лэс май фидэр коркоро, ай мэ наштык кадо кэрав.</span></span>
+<span class='ff ver'  ><span class='num'>7 </span><span class='ff tex'  >(Андэ пураны врама андо Израиль, тэ кинэс вай тэ дэс кавэрэскэ э пхув, екх анда лэ бикинэтора лэлас па пунро сандалия ай дэлас ла кавэрэскэ. Касаво цокаши сас андо Израиль, тэ авэл о бикиныпэ андо законо.)</span></span>
+<span class='ff ver'  ><span class='num'>8 </span><span class='ff tex'  >О нямо пхэндас лэ Боазоскэ: — Кин коркоро. Ай лас тэлэ сандалия.</span></span>
+<span class='ff ver'  ><span class='num'>9 </span><span class='ff tex'  >Атунчи Боаз пхэндас барэ манушэнгэ ай саворэнгэ: — Адес тумэ дыкхлан ай шундан кадо, кэ мэ киндэм катар Наоми са, со сас Элимелехоско, Килионоско ай Махлоноско.</span></span>
+<span class='ff ver'  ><span class='num'>10 </span><span class='ff tex'  >Ай инкэ мэ лэм моавитянка э Рута, Махлоноска пхивла, мангэ ромнякэ, тэ ащел э пхув пала челэдо лэ мулэско, тэ на хасайвэл лэско анав машкар лэ нямура ай андо лэско форо. Тумэ адес са дыкхлэ ай шундэ кадо!</span></span>
+<span class='ff ver'  ><span class='num'>11 </span><span class='ff tex'  >Ай атунчи лэ барэ мануш ай са кон сас по пияцо, пхэндэ: — Амэ са дыкхлам ай шундам. Мэк о Рай Яхва тэ кэрэл бутэ щяворэнги жювля, сави авэл андо тиро кхэр, сар э Рахиль ай Лия, савэ кхэтанэ ваздэ о кхэр Израилёско. Барар о барвалипэ андэ Эфрата ай лачи ғира андо Вифлеем.</span></span>
+<span class='ff ver'  ><span class='num'>12 </span><span class='ff tex'  >Мэк пэрдал парапутя, савэн дэла тут о Рай Яхва катар кады жювли, тири вица авла, сар вица кай о Парец, савэс Тамар кэрдас лэ Ехудаскэ.</span></span>
+<span class='ff ver'  ><span class='num'>13 </span><span class='ff tex'  >Кадэ о Боаз лас ла Рута, ай вой кэрдилас лэски ромни. Вов пашлилас ласа, ай о Рай Яхва дас лакэ тэ авэл кхамны, ай вой кэрдас щявэс.</span></span>
+<span class='ff ver'  ><span class='num'>14 </span><span class='ff tex'  >Жювля пхэннас э Наомиякэ: — Наис лэ Раскэ лэ Яхваскэ, Саво чи ащядас тут адес би наследникоско, саво лэла тэ дыкхэл пала тутэ. Мэк о щяворо тэ авэл ғирэшо андо Израиль!</span></span>
+<span class='ff ver'  ><span class='num'>15 </span><span class='ff tex'  >Вов дэла тут нэво траё ай сунуя тут по пхурипэ. Чяк вов аракхадилас кай тири бори, сави камэл тут ай май лащи тукэ, сар эфта щявэ.</span></span>
+<span class='ff ver'  ><span class='num'>16 </span><span class='ff tex'  >Наоми лас щяворэс, пхиравлас лэс андэ ангаля ай барарлас лэс.</span></span>
+<span class='ff ver'  ><span class='num'>17 </span><span class='ff tex'  >Жювля, савэ траинас котэ, пхэннас: — Кай э Наоми аракхадилас щяво. Вон дынэ лэс анав Овид. Вов кэрдилас дад лэ Иессеёско, кон сас о дад Давидоско.</span></span>
+<span class='ff ver'  ><span class='num'>18 </span><span class='ff tex'  >Эта лэ вица Парецоски: Парец сас о дад лэ Хецроноско,</span></span>
+<span class='ff ver'  ><span class='num'>19 </span><span class='ff tex'  >Хецрон сас о дад лэ Рамоско, о Рам сас о дад лэ Амминадавоско,</span></span>
+<span class='ff ver'  ><span class='num'>20 </span><span class='ff tex'  >Амминадав сас о дад Нахшоноско, Нахшон сас о дад Салмоноско,</span></span>
+<span class='ff ver'  ><span class='num'>21 </span><span class='ff tex'  >о Салмон сас о дад Боазоско, о Боаз сас о дад лэ Овидоско,</span></span>
+<span class='ff ver'  ><span class='num'>22 </span><span class='ff tex'  >Овид сас о дад Иессеёско, Иессей сас о дад Давидоско.</span></span>
+
+</div>
+<div id="word-menu-bottom">
+<h2>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+<a title='View Book Chapters' href='?Ruth' onclick="ABDO('Ruth');return false;">Ruth / <span class='ff bok'  >Рут</span></a> 4
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+</div>
+`,
+`
+<h2>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+<a title='View Book Chapters' href='?Jonah' onclick="ABDO('Jonah');return false;">Jonah / <span class='ff bok'  >Иона</span></a> 1
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+<div class='chapnav'>Chapter <a title='View Chapter' href='?Jonah-2' onclick="ABDO('Jonah-2');return false;">2</a>
+ <a title='View Chapter' href='?Jonah-3' onclick="ABDO('Jonah-3');return false;">3</a>
+ <a title='View Chapter' href='?Jonah-4' onclick="ABDO('Jonah-4');return false;">4</a>
+</div>
+
+<div class='chap'>
+<span class='ff ver'  ><span class='num'>1 </span><span class='ff tex'  >Каринг о Иона, Амиттаёско щяво, сас ворба катар о Рай Яхва:</span></span>
+<span class='ff ver'  ><span class='num'>2 </span><span class='ff tex'  >— Кидэту, жя андо баро форо Ниневия ай пхэн манушэнгэ ворба, анда кадо кэ ғира па лэскэ чёрэ бутя арэслас жи Мандэ.</span></span>
+<span class='ff ver'  ><span class='num'>3 </span><span class='ff tex'  >Алом о Иона кидаспэ тэ нашэл катар о Рай Яхва андо Таршыш. Вов гэластар андэ Яффа, аракхлас бэрo, саво жяластар андо Таршыш, потиндас пал традыпэ ай бэшлас пэ лэстэ тэ усый катар о Рай Яхва.</span></span>
+<span class='ff ver'  ><span class='num'>4 </span><span class='ff tex'  >Алом о Рай Яхва щюдас по море бари балвал, ай ваздаспэ касаво штормо, кэ о бэро сас тэ пхарадёл.</span></span>
+<span class='ff ver'  ><span class='num'>5 </span><span class='ff tex'  >Саворэ налара дарайлэ, ай сако лас тэ рудий кай пэско дэл. Вон щюдэ андо паи са э пхаримата, савэ сас по бэро, тэ авэл вов май локхо. Англа кадо о Иона мэкласпэ тэлэ андо бэро, пашлилас котэ ай сутас зуралэ соимаса.</span></span>
+<span class='ff ver'  ><span class='num'>6 </span><span class='ff tex'  >Бэроско паранчёдашы авилас лэстэ ай пхэндас: — Со ту совэс? Уще, рудинту тирэ Дэвлэскэ! Вов шай жутый амэнгэ, ай амэ чи хасайвас.</span></span>
+<span class='ff ver'  ><span class='num'>7 </span><span class='ff tex'  >Э налара пхэннас екх екхэскэ: — Тэ щюдамас жребиё тэ жянас, анда кастэ амэ хасайвас. Вон щюдэ жребиё, ай вов сыкадас по Иона.</span></span>
+<span class='ff ver'  ><span class='num'>8 </span><span class='ff tex'  >Атунчи вон пущлэ лэс: — Пхэн амэнгэ, кон дошало андо кадо баё? Че бутяса лэсту? Катар жяс? Анда че тхэм сан? Анда че мануш?</span></span>
+<span class='ff ver'  ><span class='num'>9 </span><span class='ff tex'  >Вов пхэндас: — Мэ сым евреё ай дав патив кай о Рай Яхва, о Дэл лэ Черэско, Саво кэрдас море ай э пхув.</span></span>
+<span class='ff ver'  ><span class='num'>10 </span><span class='ff tex'  >Иона пхэндас э наларэнгэ, кэ вов нашэл катар о Рай Яхва. Кана вон жянглэ па кадо, лас лэн бари дар, ай вон пущлэ: — Ай че баё кэрдан?</span></span>
+<span class='ff ver'  ><span class='num'>11 </span><span class='ff tex'  >Ай лэ моряко паи ваздэласпэ са май зуралэс ай май учес, ай атунчи вон пущлэ лэстар: — Со тэ кэрас туса тэ чендэшийпэ о паи?</span></span>
+<span class='ff ver'  ><span class='num'>12 </span><span class='ff tex'  >— Лэн ман ай щюдэн андо море, — пхэндас вов, — ай о паи чендэшыяпэ. Мэ жянав, кэ кадо насул штормо пэлас пэ тумэндэ анда мандэ.</span></span>
+<span class='ff ver'  ><span class='num'>13 </span><span class='ff tex'  >Вон лынэ тэ традавэн о бэро анда интрэги зор, тэ рэсэн жи кай пхув, алом вон чи биринас, анда кадо кэ о паи ваздэласпэ лэ балваляса инкэ май зуралэс.</span></span>
+<span class='ff ver'  ><span class='num'>14 </span><span class='ff tex'  >Атунчи вон лынэ тэ мангэн лэ Рас лэ Яхвас: — Эта, Рай Яхва, тэ на хасайвас амэ анда кадо мануш. Тэ на щёс пэ амэндэ бэзэх анда мударипэ на дошалэ манушэско, чяк Ту, Рай Яхва, кэрэс кодо, со камэс Ту.</span></span>
+<span class='ff ver'  ><span class='num'>15 </span><span class='ff tex'  >Атунчи вон лынэ Ионас, щюдэ лэс аври анда бэро, ай холярнико паи чендэшысайлас.</span></span>
+<span class='ff ver'  ><span class='num'>16 </span><span class='ff tex'  >Лас э манушэн бари дар катар о Рай Яхва, вон дынэ лэскэ жэртва ай солахадэ.</span></span>
+<span class='ff ver'  ><span class='num'>17 </span><span class='ff tex'  >О Рай Яхва кэрдас кадэ, кэ баро мащё накхадас Ионас, ай вов сас андэ мащески дёмра трин дес ай трин ратя.</span></span>
+
+</div>
+<div id="word-menu-bottom">
+<h2>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+<a title='View Book Chapters' href='?Jonah' onclick="ABDO('Jonah');return false;">Jonah / <span class='ff bok'  >Иона</span></a> 1
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+</div>
+`,
+`
+<h2>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+<a title='View Book Chapters' href='?Jonah' onclick="ABDO('Jonah');return false;">Jonah / <span class='ff bok'  >Иона</span></a> 2
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+
+<div class='chap'>
+<span class='ff ver'  ><span class='num'>1 </span><span class='ff tex'  >Кана сас андэ дёмра э мащески, Иона рудияспэ каринг о Рай Яхва, каринг пэско Дэл.</span></span>
+<span class='ff ver'  ><span class='num'>2 </span><span class='ff tex avh'  >Вов пхэндас: — Андэ брига манглэм лэ Рас лэ Яхвас, ай Вов пхэндас мангэ палпалэ. Мэ цыписардэм катар э мулэнги лума — ай Ту шундан муро цыпипэ. <span class='not' dir='ltr'>( Sheol <a href="?Glossary#h7585" onclick="ABDO('Glossary','h7585');	return false;"	title='View definition'>h7585</a> )</span></span></span>
+<span class='ff ver'  ><span class='num'>3 </span><span class='ff tex'  >Ту щюдан ма андо бифундоско паи, ворта андо баро паенго ило; круисардэ ман фолымата. Са Тирэ таласура, са Тирэ пая накхлэ па мандэ.</span></span>
+<span class='ff ver'  ><span class='num'>4 </span><span class='ff tex'  >Мэ пхэндэм: «Нашадо сым катар Тирэ якха; алом палэ дыкхава Тиро сунто Кхэр».</span></span>
+<span class='ff ver'  ><span class='num'>5 </span><span class='ff tex'  >Щерадэ ман лэ пая бифундоскэ, ай лэнгэ чяра кхудэпэ по муро шэро.</span></span>
+<span class='ff ver'  ><span class='num'>6 </span><span class='ff tex'  >По фундо, кай лэ харэнгэ вуны, мэклэмма, ай пхувакэ лэкатура пхандадилэ пала мандэ тэ на путрэнпэ, алом Ту, Рай Яхва, муро Дэл, лан ма анда гропа жювиндэс!</span></span>
+<span class='ff ver'  ><span class='num'>7 </span><span class='ff tex'  >Кана о траё мурдайвэлас андэ мандэ, мэ дэмма гиндо па Рай Яхва, ай авилас муро рудипэ жи Тутэ, андэ сунто Тири Кхангэри.</span></span>
+<span class='ff ver'  ><span class='num'>8 </span><span class='ff tex'  >Кодал мануш, кон дэн патив хохавнэ дэвлэнгэ, мэклэ чячюнэ Дэвлэс.</span></span>
+<span class='ff ver'  ><span class='num'>9 </span><span class='ff tex'  >Ай мэ ашардэ диланца ло тэ анав Тукэ жэртвы. Со щинадэм — кэро. О фирипэ авэл катар о Рай Яхва!</span></span>
+<span class='ff ver'  ><span class='num'>10 </span><span class='ff tex'  >О Рай Яхва дас аври лэ мащескэ, ай вов щюдас Ионас пэ пхув анда пэски дёмра.</span></span>
+
+</div>
+<div id="word-menu-bottom">
+<h2>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+<a title='View Book Chapters' href='?Jonah' onclick="ABDO('Jonah');return false;">Jonah / <span class='ff bok'  >Иона</span></a> 2
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+</div>
+`,
+`
+<h2>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+<a title='View Book Chapters' href='?Jonah' onclick="ABDO('Jonah');return false;">Jonah / <span class='ff bok'  >Иона</span></a> 3
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+
+<div class='chap'>
+<span class='ff ver'  ><span class='num'>1 </span><span class='ff tex'  >Ай по дуйто сас лэ Раски лэ Яхваски ворба каринг о Иона:</span></span>
+<span class='ff ver'  ><span class='num'>2 </span><span class='ff tex'  >— Кидэту, жя андо баро форо Ниневия ай пхэн манушэнгэ ворба, сави Мэ тукэ пхэнав.</span></span>
+<span class='ff ver'  ><span class='num'>3 </span><span class='ff tex'  >Иона патяяс лэ Раско лэ Яхваско муй, кидаспэ тай гэлас андэ Ниневия. Ниневия сас баро форо — трубуяс май трин дес тэ пхирэс лэс опрэ.</span></span>
+<span class='ff ver'  ><span class='num'>4 </span><span class='ff tex'  >Ай о Иона киздысардас тэ пхирэл па форо ай накхлас кати шай тэ пхирэс тэла екх дес, ай пхэнлас: — Па штарвардэш дес Ниневия авла пхагэрды!</span></span>
+<span class='ff ver'  ><span class='num'>5 </span><span class='ff tex'  >Лэ ниневитянура патяе лэ Дэвлэскэ ай лынэ тэ на хан и тэ на пэн, ай саворэ — катар барэ жи кай цынэ — урадэпэ андэ чёрэ похтанэскэ гада.</span></span>
+<span class='ff ver'  ><span class='num'>6 </span><span class='ff tex'  >Кана кады ғира арэслас жи кай Ниневияко край, вов ущилас па пэско краицко тхан, лас тэлэ пэскэ краицка гада, урадас чёрэ гада ай андэ брига бэшлас по ватрако тхан.</span></span>
+<span class='ff ver'  ><span class='num'>7 </span><span class='ff tex'  >Вов дас аври тэ пхэнэн андэ Ниневия: — Краицко ай ранги ворба: «Мэк лэ мануш тэ на хан и тэ на пэн, ви э алатура: гурува, бакрэ ай бусня — тэ на хахавэнпэ пэ мал ай тэ на пэн!</span></span>
+<span class='ff ver'  ><span class='num'>8 </span><span class='ff tex'  >Мэк ви манушэн, ви алатон щяравэн чёрэ похтанэнца. Мэк сако анда са пэски зор мангэл лэ Дэвлэс. Мэк ащявэн пэскэ холярдэ бутя ай пэско насулыпэ.</span></span>
+<span class='ff ver'  ><span class='num'>9 </span><span class='ff tex'  >Кон жянэл, кам шай о Дэл инкэ сунуй амэн ай парувэл о гиндо, кам тордярэл пэски ягалы холи ай милойпэ амэндар, ай амэ чи хасайвас».</span></span>
+<span class='ff ver'  ><span class='num'>10 </span><span class='ff tex'  >Кана о Дэл дыкхлас, со вон кэрдэ, ай сар ащядэ пэскэ насул дрома ай чёрэ бутя, Вов милосайлас ай чи бищядас пэ лэндэ бида, саваса Вов даравлас лэн.</span></span>
+
+</div>
+<div id="word-menu-bottom">
+<h2>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+<a title='View Book Chapters' href='?Jonah' onclick="ABDO('Jonah');return false;">Jonah / <span class='ff bok'  >Иона</span></a> 3
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+</div>
+`,
+`
+<h2>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+<a title='View Book Chapters' href='?Jonah' onclick="ABDO('Jonah');return false;">Jonah / <span class='ff bok'  >Иона</span></a> 4
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+
+<div class='chap'>
+<span class='ff ver'  ><span class='num'>1 </span><span class='ff tex'  >Лэ Ионаскэ кадо зуралэс чи чялилас, ай вов холяйлас.</span></span>
+<span class='ff ver'  ><span class='num'>2 </span><span class='ff tex'  >Вов лас тэ рудийпэ лэ Раскэ лэ Яхваскэ: — Эта, Рай Яхва! Па кадо мэ ви гиндыяс, кана сымас инкэ кхэрэ! Анда кадо ви нашлэм андо Таршыш. Мэ жянос, кэ Ту сан Дэл, кай кэрэл лащипэ, милако, рыбдымаско ай барвало камаимаса, ай чи камэс тэ бищявэс бида.</span></span>
+<span class='ff ver'  ><span class='num'>3 </span><span class='ff tex'  >Ай аканак, Рая Яхва, лэ муро ди, анда кадо кэ май федэр тэ мэрав, сар тэ траий.</span></span>
+<span class='ff ver'  ><span class='num'>4 </span><span class='ff tex'  >Алом о Рай Яхва пхэндас: — Тукэ трубуй тэ холяйвэс кадэ?</span></span>
+<span class='ff ver'  ><span class='num'>5 </span><span class='ff tex'  >Иона дас аври анда форо ай бэшлас пэ риг, кай ваздэлпэ о кхам. Котэ кэрдас анда кранжи сыр цынкалово, бэшлас тэлэ андо щялин ай лас тэ дыкхэл, со кэрдёла лэ фороса.</span></span>
+<span class='ff ver'  ><span class='num'>6 </span><span class='ff tex'  >Ай о Рай Яхва кэрдас тэ барол о бур, саво ваздаспэ май учес, сар Иона, тэ на хал вов кино катар о кхам, ай Иона лошаяс кадалэскэ.</span></span>
+<span class='ff ver'  ><span class='num'>7 </span><span class='ff tex'  >Алом по кавэр дес, коран, о Дэл бищядас лэ кэрмэс тэ рагий о бур, ай о бур шутилас.</span></span>
+<span class='ff ver'  ><span class='num'>8 </span><span class='ff tex'  >Кана о кхам ваздилас, о Дэл бищядас пхабарды балвал, ай о кхам лас тэ пхабарэл лэ Ионаско шэро. Вов кадэ кинозысайлас, кэ камлас тэ мэрэл ай пхэндас: — Май федэр тэ мэрав, сар тэ траий.</span></span>
+<span class='ff ver'  ><span class='num'>9 </span><span class='ff tex'  >Ай о Дэл пхэндас Ионаскэ: — Тукэ трубуй кадэ тэ холяйвэс анда бур? — Трубуй, — пхэндас о Иона, — на фэри тэ холяйвав, ай ви тэ мэрав.</span></span>
+<span class='ff ver'  ><span class='num'>10 </span><span class='ff tex'  >Алом о Рай Яхва пхэндас: — Ту бунус анда буроро, пала саво чи грыжысас, саво чи барардан. Вов барилас тэла екх рати, ай тэла екх рати хасайлас.</span></span>
+<span class='ff ver'  ><span class='num'>11 </span><span class='ff tex'  >Ай сар Мэ тэ на сунуй баро форо Ниневия, кай на фэри бут алатура, ай май бут сар екх шэл тай биш эзэра мануш чи жянэн, кай сы чячи риг, ай кай э стунго?</span></span>
+
+</div>
+<div id="word-menu-bottom">
+<h2>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+<a title='View Book Chapters' href='?Jonah' onclick="ABDO('Jonah');return false;">Jonah / <span class='ff bok'  >Иона</span></a> 4
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+</div>
+`,
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// END IMAGE
+`
+<h2 class='title'>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+New Jerusalem
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+
+<div class="map"><img src="images/Gustave-Dore-Bible-Tour-NT-Gospel-241-The-New-Jerusalem.jpg" alt="New Jerusalem"></div>
+<p class='cap'>“I saw the holy city, New Jerusalem, coming down out of heaven from God, prepared like a bride adorned for her husband. I heard a loud voice out of heaven saying, ‘Behold, God’s dwelling is with people, and he will dwell with them, and they will be his people, and God himself will be with them as their God.’”<br><span class='ref'>Revelation 21:2-3</span></p>
+`,
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// READERS
+`
+<h2 class='title'>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+Reader's Guide
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+
+<p>The Aionian Bible republishes public domain and Creative Common Bible texts that are 100% free to copy and print. The original translation is unaltered and notes are added to help your study. The notes show the location of eleven special Greek and Hebrew <a href="?Glossary" title="Aionian glossary" onclick="ABDO('Glossary');return false;"><span class='notranslate'>Aionian</span> Glossary</a> words to help us better understand God’s love for individuals and for all mankind, and the nature of afterlife destinies.</p>
+
+<p>Who has the authority to interpret the Bible and examine the underlying Hebrew and Greek words? That is a good question! We read in 1 John 2:27, <i>"As for you, the anointing which you received from him remains in you, and you do not need for anyone to teach you. But as his anointing teaches you concerning all things, and is true, and is no lie, and even as it taught you, you remain in him."</i> Every Christian is qualified to interpret the Bible! Now that does not mean we will all agree. Each of us is still growing in our understanding of the truth. However, it does mean that there is no infallible human or tradition to answer all our questions. Instead the Holy Spirit helps each of us to know the truth and grow closer to God and each other.</p>
+
+<p>The Bible is a library with 66 books in the Protestant Canon. The best way to learn God’s word is to read entire books. Read the book of Genesis. Read the book of John. Read the entire Bible library. Topical studies and cross-referencing can be good. However, the safest way to understand context and meaning is to read whole Bible books. Chapter and verse numbers were added for convenience in the 16th century, but unfortunately they can cause the Bible to seem like an encyclopedia. The Aionian Bible is formatted with simple verse numbering, minimal notes, and no cross-referencing in order to encourage the reading of Bible books.</p>
+
+<p>Bible reading must also begin with prayer. Any Christian is qualified to interpret the Bible with God’s help. However, this freedom is also a responsibility because without the Holy Spirit we cannot interpret accurately. We read in 1 Corinthians 2:13-14, <i>"And we speak of these things, not with words taught by human wisdom, but with those taught by the Spirit, comparing spiritual things with spiritual things. Now the natural person does not receive the things of the Spirit of God, for they are foolishness to him, and he cannot understand them, because they are spiritually discerned."</i> So we cannot understand in our natural self, but we can with God’s help through prayer.</p>
+
+<p>The Holy Spirit is the best writer and he uses literary devices such as introductions, conclusions, paragraphs, and metaphors. He also writes various genres including historical narrative, prose, and poetry. So Bible study must spiritually discern and understand literature. Pray, read, observe, interpret, and apply. Finally, <i>"Do your best to present yourself approved by God, a worker who does not need to be ashamed, properly handling the word of truth."</i> 2 Timothy 2:15. <i>"God has granted to us his precious and exceedingly great promises; that through these you may become partakers of the divine nature, having escaped from the corruption that is in the world by lust. Yes, and for this very cause adding on your part all diligence, in your faith supply moral excellence; and in moral excellence, knowledge; and in knowledge, self-control; and in self-control patience; and in patience godliness; and in godliness brotherly affection; and in brotherly affection, love. For if these things are yours and abound, they make you to be not idle nor unfruitful to the knowledge of our Lord Jesus Christ.</i> 2 Peter 1:4-8.</p>
+
+<p><a href="?Maps" title="Middle Eastern and Mediterranean Bible maps" onclick="ABDO('Maps');return false;">Middle Eastern and Mediterranean maps</a> and 
+
+<a href="?Past" title="Bible timelines and Church history charts" onclick="ABDO('Past');return false;">Bible timelines and Church history charts</a> are also available to help your study.</p>
+`,
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// HISTORY
+`
+<h2 class='title'>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+Project History
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+
+<p>
+The <span class='notranslate'>Aionian</span>  Bible republishes public domain and Creative Common Bible texts that are 100% free to copy and print.
+All versions are available online at <a href='https://www.AionianBible.org/Read' target='_blank' title='The worlds first Holy Bible untranslation'>AionianBible.org</a> in web page, ePub, text, and PDF format.  Also read online with the  <a href='https://www.AionianBible.org/Google-Play' target='_blank' title='Aionian Bible free online at Google Play'><span class='notranslate'>Android</span></a>  and  <a href='https://www.AionianBible.org/Apple-iOS-App' target='_blank' title='Apple iOS App'><span class='notranslate'>Apple iOS App</span></a>.  Buy print Bibles at <a href='https://www.AionianBible.org/Buy' target='_blank' title='Holy Bible Aionian Edition at Amazon.com and Lulu.com'><span class='notranslate'>Amazon.com and Lulu.com</span></a>.<br>
+<br>
+</p><p>
+<b>11/24/24</b>&nbsp;&nbsp;Progressive Web Application <a href='https://pwa.aionianbible.org/' target='_blank' title='PWA format'>off-line format</a>.<br>
+</p><p>
+<b>10/20/24</b>&nbsp;&nbsp;Gospel Primer handout <a href='https://www.aionianbible.org/Buy' target='_blank' title='Buy at Amazon and Lulu'>print format</a>.<br>
+</p><p>
+<b>08/18/24</b>&nbsp;&nbsp;<a href='https://creativecommons.org/licenses/by/4.0/' target='_blank' title='Copyright license'>Creative Commons Attribution 4.0 International</a>, if source allows.<br>
+</p><p>
+<b>08/05/24</b>&nbsp;&nbsp;376 translations now available in 165 languages.<br>
+</p><p>
+<b>05/01/24</b>&nbsp;&nbsp;370 translations now available in 164 languages.<br>
+</p><p>
+<b>02/04/24</b>&nbsp;&nbsp;352 translations now available in 142 languages.<br>
+</p><p>
+<b>12/04/23</b>&nbsp;&nbsp;
+<a href="?Glossary#g1653" title="View definition" onclick="ABDO('Glossary','g1653');return false;"><i class='notranslate'>Eleēsē</i></a> added to the <a href="?Glossary" title="Strongs Enhanced Concordance and Glossary" onclick="ABDO('Glossary');return false;"><i class='notranslate'>Aionian Glossary</i></a>.<br>
+</p><p>
+<b>02/14/23</b>&nbsp;&nbsp;Aionian Bible published for anonymous access on the <a href='https://www.AionianBible.org/TOR' target='_blank' title='TOR Network'>TOR Network</a>.<br>
+</p><p>
+<b>02/14/22</b>&nbsp;&nbsp;<a href='https://en.wikipedia.org/wiki/Strong%27s_Concordance' target='_blank' title='Strongs Concordance history at wikipedia'>Strong's Concordance</a> from <a href='https://viz.bible' target='_blank' title='Strongs Concordance source'>viz.bible</a>, <a href='https://github.com/openscriptures/strongs' target='_blank' title='improved Strongs Concordance source'>Open Scriptures</a>, and <a href='https://github.com/STEPBible/STEPBible-Data' target='_blank' title='STEPBible Enhanced Strongs Concordance'>STEPBible Enhanced Strong's</a> at <a href='https://www.AionianBible.org/Strongs' target='_blank' title='Strongs Enhanced Concordance and Glossary'>AionianBible.org/Strongs</a>.<br>
+</p><p>
+<b>01/09/22</b>&nbsp;&nbsp;<a href='https://resources.aionianbible.org/AB-StudyPack/' target='_blank' title='Aionian Bible language StudyPacks'>StudyPack</a> resources for Bible translation and underlying language study now available.<br>
+</p><p>
+<b>01/01/22</b>&nbsp;&nbsp;216 translations now available in 99 languages.<br>
+</p><p>
+<b>12/20/21</b>&nbsp;&nbsp;Social media presence on 
+<a href='https://www.AionianBible.org/Facebook'		target='_blank' title='Facebook/AionianBible'>Facebook</a>,
+<a href='https://www.AionianBible.org/Twitter'		target='_blank' title='Twitter/AionianBible'>Twitter</a>,
+<a href='https://www.AionianBible.org/LinkedIn'		target='_blank' title='LinkedIn/AionianBible'>LinkedIn</a>,
+<a href='https://www.AionianBible.org/Instagram'	target='_blank' title='Instagram/AionianBible'>Instagram</a>,
+<a href='https://www.AionianBible.org/Pinterest'	target='_blank' title='Pinterest/AionianBible'>Pinterest</a>,
+<a href='https://www.AionianBible.org/YouTube'		target='_blank' title='YouTube/AionianBible'>YouTube</a>,
+<a href='https://www.AionianBible.org/Google-Play'	target='_blank' title='GooglePlay/AionianBible'>GooglePlay</a>, and
+<a href='https://www.AionianBible.org/EmailNews'	target='_blank' title='EmailNews/AionianBible'>MailChimp</a><br>
+</p><p>
+<b>11/17/21</b>&nbsp;&nbsp;<a href='https://www.AionianBible.org/Bible-Cover' target='_blank' title='Buy the Aionian Bible Branded Leather Bible Cover'>Aionian Bible Branded Leather Bible Covers</a> now available.<br>
+</p><p>
+<b>03/31/21</b>&nbsp;&nbsp;214 translations now available in 99 languages.<br>
+</p><p>
+<b>12/01/20</b>&nbsp;&nbsp;Right to left and Hindic languages now available in PDF format.<br>
+</p><p>
+<b>08/29/20</b>&nbsp;&nbsp;Aionian Bibles now available in ePub format.<br>
+</p><p>
+<b>05/25/20</b>&nbsp;&nbsp;Illustrations by Gustave Doré, <a href='https://resources.aionianbible.org/Gustave-Dore-La-Grande-Bible-de-Tours/' title='Gustave Dorés La Grande Bible de Tours' target='_blank'>La Grande Bible de Tours</a>, (Felix Just, S.J., <a href='https://catholic-resources.org/Art/Dore.htm' title='Catholic Resources' target='_blank'>Catholic-Resources.org/Art/Dore.htm</a>).<br>
+</p><p>
+<b>02/22/20</b>&nbsp;&nbsp;Aionian Bibles <a href='https://www.aionianbible.org/Buy' target='_blank' title='in print at Amazon and Lulu'>available in print</a> at <a href='https://www.AionianBible.org/Lulu' target='_blank' title='Aionian Bibles in print at Lulu.com'>Lulu.com</a>.<br>
+</p><p>
+<b>10/31/19</b>&nbsp;&nbsp;174 translations now available in 74 languages.<br>
+</p><p>
+<b>10/28/19</b>&nbsp;&nbsp;<span class='notranslate'>Aionian</span>  Bible project nursed as J. and J. pray.<br>
+</p><p>
+<b>03/24/19</b>&nbsp;&nbsp;135 translations now available in 67 languages.<br>
+</p><p>
+<b>11/17/18</b>&nbsp;&nbsp;104 translations now available in 57 languages.<br>
+</p><p>
+<b>10/20/18</b>&nbsp;&nbsp;70 translations now available in 33 languages.<br>
+</p><p>
+<b>03/06/18</b>&nbsp;&nbsp;Aionian Bibles <a href='https://www.aionianbible.org/Buy' target='_blank' title='in print at Amazon and Lulu'>available in print</a> at <a href='https://www.AionianBible.org/Amazon' target='_blank' title='Aionian Bibles in print at Amazon.com'>Amazon.com</a>.<br>
+</p><p>
+<b>02/01/18</b>&nbsp;&nbsp;<i class='notranslate'>Holy Bible Aionian Edition®</i>  trademark registered.<br>
+</p><p>
+<b>07/30/17</b>&nbsp;&nbsp;42 translations now available in 22 languages.<br>
+</p><p>
+<b>07/01/17</b>&nbsp;&nbsp;<i>'The Purple Bible'</i> nickname begins.<br>
+</p><p>
+<b>01/16/17</b>&nbsp;&nbsp;<a href='https://www.AionianBible.org/Google-Play' target='_blank' title='Aionian Bible free online at Google Play'><span class='notranslate'>Aionian</span>  Bible Google Play Store App</a> published.<br>
+</p><p>
+<b>01/01/17</b>&nbsp;&nbsp;<a href='https://creativecommons.org/licenses/by-nd/4.0' target='_blank' title='Copyright license'>Creative Commons Attribution No Derivative Works 4.0</a> license added.<br>
+</p><p>
+<b>12/07/16</b>&nbsp;&nbsp;<a href='https://NAINOIA-INC.signedon.net' target='_blank' title='Nainoia, Inc. exists for Christian mission promotion, technical support services, and Bible translation'>Nainoia Inc</a> established as non-profit corporation.<br>
+</p><p>
+<b>06/21/16</b>&nbsp;&nbsp;30 translations available in 12 languages.<br>
+</p><p>
+<b>01/11/16</b>&nbsp;&nbsp;<a href='https://www.AionianBible.org' target='_blank' title='The worlds first Holy Bible untranslation'>AionianBible.org</a> domain registered.<br>
+</p><p>
+<b>06/21/15</b>&nbsp;&nbsp;<span class='notranslate'>Aionian</span>  Bible project birthed as G. and J. pray.<br>
+</p><p>
+<b>12/18/13</b>&nbsp;&nbsp;<span class='notranslate'>Aionian</span>  Bible project announced as J. and J. pray.<br>
+</p><p>
+<b>04/15/85</b>&nbsp;&nbsp;<span class='notranslate'>Aionian</span>  Bible project conceived as B. and J. pray.<br>
+</p>
+`,
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// GLOSSARY
+`
+<h2 class='title'>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+Aionian Glossary
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+
+<p>The <i>Aionian Bible</i> un-translates and instead transliterates eleven special words to help us better understand the extent of God’s love for individuals and all mankind, and the nature of afterlife destinies.  The original translation is unaltered and a note is added to 64 Old Testament and 200 New Testament verses. Compare the definitions below to the <a href='https://www.AionianBible.org/Strongs' target='_blank' title='Strongs Enhanced Concordance and Glossary'>Strong's Concordance</a>.  Follow the links below to study the word's usage.</p>
+
+<h3><i><a id="g12">Abyssos</a></i></h3>
+Language: Koine Greek<br>
+Speech: proper noun, place<br>
+Strongs: g12<br>
+Meaning:<br>
+<div style='margin-left: 15px;'>Temporary prison for special fallen angels such as Apollyon, the Beast, and Satan.</div>
+Usage: 9 times in 3 books, 6 chapters, and 9 verses<br>
+<div><span class='ff bok'  >Luke</span> 8:31, <span class='ff bok'  >Romans</span> 10:7, <span class='ff bok'  >Revelation</span> 9:1, 9:2, 9:11, 11:7, 17:8, 20:1, 20:3</div><br>
+
+<h3><i><a id="g126">aïdios</a></i></h3>
+Language: Koine Greek<br>
+Speech: adjective<br>
+Strongs: g126<br>
+Meaning:<br><div style='margin-left: 15px;'>Lasting, enduring forever, eternal.</div>
+Usage: 2 times in Romans 1:20 and Jude 6<br>
+<div><span class='ff bok'  >Romans</span> 1:20, <span class='ff bok'  >Jude</span> 1:6</div><br>
+
+<h3><i><a id="g165">aiōn</a></i></h3>
+Language: Koine Greek<br>
+Speech: noun<br>
+Strongs: g165<br>
+Meaning:<br><div style='margin-left: 15px;'>A lifetime or time period with a beginning and end, an era, an age, the completion of which is beyond human perception, but known only to God the creator of the aiōns, Hebrews 1:2. Never meaning simple <i>endless or infinite chronological time</i> in Koine Greek usage. Read <a href="?Aionian" title="Book abstracts of Dr. Heleen Keizer and Ramelli and Konstan" onclick="ABDO('Aionian');return false;">Dr. Heleen Keizer and Ramelli and Konstan</a> for proofs.</div>
+Usage: 127 times in 22 books, 75 chapters, and 102 verses<br>
+<div><span class='ff bok'  >Matthew</span> 12:32, 13:22, 13:39, 13:40, 13:49, 21:19, 24:3, 28:20, <span class='ff bok'  >Mark</span> 3:29, 4:19, 10:30, 11:14, <span class='ff bok'  >Luke</span> 1:33, 1:55, 1:70, 16:8, 18:30, 20:34, 20:35, <span class='ff bok'  >John</span> 4:14, 6:51, 6:58, 8:35, 8:51, 8:52, 9:32, 10:28, 11:26, 12:34, 13:8, 14:16, <span class='ff bok'  >Acts</span> 3:21, 15:18, <span class='ff bok'  >Romans</span> 1:25, 9:5, 11:32, 11:36, 12:2, 16:27, <span class='ff bok'  >1 Corinthians</span> 1:20, 2:6, 2:7, 2:8, 3:18, 8:13, 10:11, <span class='ff bok'  >2 Corinthians</span> 4:4, 9:9, 11:31, <span class='ff bok'  >Galatians</span> 1:4, 1:5, <span class='ff bok'  >Ephesians</span> 1:21, 2:2, 2:7, 3:9, 3:11, 3:21, 6:12, <span class='ff bok'  >Philippians</span> 4:20, <span class='ff bok'  >Colossians</span> 1:26, <span class='ff bok'  >1 Timothy</span> 1:17, 6:17, <span class='ff bok'  >2 Timothy</span> 4:10, 4:18, <span class='ff bok'  >Titus</span> 2:12, <span class='ff bok'  >Hebrews</span> 1:2, 1:8, 5:6, 6:5, 6:20, 7:17, 7:21, 7:24, 7:28, 9:26, 11:3, 13:8, 13:21, <span class='ff bok'  >1 Peter</span> 1:23, 1:25, 4:11, 5:11, <span class='ff bok'  >2 Peter</span> 3:18, <span class='ff bok'  >1 John</span> 2:17, <span class='ff bok'  >2 John</span> 1:2, <span class='ff bok'  >Jude</span> 1:13, 1:25, <span class='ff bok'  >Revelation</span> 1:6, 1:18, 4:9, 4:10, 5:13, 7:12, 10:6, 11:15, 14:11, 15:7, 19:3, 20:10, 22:5</div><br>
+
+<h3><i><a id="g166">aiōnios</a></i></h3>
+Language: Koine Greek<br>
+Speech: adjective<br>
+Strongs: g166<br>
+Meaning:<br><div style='margin-left: 15px;'>From start to finish, pertaining to the age, lifetime, entirety, complete, or even consummate. Never meaning simple <i>endless or infinite chronological time</i> in Koine Greek usage. Read <a href="?Aionian" title="Book abstracts of Dr. Heleen Keizer and Ramelli and Konstan" onclick="ABDO('Aionian');return false;">Dr. Heleen Keizer and Ramelli and Konstan</a> for proofs.</div>
+Usage: 71 times in 19 books, 44 chapters, and 69 verses<br>
+<div><span class='ff bok'  >Matthew</span> 18:8, 19:16, 19:29, 25:41, 25:46, <span class='ff bok'  >Mark</span> 3:29, 10:17, 10:30, <span class='ff bok'  >Luke</span> 10:25, 16:9, 18:18, 18:30, <span class='ff bok'  >John</span> 3:15, 3:16, 3:36, 4:14, 4:36, 5:24, 5:39, 6:27, 6:40, 6:47, 6:54, 6:68, 10:28, 12:25, 12:50, 17:2, 17:3, <span class='ff bok'  >Acts</span> 13:46, 13:48, <span class='ff bok'  >Romans</span> 2:7, 5:21, 6:22, 6:23, 16:25, 16:26, <span class='ff bok'  >2 Corinthians</span> 4:17, 4:18, 5:1, <span class='ff bok'  >Galatians</span> 6:8, <span class='ff bok'  >2 Thessalonians</span> 1:9, 2:16, <span class='ff bok'  >1 Timothy</span> 1:16, 6:12, 6:16, <span class='ff bok'  >2 Timothy</span> 1:9, 2:10, <span class='ff bok'  >Titus</span> 1:2, 3:7, <span class='ff bok'  >Philemon</span> 1:15, <span class='ff bok'  >Hebrews</span> 5:9, 6:2, 9:12, 9:14, 9:15, 13:20, <span class='ff bok'  >1 Peter</span> 5:10, <span class='ff bok'  >2 Peter</span> 1:11, <span class='ff bok'  >1 John</span> 1:2, 2:25, 3:15, 5:11, 5:13, 5:20, <span class='ff bok'  >Jude</span> 1:7, 1:21, <span class='ff bok'  >Revelation</span> 14:6</div><br>
+
+<h3><i><a id="g1653">eleēsē</a></i></h3>
+Language: Koine Greek<br>
+Speech: verb<br>
+Strongs: g1653<br>
+Meaning:<br><div style='margin-left: 15px;'>To have pity on, to show mercy. Typically, the subjunctive mood indicates possiblity, not certainty. However, a subjunctive in a purpose clause is a resulting action as certain as the causal action. The subjunctive in a purpose clause functions as an indicative, not an optative. Thus, the grand conclusion of grace theology in Romans 11:32 must be clarified. God's mercy on all is not a possibility, but a certainty. See <a href='https://www.ntgreek.org' target='_blank'>www.ntgreek.org</a>.</div>
+Usage: 1 time in this conjugation, Romans 11:32<br>
+<div></div><br>
+
+<h3><i><a id="g1067">Geenna</a></i></h3>
+Language: Koine Greek<br>
+Speech: proper noun, place<br>
+Strongs: g1067<br>
+Meaning:<br>
+<div style='margin-left: 15px;'>Valley of Hinnom, Jerusalem's trash dump, a place of ruin, destruction, and judgment in this life, or the next, though not eternal to Jesus' audience.</div>
+Usage: 12 times in 4 books, 7 chapters, and 12 verses<br>
+<div><span class='ff bok'  >Matthew</span> 5:22, 5:29, 5:30, 10:28, 18:9, 23:15, 23:33, <span class='ff bok'  >Mark</span> 9:43, 9:45, 9:47, <span class='ff bok'  >Luke</span> 12:5, <span class='ff bok'  >James</span> 3:6</div><br>
+
+<h3><i><a id="g86">Hadēs</a></i></h3>
+Language: Koine Greek<br>
+Speech: proper noun, place<br>
+Strongs: g86<br>
+Meaning:<br>
+<div style='margin-left: 15px;'>Synonomous with <i>Sheol</i>, though in New Testament usage <i>Hades</i> is the temporal place of punishment for deceased unbelieving mankind, distinct from <i>Paradise</i> for deceased believers.</div>
+Usage: 11 times in 5 books, 9 chapters, and 11 verses<br>
+<div><span class='ff bok'  >Matthew</span> 11:23, 16:18, <span class='ff bok'  >Luke</span> 10:15, 16:23, <span class='ff bok'  >Acts</span> 2:27, 2:31, <span class='ff bok'  >1 Corinthians</span> 15:55, <span class='ff bok'  >Revelation</span> 1:18, 6:8, 20:13, 20:14</div><br>
+
+<h3><i><a id="g3041"></a><a id="g4442">Limnē Pyr</a></i></h3>
+Language: Koine Greek<br>
+Speech: proper noun, place<br>
+Strongs: g3041 g4442<br>
+Meaning:<br>
+<div style='margin-left: 15px;'>Lake of Fire, final punishment for those not named in the Book of Life, prepared for the Devil and his angels, Matthew 25:41.</div>
+Usage: Phrase 5 times in the New Testament<br>
+<div><span class='ff bok'  >Revelation</span> 19:20, 20:10, 20:14, 20:15, 21:8</div><br>
+
+<h3><i><a id="h7585">Sheol</a></i></h3>
+Language: Hebrew<br>
+Speech: proper noun, place<br>
+Strongs: h7585<br>
+Meaning:<br>
+<div style='margin-left: 15px;'>The grave or temporal afterlife world of both the righteous and unrighteous, believing and unbelieving, until the general resurrection.</div>
+Usage: 66 times in 17 books, 50 chapters, and 64 verses<br>
+<div><span class='ff bok'  >Genesis</span> 37:35, 42:38, 44:29, 44:31, <span class='ff bok'  >Numbers</span> 16:30, 16:33, <span class='ff bok'  >Deuteronomy</span> 32:22, <span class='ff bok'  >1 Samuel</span> 2:6, <span class='ff bok'  >2 Samuel</span> 22:6, <span class='ff bok'  >1 Kings</span> 2:6, 2:9, <span class='ff bok'  >Job</span> 7:9, 11:8, 14:13, 17:13, 17:16, 21:13, 24:19, 26:6, <span class='ff bok'  >Psalms</span> 6:5, 9:17, 16:10, 18:5, 30:3, 31:17, 49:14, 49:15, 55:15, 86:13, 88:3, 89:48, 116:3, 139:8, 141:7, <span class='ff bok'  >Proverbs</span> 1:12, 5:5, 7:27, 9:18, 15:11, 15:24, 23:14, 27:20, 30:16, <span class='ff bok'  >Ecclesiastes</span> 9:10, <span class='ff bok'  >Song of Solomon</span> 8:6, <span class='ff bok'  >Isaiah</span> 5:14, 7:11, 14:9, 14:11, 14:15, 28:15, 28:18, 38:10, 38:18, 57:9, <span class='ff bok'  >Ezekiel</span> 31:15, 31:16, 31:17, 32:21, 32:27, <span class='ff bok'  >Hosea</span> 13:14, <span class='ff bok'  >Amos</span> 9:2, <span class='ff bok'  >Иона</span> <a title='Jonah 2:2' href='?Jonah-2' onclick="ABDO('Jonah-2'); return false;">2:2</a>, <span class='ff bok'  >Habakkuk</span> 2:5</div><br>
+
+<h3><i><a id="g5020">Tartaroō</a></i></h3>
+Language: Koine Greek<br>
+Speech: proper noun, place<br>
+Strongs: g5020<br>
+Meaning:<br>
+<div style='margin-left: 15px;'>Temporary prison for particular fallen angels awaiting final judgment.</div>
+Usage: 1 time in 2 Peter 2:4<br>
+<div><span class='ff bok'  >2 Peter</span> 2:4</div><br>
+
+<h3><i><a id="questioned">Questioned</a></i></h3>
+Questioned verse translations do not contain Aionian Glossary words, but may wrongly imply eternal or Hell.<br>
+
+`,
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// PAST
+`
+<h2 class='title'>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+History Past
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+
+<div id='maps'>
+<div class="map timeline"><img src="images/Timeline-History-Aionian-Bible.jpg" alt="History Past"></div>
+<p class='left'>Derived from <a href='https://www.aionianbible.org/Uusher' target='_blank' title='Download PDF'>The Annals of the World by James Uusher</a> and <a href='https://www.aionianbible.org/Wikipedia-Timeline-of-Christian-Missions' target='_blank' title='Visit Wikipedia'>Timeline of Christian missions, Wikipedia</a>. <a href='https://www.aionianbible.org/Timeline' target='_blank' title='Download printable chart'>Printable version</a></p>
+</div>
+`,
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// FUTURE
+`
+<h2 class='title'>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+History Future
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+
+<div id='maps'>
+<div class="map timeline"><img src="images/Timeline-Eschatology-Aionian-Bible.jpg" alt="History Future"></div>
+<p class='left'>The chart indicates the whereabouts of God, mankind, and angels throughout the ages of history.  Note that the punishment of deceased unbelieving mankind in Hades is temporal as promised when Jesus said <i>“the gates of Hades will not prevail”</i>, Paul wrote <i>“Hades where is your victory?”</i>, and John wrote <i>“Hades gives up.”</i>  Also note that certain fallen angels are already held in a separate prison, Tartarus, awaiting final judgment and sentencing to the Lake of Fire which is <i>“prepared for the Devil and his angels,”</i> according to Matthew 25:41.  Satan’s rebellion will be crushed and Christ will be victorious in the salvation of all his people.  You too can know your name is already written in Heaven through faith in Jesus Christ! <a href='https://www.aionianbible.org/Future' target='_blank' title='Download printable chart'>Printable version</a></p>
+</div>
+`,
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// DESTINY
+`
+<h2 class='title'>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+Destiny
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+
+<p>The Aionian Bible shows the location of eleven special Greek and Hebrew <a href="?Glossary" title="Aionian Glossary" onclick="ABDO('Glossary');return false;">Aionian Glossary</a> words to help us better understand God’s love for individuals and for all mankind, and the nature of after-life destinies. The underlying Hebrew and Greek words typically translated as <i>Hell</i> show us that there are not just two after-life destinies, Heaven or Hell.  Instead, there are a number of different locations, each with different purposes, different durations, and different inhabitants. Locations include 1) Old Testament <a href="?Glossary#h7585" title="Aionian glossary h7585" onclick="ABDO('Glossary','h7585');return false;"><i>Sheol</i></a> and New Testament <a href="?Glossary#g86" title="Aionian glossary g86" onclick="ABDO('Glossary','g86');return false;"><i>Hadēs</i></a>, 2) <a href="?Glossary#g1067" title="Aionian glossary g1067" onclick="ABDO('Glossary','g1067');return false;"><i>Geenna</i></a>, 3) <a href="?Glossary#g5020" title="Aionian glossary g5020" onclick="ABDO('Glossary','g5020');return false;"><i>Tartaroō</i></a>, 4) <a href="?Glossary#g12" title="Aionian glossary g12" onclick="ABDO('Glossary','g12');return false;"><i>Abyssos</i></a>, 5) <a href="?Glossary#g3041" title="Aionian glossary g3041" onclick="ABDO('Glossary','g3041');return false;"><i>Limnē Pyr</i></a>, 6) Paradise, 7) The New Heaven, and 8) The New Earth. So there is reason to review our conclusions about the destinies of redeemed mankind and fallen angels.</p>
+
+<p>The key observation is that fallen angels will be present at the final judgment, 2 Peter 2:4 and  Jude 6. Traditionally, we understand the separation of the Sheep and the Goats at the final judgment to divide believing from unbelieving mankind, Matthew 25:31-46 and Revelation 20:11-15. However, the presence of fallen angels alternatively suggests that Jesus is separating redeemed mankind from the fallen angels.  We do know that Jesus is the helper of mankind and not the helper of the Devil, Hebrews 2. We also know that Jesus has atoned for the sins of all mankind, both believer and unbeliever alike, 1 John 2:1-2. Deceased believers are rewarded in Paradise, Luke 23:43, while unbelievers are punished in Hades as the story of Lazarus makes plain, Luke 16:19-31. Yet less commonly known, the punishment of this selfish man and all unbelievers is before the final judgment, is temporal, and is punctuated when Hades is evacuated, Revelation 20:13-14. So is there hope beyond Hades for unbelieving mankind? Jesus promised, <i>“the gates of Hades will not prevail,”</i> Matthew 16:18. Paul asks, <i>“Hades where is your victory?”</i> 1 Corinthians 15:55. John wrote, <i>“Hades gives up,”</i> Revelation 20:13-14.</p>
+
+<p>Jesus comforts us saying, <i>“Do not be afraid,”</i> because he holds the keys to <i>unlock</i> death and Hades, Revelation 1:18. Yet too often our <i>Good News</i> sounds like a warning to <i>“be afraid”</i> because Jesus holds the keys to <i>lock</i> Hades!  Wow, we have it backwards!  Hades will be evacuated!  And to guarrantee hope, once emptied, Hades is thrown into the Lake of Fire, never needed again, Revelation 20:13-14.</p>
+
+<p>Finally, we read that anyone whose name is not written in the Book of Life is thrown into the Lake of Fire, the second death, with no exit ever mentioned or promised, Revelation 21:1-8. So are those evacuated from Hades then, <i>“out of the frying pan, into the fire?”</i>  Certainly, the Lake of Fire is the destiny of the Goats.  But, do not be afraid. Instead, read the Bible's explicit mention of the purpose of the Lake of Fire and the identity of the Goats. <i>“Then he will say also to those on the left hand, ‘Depart from me, you cursed, into the consummate fire which is prepared for... the devil and his angels,’”</i> Matthew 25:41. Bad news for the Devil. Good news for all mankind!</p>
+
+<p>Faith is not a pen to write your own name in the Book of Life. Instead, faith is the glasses to see that the love of Christ for all mankind has already written our names in Heaven. Jesus said, <i>“You did not choose me, but I chose you,”</i> John 15:16.  Though unbelievers will suffer regrettable punishment in Hades, redeemed mankind will never enter the Lake of Fire, prepared for the devil and his angels. And as God promised, all mankind will worship Christ together forever, Philippians 2:9-11.</p>
+`,
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// ABRAHAM
+`
+<h2 class='title'>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+Abraham's Journey
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+
+<div id='maps'>
+<div class="map"><img src="images/MAP-Abrahams-Journey.jpg" alt="Abraham's Journey"></div>
+<div class='caption'><p class='cap'>“By faith, Abraham, when he was called, obeyed to go out to the place which he was to receive for an inheritance. He went out, not knowing where he went”<br><span class='ref'>Hebrews 11:8</span></p></div>
+</div>
+`,
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// ISRAEL
+`
+<h2 class='title'>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+Israel's Exodus
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+
+<div id='maps'>
+<div class="map"><img src="images/MAP-Israels-Exodus.jpg" alt="Israel's Exodus"></div>
+<div class='caption'><p class='cap'>“When Pharaoh had let the people go, God didn’t lead them by the way of the land of the Philistines, although that was near; for God said, ‘Lest perhaps the people change their minds when they see war, and they return to Egypt’”<br><span class='ref'>Exodus 13:17</span></p></div>
+</div>
+`,
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// JESUS
+`
+<h2 class='title'>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+Jesus' Journeys
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+
+<div id='maps'>
+<div class="map portrait"><img src="images/MAP-Jesus-Journeys.jpg" alt="Jesus' Journeys"></div>
+<div class='caption'><p class='cap'>“For the Son of Man also came not to be served, but to serve, and to give his life as a ransom for many”<br><span class='ref'>Mark 10:45</span></p></div>
+</div>
+`,
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// PAUL
+`
+<h2 class='title'>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+Paul's Missionary Journeys
+<a title='Next Page' class='nav right' href='?Next' onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
+</h2>
+
+<div id='maps'>
+<div class="map"><img src="images/MAP-Pauls-Missionary-Journeys.jpg" alt="Paul's Missionary Journeys"></div>
+<div class='caption'><p class='cap'>“Paul, a servant of Jesus Christ, called to be an apostle, set apart for the Good News of God”<br><span class='ref'>Romans 1:1</span></p></div>
+</div>
+`,
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// WORLD
+`
+<h2 class='title'>
+<a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
+World Nations
+</h2>
+
+<div id='maps'>
+<div class="map"><img src="images/MAP-World-Nations.jpg" alt="World Nations"></div>
+<div class='caption'><p class='cap'>“Go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit”<br><span class='ref'>Matthew 28:19</span></p></div>
+</div>
+`
+
+];
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// PAGER
+function ABDO(goto, anchor=null, push=true) {
+	// validate request
+	if      (typeof goto == 'number')  {				gonu = goto; }
+	else if (typeof goto != 'string')  {				gonu = null; }
+	else if (goto == 'Prev') {							gonu = AB_Page - 1;			goto = gonu; }
+	else if (goto == 'Next') {							gonu = AB_Page + 1;			goto = gonu; }
+	else if (AB_Map.hasOwnProperty(goto)) {				gonu = AB_Map[goto]; }
+	else if (goto.match(/^[\d]+$/)) {					gonu = +goto; }
+	else if (goto != 'Bookmark') {						gonu = null; }
+	else if (typeof AB_Bookmark == 'number')  {			gonu = AB_Bookmark;			goto = AB_Bookmark; }
+	else if (typeof AB_Bookmark != 'string')  {			gonu = null; }
+	else if (typeof AB_Map[AB_Bookmark] == 'number') {	gonu = AB_Map[AB_Bookmark];	goto = AB_Bookmark; }
+	else if (AB_Bookmark.match(/^[\d]+$/)) {			gonu = +AB_Bookmark;		goto = AB_Bookmark; }
+	else {												gonu = null; }
+	if (gonu === null || typeof AB_Bible[gonu] == 'undefined') {
+		if (gonu !== null && ((AB_Page == 0 && gonu == -1) || (AB_Page == AB_Bible.length-1 && gonu == AB_Bible.length))) { return; }
+		alert("Oops, returning to TOC, invalid page requested: " + goto);
+		goto = 'TOC';
+		gonu = AB_Map['TOC'];
+	}
+
+	// page assign, bookmark, load
+	AB_Page = gonu;
+	if (AB_Page > 2 && AB_Bookmark != goto) {
+		AB_Bookmark = goto;
+		AionianBible_writeCookie("AionianBible.Bookmark", AB_Bookmark);
+	}
+	document.getElementById('body').innerHTML = AB_Bible[AB_Page];
+
+	// push history to browser
+	if (anchor && anchor[0]=='#') { anchor = anchor.substr(1); }
+	if (push && (window.history.state === null || typeof window.history.state.go == "undefined" || window.history.state.go != goto)) {
+		const anchor2 = (anchor ? '#' + anchor : '');
+		window.history.pushState({go:goto}, '', window.location.pathname + "?" + goto + anchor2);
+	}
+
+	// set font accessibility and scroll to anchor
+	AB_Accessible = document.getElementById('body');
+	if (null !== AB_Accessible) {
+		AB_Accessible.className = AionianBible_readCookie("AionianBible.Accessible");
+	}
+	if (anchor) { document.getElementById(anchor).scrollIntoView(true); window.scrollBy(0,-70); }
+	else { window.scrollTo(0, 0); }
+}
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// RELOAD
+function AionianBible_reload() {
+	const myRequest = new Request(window.location.href);
+	fetch(myRequest,{cache: 'reload'}).then((response) => {
+		if (response.status == 200) {
+			const headers = response.headers;
+			var modified = '';
+			if (headers) { modified = ' dated: ' + headers.get('last-modified'); }
+			alert('Update Bible App from source' + modified);
+			location.reload();
+		}
+		else {
+			alert('Bible App update not available');
+		}
+	}).catch(err => {
+		alert('Bible App update not available');
+	});
+}
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// BROWSER HISTORY
+window.addEventListener('popstate', function (event) {
+    if (event.state) {
+		ABDO(event.state.go, null, false);
+	}
+}, false);
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// COOKIES
+function AionianBible_writeCookie(cname, cvalue) {
+	var date = new Date();
+	date.setTime(date.getTime() + (1000 * 24 * 60 * 60 * 1000));
+	document.cookie = cname + ".Romani-Vlax---Lovaric-Bible" + "=" + cvalue + ";expires=" + date.toUTCString() + ";SameSite=Strict;path=/";
+}
+function AionianBible_readCookie(cname) {
+	var nameEQ = cname + ".Romani-Vlax---Lovaric-Bible" + "=";
+	var ca = document.cookie.split(";");
+	for (var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (" "==c.charAt(0)) {
+			c = c.substring(1,c.length);
+		}
+		if (0==c.indexOf(nameEQ)) {
+			return c.substring(nameEQ.length,c.length);
+		}
+	}
+	return null;
+}
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// BOOKMARK
+function AionianBible_Set() {
+	AB_Bookmark2 = AB_Page;
+	AionianBible_writeCookie("AionianBible.Bookmark2", AB_Bookmark2);
+	return false;
+}
+function AionianBible_Get() {
+	ABDO(AB_Bookmark2);
+	return false;
+}
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// ACCESSIBILITY
+function AionianBible_Accessible() {
+	AB_Accessible = document.getElementById('body');
+	if (null !== AB_Accessible) {
+		AB_Accessible.className = AionianBible_readCookie("AionianBible.Accessible");
+		if ("larger"==AB_Accessible.className) {
+			AB_Accessible.className = "";
+			AionianBible_writeCookie("AionianBible.Accessible", "");
+		}
+		else if ("large"!=AB_Accessible.className) {
+			AB_Accessible.className = "large";
+			AionianBible_writeCookie("AionianBible.Accessible", "large");
+		}
+		else {
+			AB_Accessible.className = "larger";
+			AionianBible_writeCookie("AionianBible.Accessible", "larger");
+		}
+	}
+	return false;
+}
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// SWIPE
+function AionianBible_SwipeListener(handleswipe) {
+	var swipedir, startX, startY, distX, distY, elapsedTime, startTime;
+	document.body.addEventListener('touchstart', function(e) {
+		var touchobj = e.changedTouches[0];
+		swipedir = 'none';
+		startX = touchobj.pageX;
+		startY = touchobj.pageY;
+		startTime = new Date().getTime(); // first contact
+	}, false);
+	document.body.addEventListener('touchend', function(e){
+		var touchobj = e.changedTouches[0];
+		distX = touchobj.pageX - startX; // horizontal distance
+		distY = touchobj.pageY - startY; // vertical distance
+		elapsedTime = new Date().getTime() - startTime; // time elapsed
+		if (elapsedTime <= 300 && Math.abs(distX) >= 150 && Math.abs(distY) <= 100) { // time? horizontal? vertical?
+			swipedir = (distX < 0)? 'left' : 'right'; // negative if left swipe, otherwise right
+		}
+		handleswipe(swipedir);
+	}, false);
+}
+function AionianBible_SwipeLinks() {
+	window.addEventListener('load', function() {
+		AionianBible_SwipeListener(function(swipedir) {
+			if (swipedir == 'right') {		ABDO('Prev'); }
+			else if (swipedir == 'left') {	ABDO('Next'); }
+		} );
+	}, false);
+}
+AionianBible_SwipeLinks();
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// PWA https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Caching
+// https://stackoverflow.com/questions/39432717/how-can-i-cache-external-urls-using-service-worker
+// PRE-CACHE
+
+const AionianBible_cacheName = "AionianBible";
+const AionianBible_precachedResources = [
+'/',
+'fonts/gentiumplus-r.ttf',
+'fonts/gentiumplus-r.woff',
+'fonts/gentiumplus-r.woff2',
+'fonts/notosans-basic-regular.ttf',
+'fonts/notosans-basic-regular.woff',
+'fonts/notosans-basic-regular.woff2',
+
+'images/favicon.ico',
+'images/favicon-32x32.png',
+'images/favicon-16x16.png',
+'images/apple-touch-icon.png',
+'images/Holy-Bible-Aionian-Edition-PURPLE-HOME.png',
+'images/Holy-Bible-Aionian-Edition-PURPLE-LOGO-PWA.png',
+'images/Holy-Bible-Aionian-Edition-PURPLE-AB-PWA.png',
+'images/Gustave-Dore-Bible-Tour-Hebrew-OT-003-Adam-and-Eve-Are-Driven-out-of-Eden.jpg',
+'images/Gustave-Dore-Bible-Tour-NT-Gospel-215-The-Crucifixion-of-Jesus-and-Two-Criminals.jpg',
+'images/Gustave-Dore-Bible-Tour-NT-Gospel-241-The-New-Jerusalem.jpg',
+'images/Timeline-History-Aionian-Bible.jpg',
+'images/Timeline-Eschatology-Aionian-Bible.jpg',
+'images/MAP-Abrahams-Journey.jpg',
+'images/MAP-Israels-Exodus.jpg',
+'images/MAP-Jesus-Journeys.jpg',
+'images/MAP-Pauls-Missionary-Journeys.jpg',
+'images/MAP-World-Nations.jpg'
+];
+
+async function AionianBible_precache() {
+	const cache = await caches.open(AionianBible_cacheName);
+	console.log(`Aionian Bible App precache: complete`);
+	return cache.addAll(AionianBible_precachedResources);
+}
+
+self.addEventListener("install", (event) => {
+	event.waitUntil(AionianBible_precache());
+});
+
+// CACHE THEN REFRESH
+async function AionianBible_cacheFirstWithRefresh(request) {
+	const fetchResponsePromise = fetch(request).then(async (networkResponse) => {
+		if (networkResponse.ok) {
+			const cache = await caches.open(AionianBible_cacheName);
+			cache.put(request, networkResponse.clone());
+		}
+		return networkResponse;
+	});
+	return (await caches.match(request)) || (await fetchResponsePromise);
+}
+
+self.addEventListener("fetch", (event) => {
+	event.respondWith(AionianBible_cacheFirstWithRefresh(event.request));
+});
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// INSTALL LINK
+var AionianBible_PWA_preventDefault = null;
+function AionianBible_PWA_Install() {
+	document.getElementById('java').innerHTML = "<a href='?PWA' onclick='AionianBible_PWA_InstallPrompt();return false;' title='Install Progressive Web Application'>( Install Bible App )</a>";
+}
+function AionianBible_PWA_Update() {
+	document.getElementById('java').innerHTML = "<a title='Internet connection required' href='?PWA' onclick='AionianBible_reload();return false;'>( Update Bible App )</a>";
+}
+// install request
+async function AionianBible_PWA_InstallPrompt() {
+	if (!AionianBible_PWA_preventDefault) {
+		return;
+	}
+	const result = await AionianBible_PWA_preventDefault.prompt();
+	console.log(`Aionian Bible App install prompt: ${result.outcome}`);
+	AionianBible_PWA_Update();
+}
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// ONLOAD
+window.onload = function() {
+	// precache
+	AionianBible_precache();
+
+	// bookmarks
+	AB_Bookmark = AionianBible_readCookie("AionianBible.Bookmark");
+	if (AB_Bookmark === null) {
+		AB_Bookmark = 'TOC';
+		AionianBible_writeCookie("AionianBible.Bookmark", AB_Bookmark);
+	}
+	AB_Bookmark2 = AionianBible_readCookie("AionianBible.Bookmark2");
+	if (AB_Bookmark2 === null) {
+		AB_Bookmark2 = 'TOC';
+		AionianBible_writeCookie("AionianBible.Bookmark", AB_Bookmark2);
+	}
+
+	// homepage
+	document.getElementById('java').innerHTML = '';
+	AB_Bible[0] = document.getElementById('body').innerHTML;
+	const query = window.location.search;
+	if (query && query != "?PWA") {	ABDO(query.substr(1), window.location.hash); }
+	else {							window.history.replaceState({go:'PWA'}, '', location.pathname + "?PWA"); }
+
+	// install
+	AionianBible_PWA_Update();
+	window.addEventListener("beforeinstallprompt", (event) => {
+		event.preventDefault();
+		AionianBible_PWA_preventDefault = event;
+		AionianBible_PWA_Install();
+	});
+	window.addEventListener("appinstalled", () => {
+		AionianBible_PWA_Update();
+	});
+
+	console.log(`Aionian Bible App onload: complete`);
+}
+
+</script>
+
+
+
+
+
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////-->
+</body>
+</html>
