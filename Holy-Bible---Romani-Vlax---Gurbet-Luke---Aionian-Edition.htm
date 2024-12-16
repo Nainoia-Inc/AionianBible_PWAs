@@ -3,7 +3,7 @@
 <!-- Short: RGL -->
 <!-- Font:  -->
 <!-- Publisher: https://NAINOIA-INC.signedon.net -->
-<!-- Formatted: ABCMS on 12/15/2024 09:26:26 -->
+<!-- Formatted: ABCMS on 12/16/2024 03:49:11 -->
 <!-- Website: https://www.AionianBible.org -->
 <!-- Resources: https://resources.AionianBible.org -->
 <!-- Repository: https://github.com/Nainoia-Inc -->
@@ -11,9 +11,14 @@
 <!-- Language: Romani Vlax, Gurbet -->
 <!-- Source: Pioneers.org -->
 <!-- Source copyright: Creative Commons Attribution 4.0 -->
-<!-- Source version: 12/5/2024 -->
+<!-- Source version: 12/14/2024 -->
 <!-- Source text: https://ebible.org/details.php?id=rmyGurbet -->
 
+<!-- The Aionian Bible project also serves all its translations as Progressive Web Apps. -->
+<!-- Each Bible translation is contained in a single HTM file using javascript to paginate. -->
+<!-- The PWA listing, manifests, service workers, and icons are served dynamically. -->
+<!-- Dynamic files could be pre-generated, but dynamic results in a simpler GitHub package. -->
+<!-- .htaccess rules masquerade each PWA into its own folder allowing multiple-installs. -->
 
 
 
@@ -29,7 +34,7 @@
 <meta name="description" content="Holy Bible Aionian Edition® ~ Gurbet Luke ~ The world's first Holy Bible untranslation! ~ Progressive Web Application PWA">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="generator" content="ABCMS™">
-<meta name="version" content="12/15/2024 09:26:26">
+<meta name="version" content="12/16/2024 03:49:11">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
@@ -125,8 +130,7 @@ a:hover { color: #9966CC; }
 #aion { padding: 0 0 15px 0; font-style: italic; font-size: 130%; font-weight: bold; color: #191919; }
 #moto { margin: 10px 0 0 0; color: #663399; }
 .RegisteredTM { font-size: 75%; }
-#java { text-align: center; font-weight: bold; }
-#java .red { color: red; }
+#upin.home { text-align: center; font-weight: bold; color: red; }
 
 /* PAGE HEAD */
 #page {	height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 10px; background-color: #FFFFFF; }
@@ -300,9 +304,9 @@ body.word-read #body { max-width: 1024px; margin: 0 auto; padding: 110px 3% 2% 3
 <a href="?Prev" title="Previous page" class="nav left" onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
 <a href="?Next" title="Next page" class="nav right" onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
 </div>
-<div id='body' class=''>
+<div id='body'>
 
-<div id='java'><span class='red'>( Javascript and cookies required )</span></div>
+<div id='upin' class='home'><span class='java'>( Javascript and cookies required )<br></span></div>
 <div id='home1'>
 <a title="Return to last page read or TOC" href="?Bookmark" onclick="ABDO('Bookmark'); return false;">
 <div id='home2'>
@@ -318,7 +322,7 @@ One of three hundred seventy-six versions<br>
 One of one hundred sixty-five languages<br>
 Anonymous on TOR network<br>
 100% free to copy &amp; print<br>
-Updated 12/15/2024 09:26:26<br>
+Updated 12/16/2024 03:49:11<br>
 <br>
 Also known as 'The Purple Bible'
 </div>
@@ -340,7 +344,7 @@ Also known as 'The Purple Bible'
 
 <script>
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// Globals
+// Globals to control javascript paging
 var AB_Accessible	= null;
 var AB_Bookmark		= 'TOC';
 var AB_Bookmark2	= 'TOC';
@@ -351,7 +355,7 @@ var AB_Page			= 0;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// Bible pages map
+// Bible pages object map page name to AB_Bible index
 const AB_Map = {
 'PWA'		:	0,
 'TOC'		:	1,
@@ -382,7 +386,7 @@ const AB_Map = {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// Bible pages
+// Bible pages array of all Bible content by chapter
 const AB_Bible = [
 
 
@@ -390,7 +394,7 @@ const AB_Bible = [
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// Homepage populated dynamically from HTML #body on page load
+// Homepage populated dynamically from HTML #body on page load so homepage is only defined one place
 ``,
 
 
@@ -398,7 +402,7 @@ const AB_Bible = [
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// TOC
+// TOC - Table of Contents
 `
 <h2 class='title'>
 <a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
@@ -407,8 +411,7 @@ Table of Contents
 <a title="Return to last page read or TOC" href="?Bookmark" onclick="ABDO('Bookmark'); return false;">Gurbet Luke<br><span class='ff lan'  >Lačho lafi taro Luka</span></a>
 </h2>
 <a title="AionianBible.org online"		href="https://www.AionianBible.org/Read" target="_blank">AionianBible.org for all Bibles</a><br>
-<a title='Internet connection required'	href='?TOC' onclick="AionianBible_Reload();return false;">Update Bible App</a><br>
-<a title='Internet connection required'	href='?TOC' onclick="AionianBible_PWA_ReInstall();return false;">Update Bible App Cache</a><br>
+<div id='upin'></div>
 <a title="Copyright"					href="?Copyright"	onclick="ABDO('Copyright');	return false;">Copyright</a><br>
 <a title="Preface"						href="?Preface"		onclick="ABDO('Preface');	return false;">Preface</a><br>
 <a title="Aiōnios and Aïdios"			href="?Aionian"		onclick="ABDO('Aionian');	return false;">Aiōnios and Aïdios</a>
@@ -451,7 +454,7 @@ Copyright
 Publisher: Nainoia Inc<br>
 Copyright: <a href='https://creativecommons.org/licenses/by/4.0/' target='_blank'>Creative Commons Attribution 4.0 International, 2018-2024</a><br>
 Language: Romani Vlax, Gurbet / <span class='ff lan'  >Gurbet Romani</span><br>
-Formatted: ABCMS <a href='https://en.wikipedia.org/wiki/Progressive_web_app' target='_blank' title='Web pages designed for off-line viewing'>Progressive Web Application</a> on 12/15/2024 09:26:26<br>
+Formatted: ABCMS <a href='https://en.wikipedia.org/wiki/Progressive_web_app' target='_blank' title='Web pages designed for off-line viewing'>Progressive Web Application</a> on 12/16/2024 03:49:11<br>
 Formats:
 <a href='https://www.AionianBible.org/Bibles/Romani-Vlax---Gurbet-Luke' target='_blank' title='Read online'>Online</a>,
 <a href='https://www.AionianBible.org/TOR/Bibles/Romani-Vlax---Gurbet-Luke' target='_blank' title='Read TOR anonymously'>TOR Anonymously</a>,
@@ -464,7 +467,7 @@ Formats:
 <br>
 Source: Pioneers.org<br>
 Source copyright: Creative Commons Attribution 4.0<br>
-Source version: 12/5/2024<br>
+Source version: 12/14/2024<br>
 Source text: <a href='https://ebible.org/details.php?id=rmyGurbet' target='_blank' title='Download Source File'>https://ebible.org/details.php?id=rmyGurbet</a><br>
 <br>
 We pray for a modern public domain translation in every language.<br>
@@ -570,32 +573,32 @@ New Testament
 <span class='ff ver'  ><span class='num'>2 </span><span class='ff tex'  >Pisisade amenđe kola save korkore dikhlje vadži tare anglune đivesa thaj ćerdile sluge e Devlese Lafese,</span></span>
 <span class='ff ver'  ><span class='num'>3 </span><span class='ff tex'  >gija i me, mangleja Teofile, tuće pisiv sa redasa, golese so sa taro anglunipe ispitujisadem,</span></span>
 <span class='ff ver'  ><span class='num'>4 </span><span class='ff tex'  >te šaj ave uverimo kaj si čačipe kova so sikade tut.</span></span>
-<span class='ff ver'  ><span class='num'>5 </span><span class='ff tex'  >Kana sasa o Irod caro ani Judeja, nesavo manuš so akhardola Zaharija sasa svešteniko tare Avijineso redo. Lesi romni sasa tari kuštik e Aaronesi thaj akhardola Jelisaveta.</span></span>
+<span class='ff ver'  ><span class='num'>5 </span><span class='ff tex'  >Kana sasa o Irod caro ani Judeja, nesavo manuš savo akhardola Zaharija sasa svešteniko tare Avijineso redo. Lesi romni sasa tari kuštik e Aaronesi thaj akhardola Jelisaveta.</span></span>
 <span class='ff ver'  ><span class='num'>6 </span><span class='ff tex'  >Solduj džene sesa čačutne anglo Dol thaj živisade pale zapovestura thaj palo Zakon e Gospodeso bizo nisavo bilačhipe.</span></span>
-<span class='ff ver'  ><span class='num'>7 </span><span class='ff tex'  >Al len naj sesa čhave, golese kaj i Jelisaveta naštine te ačhol khamni, a solduj džene sesa već purane.</span></span>
+<span class='ff ver'  ><span class='num'>7 </span><span class='ff tex'  >Al len ni sesa čhave, golese kaj i Jelisaveta naštine te ačhol khamni, a solduj džene sesa već purane.</span></span>
 <span class='ff ver'  ><span class='num'>8 </span><span class='ff tex'  >Jekh đive, o Zaharija služisada e Devle ano Hram golese kaj palo dužnost sasa leso redo,</span></span>
-<span class='ff ver'  ><span class='num'>9 </span><span class='ff tex'  >kaj palo adeti e sveštenikurengo birisade le kockasa te džal ano Hram e Gospodeso te kadil.</span></span>
+<span class='ff ver'  ><span class='num'>9 </span><span class='ff tex'  >golese so, palo adeti e sveštenikurengo birisade le kockasa te džal ano Hram e Gospodeso te kadil.</span></span>
 <span class='ff ver'  ><span class='num'>10 </span><span class='ff tex'  >Kana o Zaharija dija ano Hram te kadil, but manuša molisajle avral.</span></span>
 <span class='ff ver'  ><span class='num'>11 </span><span class='ff tex'  >Tegani e Zaharijase sikadilo o anđelo e Gospodeso savo ačhilo ki desno rig taro žrtveniko e kadimaso.</span></span>
 <span class='ff ver'  ><span class='num'>12 </span><span class='ff tex'  >Kana o Zaharija dikhlja le, uznemirisajlo thaj but darajlo.</span></span>
 <span class='ff ver'  ><span class='num'>13 </span><span class='ff tex'  >Al o anđelo vaćarda lese: “Ma dara, Zaharije! Ćiri molitva sasa šundi. Ćiri romni i Jelisaveta ka bijanol murše thaj tu ka de le alav Jovan.</span></span>
 <span class='ff ver'  ><span class='num'>14 </span><span class='ff tex'  >Tu ka ave radosno thaj baxtalo thaj but džene ka aven blagoslovime lese bijandimasa,</span></span>
 <span class='ff ver'  ><span class='num'>15 </span><span class='ff tex'  >golese kaj vov ka avol baro anglo Gospod. Nikad ni ka pijol mol ni zuralo pijipe. Vov ka pherdol e Svetone Duxosa dok si ano vođi pe dako.</span></span>
-<span class='ff ver'  ><span class='num'>16 </span><span class='ff tex'  >O Jovane bute čhaven e Izraelese ka iril anglo Gospod, angle lengo Dol.</span></span>
+<span class='ff ver'  ><span class='num'>16 </span><span class='ff tex'  >O Jovane bute Izraelcuren ka iril anglo Gospod, angle lengo Dol.</span></span>
 <span class='ff ver'  ><span class='num'>17 </span><span class='ff tex'  >Vov ka džal anglo Gospod sar glasniko ano Duxo thaj ano zuralipe e prorokoso e Ilijaso. Ka miril e ile e dadenđe premale e čhave thaj ka iril kolen save ni šunen ano gođaveripe e pravednikurengo. Sa kava ka ćerol te pripremil e manušen te šaj aven spremna e Gospodese avimase.”</span></span>
-<span class='ff ver'  ><span class='num'>18 </span><span class='ff tex'  >O Zaharija vaćarda e anđeose: “Pale soste me gova ka džanav? Golese kaj sem purano thaj mingri romni si bute beršenđi.”</span></span>
+<span class='ff ver'  ><span class='num'>18 </span><span class='ff tex'  >O Zaharija vaćarda e anđelose: “Pale soste me gova ka džanav? Golese kaj sem purano thaj mingri romni si bute beršenđi.”</span></span>
 <span class='ff ver'  ><span class='num'>19 </span><span class='ff tex'  >O anđelo phenda lese: “Me sem o Gavrilo, o anđelo savo ačhol anglo Dol. Bičhaldo sem te vaćarav tuće kava lačho lafi.</span></span>
 <span class='ff ver'  ><span class='num'>20 </span><span class='ff tex'  >Akh, ka ave laloro thaj ni ka vaćare dži gova đive dži kaj sa gova ni ćerdol, golese so ni pačajan ane mingre lafura save ka pherdon ano pravo vreme.”</span></span>
 <span class='ff ver'  ><span class='num'>21 </span><span class='ff tex'  >E manuša ađućarde e Zaharija thaj čudisajle sose gaći majisajlo ano Hram.</span></span>
 <span class='ff ver'  ><span class='num'>22 </span><span class='ff tex'  >Al kana o Zaharija iklilo, naštine te vaćarol. Vov dija len znakura golese kaj sasa laloro. Gija e manuša haljarde kaj sasa le vizija ano Hram.</span></span>
-<span class='ff ver'  ><span class='num'>23 </span><span class='ff tex'  >Kana nakhle e đivesa lese kandimase ano Hram, o Zaharija đelo čhere.</span></span>
-<span class='ff ver'  ><span class='num'>24 </span><span class='ff tex'  >Pale kala đivesa i Jelisaveta lesi romni ačhili khamni thaj ni iklili avral taro čher pandž čhon. Golese vaćarda:</span></span>
-<span class='ff ver'  ><span class='num'>25 </span><span class='ff tex'  >“Gija ćerda manđe o Gospod! Ane kala đivesa sikada manđe po milost thaj uljarda mandar i ladž maškare manuša kaj ni sasa man čhave.”</span></span>
+<span class='ff ver'  ><span class='num'>23 </span><span class='ff tex'  >Kana nakhle e đivesa lese služimase ano Hram, o Zaharija đelo čhere.</span></span>
+<span class='ff ver'  ><span class='num'>24 </span><span class='ff tex'  >Pale kala đivesa i Jelisaveta lesi romni ačhili khamni thaj ni iklili avral taro čher pandž čhon.</span></span>
+<span class='ff ver'  ><span class='num'>25 </span><span class='ff tex'  >Golese i Jelisaveta vaćarda: “Gija ćerda manđe o Gospod! Ane kala đivesa sikada manđe po milost thaj uljarda mandar i ladž maškare manuša kaj ni sasa man čhave.”</span></span>
 <span class='ff ver'  ><span class='num'>26 </span><span class='ff tex'  >Kana i Jelisaveta sasa šovto čhon khamni, o Dol bičhalda e anđelo e Gavrilo ano Galilejsko foro o Nazaret</span></span>
-<span class='ff ver'  ><span class='num'>27 </span><span class='ff tex'  >ki jekh čhej Marija savi sasa mangli romese e Josifese savo sasa tari kuštik e carosi e Davidesi.</span></span>
+<span class='ff ver'  ><span class='num'>27 </span><span class='ff tex'  >ki čhej i Marija savi sasa mangli romese e Josifese savo sasa tari kuštik e carosi e Davidesi.</span></span>
 <span class='ff ver'  ><span class='num'>28 </span><span class='ff tex'  >Kana o anđelo o Gavrilo avilo late, phenda: “Av radosno, tu so arakhljan milost. O Gospod si tusa. [Blagoslovimi san maškare džuvlja!]”</span></span>
 <span class='ff ver'  ><span class='num'>29 </span><span class='ff tex'  >I Marija but darajli tare lese lafura thaj dija gođi savo sasa kava pozdrav.</span></span>
-<span class='ff ver'  ><span class='num'>30 </span><span class='ff tex'  >Al o anđelo phenda laće: “Ma dara, Marije! Golese kaj arakhljan milost anglo Dol.</span></span>
+<span class='ff ver'  ><span class='num'>30 </span><span class='ff tex'  >Al o anđelo o Gavrilo phenda laće: “Ma dara, Marijo! Golese kaj arakhljan milost anglo Dol.</span></span>
 <span class='ff ver'  ><span class='num'>31 </span><span class='ff tex'  >Akh, ka ačhe khamni, ka bijane čhave thaj ka de le alav Isus.</span></span>
 <span class='ff ver'  ><span class='num'>32 </span><span class='ff tex'  >Vov ka avol baro thaj ka akhardol Čhavo e Embare Devleso. O Gospod o Dol ka dol le o presto lese paradadeso e Davideso.</span></span>
 <span class='ff ver'  ><span class='num'>33 </span><span class='ff tex avh'  >Vov ka carujil ane kuštika e Jakovese ane sa e đivesa thaj lese carstvose ni ka avol krajo.” <span class='not' dir='ltr'>( aiōn <a href="?Glossary#g165" onclick="ABDO('Glossary','g165');	return false;"	title='View definition'>g165</a> <a href='?13' onclick='ABDO(13);return false;' title='View next annotation'>&gt;</a></span></span></span>
@@ -625,7 +628,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>57 </span><span class='ff tex'  >Kana i Jelisavetaće avilo o sato te bijanol, bijanda čhave.</span></span>
 <span class='ff ver'  ><span class='num'>58 </span><span class='ff tex'  >Laće pašutne thaj lačhi familija šunde kaj o Gospod sikada laće baro milost thaj radujisajle lasa.</span></span>
 <span class='ff ver'  ><span class='num'>59 </span><span class='ff tex'  >Kana e čhavore sesa ohto đive, avile te ćeren lese suneti thaj manglje te den le alav lese dadeso – Zaharija.</span></span>
-<span class='ff ver'  ><span class='num'>60 </span><span class='ff tex'  >Al i Jelisaveta vaćarda: “Na, leso alav ka avol Jovane!”</span></span>
+<span class='ff ver'  ><span class='num'>60 </span><span class='ff tex'  >Al i Jelisaveta vaćarda: “Na, leso alav ka avol Jovan!”</span></span>
 <span class='ff ver'  ><span class='num'>61 </span><span class='ff tex'  >Von phende lačhe: “Naj tut khoni ani ćiri familija gole alavesa!”</span></span>
 <span class='ff ver'  ><span class='num'>62 </span><span class='ff tex'  >Tegani vastencar pučlje e dade e Zaharija sar bi vov manđola te avol leso alav.</span></span>
 <span class='ff ver'  ><span class='num'>63 </span><span class='ff tex'  >Thaj o Zaharija manglja khanči pe soste šajine te pisil thaj pisisada: “Jovan ka avol leso alav.” Thaj savore čudisajle.</span></span>
@@ -633,7 +636,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>65 </span><span class='ff tex'  >I dar e Devlesi avili ane sa lenđe pašutne thaj ki sa i bregali Judeja vaćarda pe tare kava so sasa.</span></span>
 <span class='ff ver'  ><span class='num'>66 </span><span class='ff tex'  >Savore so šunde gova, dije gođi tare gova thaj phende: “So ka avol tare kava čhavo? Golese so o va e Gospodeso sasa pe leste.”</span></span>
 <span class='ff ver'  ><span class='num'>67 </span><span class='ff tex'  >O Zaharija, e Jovaneso dad, pherdilo e Svetone Duxosa thaj prorokujisada:</span></span>
-<span class='ff ver'  ><span class='num'>68 </span><span class='ff tex'  >“Blagoslovimo si o Gospod o Dol e Izraeleso golese so avilo thaj otkupisada e manušen!</span></span>
+<span class='ff ver'  ><span class='num'>68 </span><span class='ff tex'  >“Blagoslovimo si o Gospod o Dol e Izraeleso, golese so avilo thaj otkupisada e manušen!</span></span>
 <span class='ff ver'  ><span class='num'>69 </span><span class='ff tex'  >Vazdija amenđe e zurale Spasitelje, tari kuštik e carosi e Davidesi, pe slugase,</span></span>
 <span class='ff ver'  ><span class='num'>70 </span><span class='ff tex avh'  >sar so vaćarda ano purano vreme andare muja tare pe sveta prorokura, <span class='not' dir='ltr'>( aiōn <a href="?Glossary#g165" onclick="ABDO('Glossary','g165');	return false;"	title='View definition'>g165</a> <a href='?13' onclick='ABDO(13);return false;' title='View next annotation'>&gt;</a></span></span></span>
 <span class='ff ver'  ><span class='num'>71 </span><span class='ff tex'  >kaj ka ikalol amen tare amare dušmanura thaj tare vasta savorenđe save mrzin amen.</span></span>
@@ -641,7 +644,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>73 </span><span class='ff tex'  >savez savo dija e Avraamese amare paradadese,</span></span>
 <span class='ff ver'  ><span class='num'>74 </span><span class='ff tex'  >te ikalol amen tare vasta amare dušmajenđe, te šaj kanda e Devle bizi dar,</span></span>
 <span class='ff ver'  ><span class='num'>75 </span><span class='ff tex'  >ano svetost thaj ano pravednost angle leste sa dok sam džuvde.</span></span>
-<span class='ff ver'  ><span class='num'>76 </span><span class='ff tex'  >A tu Jovane, mingreja čhaveja, ka ave akhardo proroko e Embare Devleso golese kaj ka dža anglo Gospod te pripremi lese o drom.</span></span>
+<span class='ff ver'  ><span class='num'>76 </span><span class='ff tex'  >A tu Jovane, čhaveja mingreja, ka ave akhardo proroko e Embare Devleso, golese so ka dža anglo Gospod te pripremi lese o drom.</span></span>
 <span class='ff ver'  ><span class='num'>77 </span><span class='ff tex'  >Ka sikave lese manušen sar te pindžaren o spasenje prekalo oproštenje tare lenđe grehura.</span></span>
 <span class='ff ver'  ><span class='num'>78 </span><span class='ff tex'  >Golese so si e Devleso ilo milostivno, tare savo ka avol amenđe o svetlost e sabalinako tari visina,</span></span>
 <span class='ff ver'  ><span class='num'>79 </span><span class='ff tex'  >te svetlil kolenđe so bešen ano kalipe thaj ani sena e merimasi, a amare pingre te usmeril ko drom taro mir.”</span></span>
@@ -667,35 +670,35 @@ New Testament
 <span class='ff ver'  ><span class='num'>1 </span><span class='ff tex'  >Ane gola đivesa kana bijandilo o Jovane o Krstitelj, iklilo o vaćaripe e caroso e Avgustineso te popisin pe sa e manuša ano Rimsko carstvo.</span></span>
 <span class='ff ver'  ><span class='num'>2 </span><span class='ff tex'  >Kava sasa angluno popis kana o Kvirinije vladisada ani Sirija.</span></span>
 <span class='ff ver'  ><span class='num'>3 </span><span class='ff tex'  >Thaj savore đele te pisin pumare alava ko spisko – dži jekh ane gova foro kaj bešle lenđe kuštika.</span></span>
-<span class='ff ver'  ><span class='num'>4 </span><span class='ff tex'  >Gija o Josif golese so sasa tari familija thaj tari kuštik e Davidesi, đelo taro Nazaret, so si ani Galileja, ano foro e Davideso savo akhardol Vitlejem thaj si ani phuv Judeja.</span></span>
+<span class='ff ver'  ><span class='num'>4 </span><span class='ff tex'  >Gija o Josif, golese so sasa tari familija thaj tari kuštik e Davidesi, đelo taro Nazaret, so si ani Galileja, ano foro e Davideso savo akhardol Vitlejem thaj si ani phuv Judeja.</span></span>
 <span class='ff ver'  ><span class='num'>5 </span><span class='ff tex'  >Đelo gothe te pisil piro alav ko spisko e Marijasa, savi sasa mangli lese thaj sasa khamni.</span></span>
 <span class='ff ver'  ><span class='num'>6 </span><span class='ff tex'  >Kana sesa ano Vitlejem, avilo o vreme i Marija te bijanol.</span></span>
 <span class='ff ver'  ><span class='num'>7 </span><span class='ff tex'  >Thaj bijanda pe anglune čhave. Paćarda le thaj čhuta le ani jaslica, golese kaj naj sasa than ani gostionica.</span></span>
-<span class='ff ver'  ><span class='num'>8 </span><span class='ff tex'  >Ane goja phuv pašo Vitlejem sesa nesave čobanura, save arakhlje ke poljura raćasa pe bakren.</span></span>
+<span class='ff ver'  ><span class='num'>8 </span><span class='ff tex'  >Ane goja phuv pašo Vitlejem sesa nesave čobanura, save arakhlje pe bakren raćasa ke poljura.</span></span>
 <span class='ff ver'  ><span class='num'>9 </span><span class='ff tex'  >Tari jekh drom o anđelo e Gospodeso ačhilo maškare lende thaj e Gospodesi slava svetlisada len thaj von but darajle.</span></span>
 <span class='ff ver'  ><span class='num'>10 </span><span class='ff tex'  >Al o anđelo vaćarda lenđe: “Ma daran! Dikh, anav tumenđe radosno lafi so ka avol sa e manušenđe!</span></span>
 <span class='ff ver'  ><span class='num'>11 </span><span class='ff tex'  >Golese kaj ano foro e Davideso ađive bijandilo o Spasitelj. Vov si o Hrist o Gospod.</span></span>
 <span class='ff ver'  ><span class='num'>12 </span><span class='ff tex'  >Kava ka avol tumenđe znako pale savo ka pindžaren le: ka aračhen čhavore savo si paćardo thaj pašljol ani jaslica.”</span></span>
 <span class='ff ver'  ><span class='num'>13 </span><span class='ff tex'  >Tari jekh drom pašo anđelo sikadili bari vojska e anđelurenđi, save hvalina e Devle vaćarindoj:</span></span>
 <span class='ff ver'  ><span class='num'>14 </span><span class='ff tex'  >“Slava e Devlese ko učipe, thaj ki phuv mir maškare manuša save si pale Devleso manglipe.”</span></span>
-<span class='ff ver'  ><span class='num'>15 </span><span class='ff tex'  >Kana e anđelura đele lendar ano nebo, e čobanura phende jekh averese: “Ka dža dži o Vitlejem, te dikha gova so odori sasa sar so vaćarda amenđe o Gospod.”</span></span>
+<span class='ff ver'  ><span class='num'>15 </span><span class='ff tex'  >Kana e anđelura đele lendar ano nebo, e čobanura phende jekh averese: “Ka dža dži o Vitlejem, te dikha gova so sasa odori sar so vaćarda amenđe o Gospod.”</span></span>
 <span class='ff ver'  ><span class='num'>16 </span><span class='ff tex'  >E čobanura đele sigate thaj arakhlje e Marija, e Josife thaj e čhave sar pašljol ani jaslica.</span></span>
 <span class='ff ver'  ><span class='num'>17 </span><span class='ff tex'  >Kana dikhlje le, savorenđe vaćarde so o anđelo lenđe vaćarda taro čhavoro.</span></span>
 <span class='ff ver'  ><span class='num'>18 </span><span class='ff tex'  >Savore save šunde so phende e čobanura, divisajle.</span></span>
 <span class='ff ver'  ><span class='num'>19 </span><span class='ff tex'  >Al i Marija dija gođi tare kala lafura thaj čhuta len ane piro ilo.</span></span>
 <span class='ff ver'  ><span class='num'>20 </span><span class='ff tex'  >E čobanura irisajle, slavisade thaj hvalisade e Devle paše sa so šunde thaj dikhlje, golese so pherdile sa e lafura sar so sasa lenđe phendo.</span></span>
-<span class='ff ver'  ><span class='num'>21 </span><span class='ff tex'  >Ohtoto đive palo bijandipe e čhaveso avilo o vreme te ćeren lese suneti. Dije le alav Isus, sar so vaćarda o anđelo, angleder so i Marija ačhili khamni.</span></span>
+<span class='ff ver'  ><span class='num'>21 </span><span class='ff tex'  >Ohtoto đive palo bijandipe e čhaveso avilo o vreme te ćeren lese suneti. Dije le alav Isus, sar so vaćarda o anđelo angleder so i Marija ačhili khamni.</span></span>
 <span class='ff ver'  ><span class='num'>22 </span><span class='ff tex'  >Kana avilo o vreme pašo adeti i dej te thodol sar so si pale Mojsijaso zakon, o Josif thaj i Marija ande e Isuse ano Jerusalim te preden le e Gospodese ano Hram,</span></span>
-<span class='ff ver'  ><span class='num'>23 </span><span class='ff tex'  >sar so si pisimo ane Gospodeso zakon kaj “dži jekh angluno murš te posvetil pe e Gospodese”,</span></span>
+<span class='ff ver'  ><span class='num'>23 </span><span class='ff tex'  >sar so si pisimo ane Gospodeso zakon: “Dži jekh angluno murš te posvetil pe e Gospodese”,</span></span>
 <span class='ff ver'  ><span class='num'>24 </span><span class='ff tex'  >thaj te anen žrtva “duj grlice il duj terne golubura” sar so si phendo ane Gospodeso zakon.</span></span>
-<span class='ff ver'  ><span class='num'>25 </span><span class='ff tex'  >Tegani sasa ano Jerusalim manuš kaso alav sasa Simeon. Kova manuš sasa pravedno thaj devlikano. Ađućarda o Mesija te ikalol o Izrael taro ropstvo thaj o Sveto Duxo sasa pe leste.</span></span>
-<span class='ff ver'  ><span class='num'>26 </span><span class='ff tex'  >O Sveto Duxo sikada lese angleder kaj ni ka merol sa dži kaj ni dičhol e Gospodese Hriste.</span></span>
+<span class='ff ver'  ><span class='num'>25 </span><span class='ff tex'  >Tegani sasa ano Jerusalim manuš kaso alav sasa Simeon. Gova manuš sasa pravedno thaj devlikano. Ađućarda o Mesija te ikalol o Izrael taro ropstvo thaj o Sveto Duxo sasa pe leste.</span></span>
+<span class='ff ver'  ><span class='num'>26 </span><span class='ff tex'  >O Sveto Duxo sikada lese angleder kaj ni ka merol sa dži kaj ni dičhol e Gospode e Hriste.</span></span>
 <span class='ff ver'  ><span class='num'>27 </span><span class='ff tex'  >O Duxo vaćarda lese te džal ano Hram. Tegani o Josif thaj i Marija ande e čhave e Isuse ano Hram te ćeren o adeti pale Mojsijaso zakon.</span></span>
 <span class='ff ver'  ><span class='num'>28 </span><span class='ff tex'  >Kana o Simeon dikhlja e Isuse, lija le ke pe vasta, hvalisada e Devle vaćarindoj:</span></span>
 <span class='ff ver'  ><span class='num'>29 </span><span class='ff tex'  >“Gospode, akana mukh ano mir te merol ćiro sluga, pale kova sar so phendan.</span></span>
 <span class='ff ver'  ><span class='num'>30 </span><span class='ff tex'  >Golese so mingre jakha dikhlje ćiro spasenje,</span></span>
 <span class='ff ver'  ><span class='num'>31 </span><span class='ff tex'  >savo pripremisadan angle sa e manuša.</span></span>
-<span class='ff ver'  ><span class='num'>32 </span><span class='ff tex'  >Vov si svetlo savo ka avol pe abandžije, thaj vov ka anol slava ćire manušenđe, e Izraelese.”</span></span>
+<span class='ff ver'  ><span class='num'>32 </span><span class='ff tex'  >Vov si svetlo savo ka avol pe abandžije, thaj vov ka anol slava ćire manušenđe, e Izraelcurenđe.”</span></span>
 <span class='ff ver'  ><span class='num'>33 </span><span class='ff tex'  >E Isusesi dej thaj leso dad čudisajle golesa so vaćarda o Simeon taro Isus.</span></span>
 <span class='ff ver'  ><span class='num'>34 </span><span class='ff tex'  >Tegani blagoslovisada len o Simeon thaj vaćarda e Marijaće, e Isusese daće: “Dikh, kava čhavoro si odredimo bute manušen taro Izrael te peravol thaj te vazdol. Vov si odredimo te avol e Devleso znako, al but džene ka odbacin le.</span></span>
 <span class='ff ver'  ><span class='num'>35 </span><span class='ff tex'  >Gija ka sikadol so garandoj den ane pumare gođa. A tut i bari čhuri ka pusavol ani duša.”</span></span>
@@ -703,7 +706,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>37 </span><span class='ff tex'  >thaj pale gova sasa udovica ohtovardeš thaj štar berš. Ni iklili andaro Hram, nego, ano post thaj ani molitva služisada e Devle i rat thaj o đive.</span></span>
 <span class='ff ver'  ><span class='num'>38 </span><span class='ff tex'  >I voj avili gothe ane gova vreme, hvalisada e Devle thaj vaćarda taro čhavoro savorenđe save ađućarde o Dol te ikalol o Jerusalim.</span></span>
 <span class='ff ver'  ><span class='num'>39 </span><span class='ff tex'  >Kana o Josif thaj i Marija ćerde sa pale Gospodeso zakon, irisajle ani Galileja, ane pumaro foro ano Nazaret.</span></span>
-<span class='ff ver'  ><span class='num'>40 </span><span class='ff tex'  >A o čhavoro barilo thaj zurajlo. Pherdilo mudrost thaj o milost e Devleso sasa ane leste.</span></span>
+<span class='ff ver'  ><span class='num'>40 </span><span class='ff tex'  >A o čhavoro barilo thaj zurajlo. Pherdilo gođaveripe thaj o milost e Devleso sasa ane leste.</span></span>
 <span class='ff ver'  ><span class='num'>41 </span><span class='ff tex'  >E Isusesi dej thaj leso dad đele svako berš ano Jerusalim ko prazniko i Pasha.</span></span>
 <span class='ff ver'  ><span class='num'>42 </span><span class='ff tex'  >Kana sasa e Isuse dešuduj berš, i vov đelo palo adeti te svetkujil lencar kava prazniko ano Jerusalim.</span></span>
 <span class='ff ver'  ><span class='num'>43 </span><span class='ff tex'  >Kana nakhlo gova prazniko, o Josif thaj i Marija đele čhere. O čhavoro o Isus ačhilo ano Jerusalim, al lesi dej thaj leso dad gova ni džanglje.</span></span>
@@ -711,11 +714,11 @@ New Testament
 <span class='ff ver'  ><span class='num'>45 </span><span class='ff tex'  >Kana ni arakhlje le, irisajle ano Jerusalim te roden le.</span></span>
 <span class='ff ver'  ><span class='num'>46 </span><span class='ff tex'  >O trito đive arakhlje le ano Hram sar bešol maškare učitelja, sar šunol len thaj pučol len.</span></span>
 <span class='ff ver'  ><span class='num'>47 </span><span class='ff tex'  >Savore save šunena e Isuse divisajle lese džanglimasa thaj sar odgovorila ko pučipe.</span></span>
-<span class='ff ver'  ><span class='num'>48 </span><span class='ff tex'  >Kana lesi dej thaj leso dad dikhlje le, čudisajle. Lesi dej vaćarda lese: “Mingreja čhaveja! So ćere amencar kava? Akh, me thaj ćiro dad daraljam thaj rodijam tut!”</span></span>
+<span class='ff ver'  ><span class='num'>48 </span><span class='ff tex'  >Kana lesi dej thaj leso dad dikhlje le, čudisajle. Lesi dej vaćarda lese: “So ćere amencar kava, mo čhavo? Akh, me thaj ćiro dad daraljam thaj rodijam tut!”</span></span>
 <span class='ff ver'  ><span class='num'>49 </span><span class='ff tex'  >O Isus vaćarda lenđe: “Sose rodijen man? Ni li džanen kaj trubul te avav ano čher mingre Dadeso?”</span></span>
 <span class='ff ver'  ><span class='num'>50 </span><span class='ff tex'  >Al von ni haljarde so vov manglja te phenol lenđe.</span></span>
 <span class='ff ver'  ><span class='num'>51 </span><span class='ff tex'  >Tegani irisajlo lencar ano Nazaret thaj ane sa šunola len. Lesi dej sa kala lafura garada ane piro ilo.</span></span>
-<span class='ff ver'  ><span class='num'>52 </span><span class='ff tex'  >O Isus barola ano mudrost, ano baripe thaj ano milost ko Dol i ke manuša.</span></span>
+<span class='ff ver'  ><span class='num'>52 </span><span class='ff tex'  >O Isus barola ano gođaveripe, ano zrelost thaj ano milost anglo Dol i angle manuša.</span></span>
 
 </div>
 <div id="word-menu-bottom">
@@ -734,30 +737,30 @@ New Testament
 </h2>
 
 <div class='chap'>
-<span class='ff ver'  ><span class='num'>1 </span><span class='ff tex'  >Kana o cezar o Tiberija vladisada po rimsko carstvo dešupandžto berš, o Pontije o Pilat vladisada ani Judeja, o Irod vladisada ani Galileja, o Filip leso phral vladisada ani Itureja thaj ani Trahonitada thaj o Lisanije vladisada ani Avilina,</span></span>
+<span class='ff ver'  ><span class='num'>1 </span><span class='ff tex'  >Kana o cezar o Tiberija vladisada po rimsko carstvo dešupandžto berš, o Pontije o Pilat vladisada ani Judeja, o Irod vladisada ani Galileja, o Filip leso phral vladisada ani Itureja thaj ani Trahonitida thaj o Lisanije vladisada ani Avilina,</span></span>
 <span class='ff ver'  ><span class='num'>2 </span><span class='ff tex'  >a kana o Ana thaj o Kajafa sesa šorutne sveštenikura, o Lafi e Devleso avilo e Jovanese, e Zaharijase čhavese, ani pustinja.</span></span>
 <span class='ff ver'  ><span class='num'>3 </span><span class='ff tex'  >O Jovane o Krstitelj đelo taro than dži ko than tare solduj riga tari len e Jordanesi thaj propovedisada kaj e manuša trubun te irin pe tare pumare grehura thaj te aven ko Dol te oprostil lenđe thaj te krstin pe.</span></span>
 <span class='ff ver'  ><span class='num'>4 </span><span class='ff tex'  >Sar so angleder pisisada o proroko o Isaija: “O glaso koleso so dol vika ani pustinja: ‘Pripremin o drom e Gospodese! Ravnin lese o drom!</span></span>
 <span class='ff ver'  ><span class='num'>5 </span><span class='ff tex'  >Sa e doline te pherdon, thaj sa e gore thaj e bregura te ravnin pe! Sa e banđe droma te aven prava, a e bilačhe droma te aven ravnime.</span></span>
 <span class='ff ver'  ><span class='num'>6 </span><span class='ff tex'  >Thaj sa e manuša ka dičhen e Devleso spasenje!’”</span></span>
-<span class='ff ver'  ><span class='num'>7 </span><span class='ff tex'  >O Jovane vaćarda bute manušenđe save avena ke leste te krstil len: “Tumen e sapese čhave! Ko vaćarda tumenđe kaj šaj te našen tare Devlesi holi so avol?</span></span>
+<span class='ff ver'  ><span class='num'>7 </span><span class='ff tex'  >O Jovane vaćarda bute manušenđe save avena ke leste te krstil len: “Tumen e sapese čhave! Ko vaćarda tumenđe kaj šaj te našen tare Devlesi holi savi avol?</span></span>
 <span class='ff ver'  ><span class='num'>8 </span><span class='ff tex'  >Sikaven tumare džuvdimasa thaj tumare bućencar kaj irisaljen tare tumare grehura! Ma xoxaven tumen golesa so vaćaren: ‘Amaro paradad si o Avraam!’ Golese kaj, me vaćarav tumenđe kaj o Dol šaj i tare kala bara te vazdol čhaven e Avraamese.</span></span>
 <span class='ff ver'  ><span class='num'>9 </span><span class='ff tex'  >Golese kaj o tover taro sudo e Devleso ačhol pašo koreno e kašteso thaj dži jekh kaš savo ni bijanol šukar bijandipe ka čhinol pe thaj ka čhudol pe ani jag.”</span></span>
 <span class='ff ver'  ><span class='num'>10 </span><span class='ff tex'  >E manuša pučlje e Jovane: “So te ćera?”</span></span>
-<span class='ff ver'  ><span class='num'>11 </span><span class='ff tex'  >O Jovane vaćarda lenđe: “Kas isi duj fostanura, nek dol jekh kolese so naj le nijekh, thaj kas isi xamase, nek dol kole kas naj.”</span></span>
+<span class='ff ver'  ><span class='num'>11 </span><span class='ff tex'  >O Jovane vaćarda lenđe: “Kas isi duj gada, nek dol jekh kolese so naj le nijekh, thaj kas isi xamase, nek dol kole kas naj.”</span></span>
 <span class='ff ver'  ><span class='num'>12 </span><span class='ff tex'  >Avile te krstin pe thaj i nesave carincura thaj pučlje le: “Učitelju, so te ćera amen?”</span></span>
 <span class='ff ver'  ><span class='num'>13 </span><span class='ff tex'  >O Jovane phenda lenđe: “Ma manđen pobut nego so si tumenđe vaćardo taro vlast.”</span></span>
 <span class='ff ver'  ><span class='num'>14 </span><span class='ff tex'  >I nesave vojnikura pučlje le: “A amen so te ćera?” Vov vaćarda lenđe: “Khanikastar ma len silasa e pare thaj ma ćeren xoxaipe pe nikaste. Aven baxtale kolesa kobor poćinen tumen.”</span></span>
-<span class='ff ver'  ><span class='num'>15 </span><span class='ff tex'  >E manuša ađućarde e Mesija thaj savore pučlje pe ane pe ile naj li o Jovane o Mesija.</span></span>
+<span class='ff ver'  ><span class='num'>15 </span><span class='ff tex'  >E manuša ađućarde e Mesija thaj savore pučlje pe ane pumare ile naj li o Jovane o Mesija.</span></span>
 <span class='ff ver'  ><span class='num'>16 </span><span class='ff tex'  >Al o Jovane vaćarda savorenđe: “Me krstiv tumen pajesa, al avol khoni savo si po baro mandar. Lese naj sem dostojno ni e dora tare sandale te putrav. Vov ka krstil tumen e Svetone Duxosa thaj e jagasa.</span></span>
 <span class='ff ver'  ><span class='num'>17 </span><span class='ff tex'  >Le isi vila ane vasta te čistil o gumno thaj te ćidol o điv ane piro ambari, al i pleva ka phabarol jagasa savi ka phabol thaj ni ka ačhol.”</span></span>
 <span class='ff ver'  ><span class='num'>18 </span><span class='ff tex'  >Gija o Jovane opomenisada e manušen bute lafurencar thaj propovedisada lenđe o Lačho Lafi.</span></span>
 <span class='ff ver'  ><span class='num'>19 </span><span class='ff tex'  >Al o Jovane prekorisada e vladare e Irode golese so lija romnjaće pe phralese romnja e Irodijada thaj paše but bilačhe buća so ćerda.</span></span>
 <span class='ff ver'  ><span class='num'>20 </span><span class='ff tex'  >Pale sa gova o Irod ćerda vadži jekh bilačhipe: čhuta e Jovane ano phanglipe.</span></span>
 <span class='ff ver'  ><span class='num'>21 </span><span class='ff tex'  >Kana o Jovane krstisada sa e manušen, krstisajlo i o Isus. Thaj dok o Isus molisajlo, putajlo o nebo</span></span>
-<span class='ff ver'  ><span class='num'>22 </span><span class='ff tex'  >thaj o Sveto Duxo ulilo pe leste ano oblik sar golubo. Thaj šundilo glaso taro nebo: “Tu san mingro čhavo o manglo! Tu san palo mingro manglipe!”</span></span>
+<span class='ff ver'  ><span class='num'>22 </span><span class='ff tex'  >thaj o Sveto Duxo ulilo pe leste ano oblik sar golubo. A taro nebo šundilo glaso: “Tu san mingro čhavo o manglo! Tu san palo mingro manglipe!”</span></span>
 <span class='ff ver'  ><span class='num'>23 </span><span class='ff tex'  >E Isuse sasa paše tranda berš kana počnisada piri služba. E manuša smatrisade kaj o Isus si čhavo e Josifeso. O Josif sasa čhavo e Ilijaso.</span></span>
-<span class='ff ver'  ><span class='num'>24 </span><span class='ff tex'  >O Ilija sasa čhavo e Matataso, O Matat sasa čhavo e Levijaso. O Levi sasa čhavo e Melhijaso. O Melhi sasa čhavo e Janejaso. O Janej sasa čhavo e Josifeso.</span></span>
+<span class='ff ver'  ><span class='num'>24 </span><span class='ff tex'  >O Ilija sasa čhavo e Matataso, O Matat sasa čhavo e Levijaso. O Levi sasa čhavo e Melhijaso. O Melhi sasa čhavo e Janejeso. O Janej sasa čhavo e Josifeso.</span></span>
 <span class='ff ver'  ><span class='num'>25 </span><span class='ff tex'  >O Josif sasa čhavo e Matatijaso. O Matatij sasa čhavo e Amoseso. O Amos sasa čhavo e Naumeso. O Naum sasa čhavo e Eslijaso. O Eslija sasa čhavo e Nangejeso.</span></span>
 <span class='ff ver'  ><span class='num'>26 </span><span class='ff tex'  >O Nangej sasa čhavo e Maateso. O Maat sasa čhavo e Matatijaso. O Matatij sasa čhavo e Semeinaso. O Semein sasa čhavo e Josiheso. O Josih sasa čhavo e Jodaso.</span></span>
 <span class='ff ver'  ><span class='num'>27 </span><span class='ff tex'  >O Joda sasa čhavo e Joananaso. O Joanan sasa čhavo e Risaso. O Risa sasa čhavo e Zorovaveleso. O Zorovavel sasa čhavo e Salatiilaso. O Salatiil sasa čhavo e Nirijaso.</span></span>
@@ -769,7 +772,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>33 </span><span class='ff tex'  >O Naason sasa čhavo e Aminadaveso. O Aminadav sasa čhavo e Admineso. O Admin sasa čhavo e Arnijeso. O Arni sasa čhavo e Esromeso. O Esrom sasa čhavo e Fareseso. O Fares sasa čhavo e Judaso.</span></span>
 <span class='ff ver'  ><span class='num'>34 </span><span class='ff tex'  >O Juda sasa čhavo e Jakoveso. O Jakov sasa čhavo e Isaakoso. O Isaak sasa čhavo e Avraameso. O Avraam sasa čhavo e Taraso. O Tara sasa čhavo e Nahoreso.</span></span>
 <span class='ff ver'  ><span class='num'>35 </span><span class='ff tex'  >O Nahor sasa čhavo e Seruheso, O Seruh sasa čhavo e Ragaveso. O Ragav sasa čhavo e Falekeso. O Falek sasa čhavo e Evereso. O Ever sasa čhavo e Salaso.</span></span>
-<span class='ff ver'  ><span class='num'>36 </span><span class='ff tex'  >O Sala sasa čhavo e Kainameso. O Kainam sasa čhavo e Arfaksadeso. O Arfaksad sasa čhavo e Simeso. O Sim sasa čhavo e Nojeso. O Noja sasa čhavo e Lameheso.</span></span>
+<span class='ff ver'  ><span class='num'>36 </span><span class='ff tex'  >O Sala sasa čhavo e Kainameso. O Kainam sasa čhavo e Arfaksadeso. O Arfaksad sasa čhavo e Simeso. O Sim sasa čhavo e Nojaso. O Noja sasa čhavo e Lameheso.</span></span>
 <span class='ff ver'  ><span class='num'>37 </span><span class='ff tex'  >O Lameh sasa čhavo e Matusaleso. O Matusal sasa čhavo e Enoheso. O Enoh sasa čhavo e Jareteso. O Jaret sasa čhavo e Malaleileso. O Malaleil sasa čhavo e Kainameso.</span></span>
 <span class='ff ver'  ><span class='num'>38 </span><span class='ff tex'  >O Kainam sasa čhavo e Enoseso. O Enos sasa čhavo e Siteso. O Sit sasa čhavo e Adameso. O Adam sasa čhavo e Devleso.</span></span>
 
@@ -791,7 +794,7 @@ New Testament
 
 <div class='chap'>
 <span class='ff ver'  ><span class='num'>1 </span><span class='ff tex'  >O Isus pherdo Svetone Duxosa irisajlo tari len o Jordan. O Duxo inđarda le ani pustinja,</span></span>
-<span class='ff ver'  ><span class='num'>2 </span><span class='ff tex'  >kaj iskušisada le o beng saranda đive. Gola đive o Isus khanči ni xalja thaj kana nakhle e saranda đive, bokhajlo.</span></span>
+<span class='ff ver'  ><span class='num'>2 </span><span class='ff tex'  >kaj iskušisada le o beng saranda đive. Ane gola đivesa o Isus khanči ni xalja thaj kana nakhle saranda đive, bokhajlo.</span></span>
 <span class='ff ver'  ><span class='num'>3 </span><span class='ff tex'  >Tegani vaćarda lese o beng: “Te san e Devleso Čhavo, phen kale barese te avol mangro.”</span></span>
 <span class='ff ver'  ><span class='num'>4 </span><span class='ff tex'  >O Isus phenda lese: “Ano Sveto lil si pisimo: ‘O manuš ni ka avol džuvdo samo taro mangro [nego tare dži jekh Lafi e Devleso].’”</span></span>
 <span class='ff ver'  ><span class='num'>5 </span><span class='ff tex'  >Pale gova ikalda le o beng ko učo than thaj tari jekh drom sikada lese sa e carstvura ki phuv.</span></span>
@@ -803,7 +806,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>11 </span><span class='ff tex'  >thaj: ‘Von ka len tut ke vasta te ma čalave tut ko bar ćire pingresa.’”</span></span>
 <span class='ff ver'  ><span class='num'>12 </span><span class='ff tex'  >O Isus vaćarda lese: “Ano Sveto lil si pisimo: ‘Ma iskuši e Gospode, e Devle ćire.’”</span></span>
 <span class='ff ver'  ><span class='num'>13 </span><span class='ff tex'  >Kana o beng završisada sa lese iskušenjura, đelo lestar dži aver nesavo vreme.</span></span>
-<span class='ff ver'  ><span class='num'>14 </span><span class='ff tex'  >O Isus irisajlo ano zuralipe e Duxoso ani Galileja thaj o lafi lestar đelo pe sa e phuva.</span></span>
+<span class='ff ver'  ><span class='num'>14 </span><span class='ff tex'  >O Isus irisajlo ano zuralipe e Duxoso ani Galileja thaj o lafi lestar đelo ane sa e phuva.</span></span>
 <span class='ff ver'  ><span class='num'>15 </span><span class='ff tex'  >Sikada ane lenđe sinagoge thaj savore šukar lestar vaćarde.</span></span>
 <span class='ff ver'  ><span class='num'>16 </span><span class='ff tex'  >Tegani avilo o Isus ano foro Nazaret kaj barilo thaj ko savato palo piro adeti, đelo ani sinagoga thaj uštilo te čitil.</span></span>
 <span class='ff ver'  ><span class='num'>17 </span><span class='ff tex'  >Dije le o Lil e prorokoso e Isaijaso, vov putarda o Lil thaj arakhlja than kaj sasa pisimo:</span></span>
@@ -812,11 +815,11 @@ New Testament
 <span class='ff ver'  ><span class='num'>20 </span><span class='ff tex'  >Tegani phanglja o Lil, dija le e slugase thaj bešlo. Savore ani sinagoga dikhlje ane leste</span></span>
 <span class='ff ver'  ><span class='num'>21 </span><span class='ff tex'  >thaj o Isus lija te vaćarol lenđe: “Ađive pherdile kala lafura so akana šunden.”</span></span>
 <span class='ff ver'  ><span class='num'>22 </span><span class='ff tex'  >Savore lestar vaćarde šukar thaj sesa zadivime gole šukar lafurencar so iklilo andaro leso muj thaj pučlje pe: “Naj li kava e Josifeso čhavo?”</span></span>
-<span class='ff ver'  ><span class='num'>23 </span><span class='ff tex'  >O Isus vaćarda lenđe: “Čače tumen manđe ka vaćaren kaja poslovica: ‘Lekarona, sastar korkore tut!’ So šundam kaj ćerdan ano Kafarnaum, čher i kate ane ćiro than kaj bariljan.”</span></span>
+<span class='ff ver'  ><span class='num'>23 </span><span class='ff tex'  >O Isus vaćarda lenđe: “Čače tumen manđe ka vaćaren kaja poslovica: ‘Lekarona, sastar korkore tut!’ So šundam kaj ćerdan ano Kafarnaum, ćer i kate ane ćiro than kaj bariljan.”</span></span>
 <span class='ff ver'  ><span class='num'>24 </span><span class='ff tex'  >Tegani vaćarda: “Čače vaćarav tumenđe, nijekh proroko naj manglo ane piro than kaj barilo.</span></span>
 <span class='ff ver'  ><span class='num'>25 </span><span class='ff tex'  >A čače vaćarav tumenđe: But romnja kase roma mule sesa ano Izrael ano vreme e Ilijaso kana o bršnd ni pelo trin berš thaj šov čhon thaj sasa baro bokhalipe pe sa i phuv.</span></span>
 <span class='ff ver'  ><span class='num'>26 </span><span class='ff tex'  >Al o Ilija ni sasa bičhaldo ni jekhaće lendar, sasa bičhaldo ki jekh džuvli kaso rom mulo ke abandžijengo foro Sarepta pašo Sidon.</span></span>
-<span class='ff ver'  ><span class='num'>27 </span><span class='ff tex'  >Thaj but gubava sesa ano Izrael ko vreme e prorokoso e Jelisijeso. Thaj khoni lendar ni thodilo, nego thodilo o Neman o Sirijanco.”</span></span>
+<span class='ff ver'  ><span class='num'>27 </span><span class='ff tex'  >Thaj but gubava sesa ano Izrael ko vreme e prorokoso e Jelisejeso. Thaj khoni lendar ni thodilo, nego thodilo o Neman o Sirijanco.”</span></span>
 <span class='ff ver'  ><span class='num'>28 </span><span class='ff tex'  >Savore ani sinagoga pherdile holi kana kava šunde.</span></span>
 <span class='ff ver'  ><span class='num'>29 </span><span class='ff tex'  >Uštile thaj tradije le avral taro foro. Inđarde le ko brego najuče kaj sasa ćerdo lengo foro te čhuden le odupral natele.</span></span>
 <span class='ff ver'  ><span class='num'>30 </span><span class='ff tex'  >Al o Isus nakhlo maškar lende thaj đelo pe dromesa.</span></span>
@@ -825,7 +828,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>33 </span><span class='ff tex'  >Gothe ani sinagoga sasa manuš ane kaste sasa o bilačho duxo thaj dija vika zurale:</span></span>
 <span class='ff ver'  ><span class='num'>34 </span><span class='ff tex'  >“So manđe amendar, Isuse taro Nazaret? Aviljan li te uništi amen? Džanav ko san tu: Sveco e Devleso!”</span></span>
 <span class='ff ver'  ><span class='num'>35 </span><span class='ff tex'  >O Isus pretisada le: “Phande ćo muj thaj iklji lestar!” Tegani o beng perada e manuše angle sa e manuša, iklilo lestar thaj khanči ni ćerda lese bilačhe.</span></span>
-<span class='ff ver'  ><span class='num'>36 </span><span class='ff tex'  >Ane savorende avili i dar thaj čudisajle thaj jekh averese vaćarde: “Save si kala lafura! Ano autoritet thaj ano zuralipe vaćarol e bilačhe duxurenđe te ikljon thaj von ikljen!”</span></span>
+<span class='ff ver'  ><span class='num'>36 </span><span class='ff tex'  >Ane savorende avili i dar thaj čudisajle thaj jekh averese vaćarde: “Savo si kava sikajipe! Ano autoritet thaj ano zuralipe vaćarol e bilačhe duxurenđe te ikljon thaj von ikljen!”</span></span>
 <span class='ff ver'  ><span class='num'>37 </span><span class='ff tex'  >Thaj đelo o lafi lestar ane sa e pašutne thana.</span></span>
 <span class='ff ver'  ><span class='num'>38 </span><span class='ff tex'  >O Isus uštilo gothar andari sinagoga thaj avilo ano čher e Simoneso. E Simonese sasuja sasa la bari jag thaj rodije lestar te sastarol la.</span></span>
 <span class='ff ver'  ><span class='num'>39 </span><span class='ff tex'  >O Isus ačhilo paše late, pretisada e jagaće thaj i jag mukhlja la. Sigate uštili thaj služisada len.</span></span>
@@ -852,11 +855,11 @@ New Testament
 </h2>
 
 <div class='chap'>
-<span class='ff ver'  ><span class='num'>1 </span><span class='ff tex'  >Jekh drom kana o Isus ačhilo pašo Galilejsko jezero, ćidije pe paše leste but manuša, te šunen o Lafi e Devleso.</span></span>
+<span class='ff ver'  ><span class='num'>1 </span><span class='ff tex'  >Jekh drom kana o Isus ačhilo pašo Genisaretsko jezero, ćidije pe paše leste but manuša, te šunen o Lafi e Devleso.</span></span>
 <span class='ff ver'  ><span class='num'>2 </span><span class='ff tex'  >Tegani dikhlja duj čamcura kaj ačhen ki obala. E manuša save dolen mačhe iklile lendar thaj thode e mreže.</span></span>
 <span class='ff ver'  ><span class='num'>3 </span><span class='ff tex'  >O Isus dija ano čamco savo sasa e Simoneso thaj pučlja le te crden le zala ano paj. Pale gova bešlo thaj taro čamco sikada e manušen.</span></span>
 <span class='ff ver'  ><span class='num'>4 </span><span class='ff tex'  >Kana ačhilo te vaćarol e manušenđe, vaćarda e Simonese: “Dža ko duboko paj thaj čhude e mreže thaj dol mačhen.”</span></span>
-<span class='ff ver'  ><span class='num'>5 </span><span class='ff tex'  >O Simon vaćarda lese: “Gospode! Celo rat dijam zor thaj khanči ni doldam, al tu te phendan, ka čhudav e mreže.”</span></span>
+<span class='ff ver'  ><span class='num'>5 </span><span class='ff tex'  >O Simon vaćarda lese: “Gospodarona! Celo rat dijam zor thaj khanči ni doldam, al ako tu phene, ka čhudav e mreže.”</span></span>
 <span class='ff ver'  ><span class='num'>6 </span><span class='ff tex'  >Kana ćerde gova, dolde bute mačhen thaj e mreže lije te pharadon.</span></span>
 <span class='ff ver'  ><span class='num'>7 </span><span class='ff tex'  >Tegani vastesa dije vika pe amalen save sesa ane aver čamco te aven te pomožin lenđe. Von avile thaj pherde solduj čamcura gija so lije te pherdon paj taro pharipe e mačhengo.</span></span>
 <span class='ff ver'  ><span class='num'>8 </span><span class='ff tex'  >Kana gova dikhlja o Simon Petar, pelo ke koča angle Isusese pingre thaj vaćarda: “Dža mandar, Gospode! Me sem grešno manuš.”</span></span>
@@ -867,10 +870,10 @@ New Testament
 <span class='ff ver'  ><span class='num'>13 </span><span class='ff tex'  >O Isus vazdija piro va, dolda le thaj phenda: “Mangav. Av thodo!” Thaj i guba tare lesi koža sigate crdija pe.</span></span>
 <span class='ff ver'  ><span class='num'>14 </span><span class='ff tex'  >Tegani o Isus naredisada lese: “Ma vaćar gova khanikase, nego dža thaj sikav tut e sveštenikose! Inđar žrtva sar so zapovedisada o Mojsije ano zakon pašo ćiro thodipe, te bi avola tut svedočanstvo angle lende.”</span></span>
 <span class='ff ver'  ><span class='num'>15 </span><span class='ff tex'  >O lafi taro Isus sa pobut šundilo. E manuša sa pobut ćidije pe te šunen le thaj te sastarol len tare lengo nasvalipe.</span></span>
-<span class='ff ver'  ><span class='num'>16 </span><span class='ff tex'  >Al vov đelo ko than kaj naj khoni thaj molisajlo.</span></span>
-<span class='ff ver'  ><span class='num'>17 </span><span class='ff tex'  >Jekh đive o Isus sikada ano jekh čher thaj gothe bešle e fariseja thaj e učitelja tare Mojsijaso zakon save avile tare sa e gava andari Galileja, andari Judeja thaj andaro Jerusalim. A i zor e Gospodesi sasa po Isus te bi vov sastarola.</span></span>
+<span class='ff ver'  ><span class='num'>16 </span><span class='ff tex'  >Al o Isus đelo ko than kaj naj khoni thaj molisajlo.</span></span>
+<span class='ff ver'  ><span class='num'>17 </span><span class='ff tex'  >Jekh đive o Isus sikada ano jekh čher thaj gothe bešle e fariseja thaj e učitelja tare Mojsijaso zakon save avile tare sa e gava andari Galileja, andari Judeja thaj andaro Jerusalim. A o Isus sastarola e Gospodese zorasa.</span></span>
 <span class='ff ver'  ><span class='num'>18 </span><span class='ff tex'  >Thaj nesave manuša ande ano than e pašljimaso jekhe manuše savo naštine te phirol. Thaj rodije sar te anen le thaj te mučhen le anglo Isus.</span></span>
-<span class='ff ver'  ><span class='num'>19 </span><span class='ff tex'  >Kana ni arakhlje kotar te anen le andre tare but manuša, uštile po čher thaj taro tavano mukhlje le sa e thanesa e pašljimaso ko maškar anglo Isus.</span></span>
+<span class='ff ver'  ><span class='num'>19 </span><span class='ff tex'  >Kana ni arakhlje kotar te anen le andre tare but manuša, uštile po čher thaj taro tavano mukhlje le sa e thanesa e pašljimaso, ko maškar anglo Isus.</span></span>
 <span class='ff ver'  ><span class='num'>20 </span><span class='ff tex'  >Kana dikhlja lengo pačajipe, vaćarda lese: “Manušeja, oprostime si će grehura!”</span></span>
 <span class='ff ver'  ><span class='num'>21 </span><span class='ff tex'  >E fariseja thaj e učitelja tare Mojsijaso zakon lije ane peste te den gođi: “Ko si kava savo hulil po Dol? Ko šaj oprostil e grehura sem jekh Dol?”</span></span>
 <span class='ff ver'  ><span class='num'>22 </span><span class='ff tex'  >Kana o Isus haljarda so von den gođi ane peste, vaćarda lenđe: “So den gođi ane tumare ile?</span></span>
@@ -880,12 +883,12 @@ New Testament
 <span class='ff ver'  ><span class='num'>26 </span><span class='ff tex'  >Savore sesa zadivime thaj hvalisade e Devle. Pherdile dar thaj vaćarde: “Baro čudo dikhljam ađive!”</span></span>
 <span class='ff ver'  ><span class='num'>27 </span><span class='ff tex'  >Pale gova iklilo o Isus thaj dikhlja e carinco savo akhardola Levi sar bešol ki carina thaj vaćarda lese: “Av pale mande.”</span></span>
 <span class='ff ver'  ><span class='num'>28 </span><span class='ff tex'  >Thaj o Levi uštilo, ačhada sa gothe thaj đelo pale leste.</span></span>
-<span class='ff ver'  ><span class='num'>29 </span><span class='ff tex'  >E Isusese ćerda o Levi ane piro čher baro xape. Sesa gothe but carincura thaj avera manuša save bešle lesa ko astali.</span></span>
-<span class='ff ver'  ><span class='num'>30 </span><span class='ff tex'  >E fariseja thaj e učitelja tare Mojsijaso zakon lije te prevaćaren e Isusese sikadenđe: “Sose xan thaj pijen e carincurencar thaj e grešnikurencar?”</span></span>
+<span class='ff ver'  ><span class='num'>29 </span><span class='ff tex'  >O Levi ćerda e Isusese ane piro čher baro xape. Sesa gothe but carincura thaj avera manuša save bešle lesa ko astali.</span></span>
+<span class='ff ver'  ><span class='num'>30 </span><span class='ff tex'  >E fariseja thaj e učitelja tare Mojsijaso zakon lije te bunin pe vaćarindoj e Isusese sikadenđe: “Sose xan thaj pijen e carincurencar thaj e grešnikurencar?”</span></span>
 <span class='ff ver'  ><span class='num'>31 </span><span class='ff tex'  >O Isus vaćarda lenđe: “Ni trubul e sastenđe doktora, nego e nasvalenđe.</span></span>
 <span class='ff ver'  ><span class='num'>32 </span><span class='ff tex'  >Me ni aviljem te akharav ko pokajipe e pravednikuren, nego e grešnikuren.”</span></span>
-<span class='ff ver'  ><span class='num'>33 </span><span class='ff tex'  >E fariseja thaj e učitelja tare Mojsijaso zakon pučlje e Isuse: “Sose e Jovanese sikade postin thaj molin pe e Devlese, gija ćeren thaj e farisejska sikade, al ćire xan thaj pijen?”</span></span>
-<span class='ff ver'  ><span class='num'>34 </span><span class='ff tex'  >O Isus vaćarda lenđe: “Šaj li čhuve e gosturen save avile ko abav te postin, dok slavin e mladoženjasa?</span></span>
+<span class='ff ver'  ><span class='num'>33 </span><span class='ff tex'  >E fariseja thaj e učitelja tare Mojsijaso zakon pučlje e Isuse: “Sose e Jovanese sikade postin thaj molin pe e Devlese, gija ćeren thaj e farisejska sikade, al ćire sikade xan thaj pijen?”</span></span>
+<span class='ff ver'  ><span class='num'>34 </span><span class='ff tex'  >O Isus pučlja len: “Šaj li čhuve e gosturen save avile ko abav te postin, dok slavin e mladoženjasa?</span></span>
 <span class='ff ver'  ><span class='num'>35 </span><span class='ff tex'  >Al ka avol o đive kana ka len lendar e mladoženja. Ane gova đive i von ka postin.”</span></span>
 <span class='ff ver'  ><span class='num'>36 </span><span class='ff tex'  >Thaj vaćarda lenđe i paramič: “Khoni ni čhuvol kotor taro nevo fostano po purano fostano, golese kaj i o nevo ka pharadol thaj o kotor taro nevo fostano ni ačhol šukar ko purano.</span></span>
 <span class='ff ver'  ><span class='num'>37 </span><span class='ff tex'  >Thaj khoni ni čhorol nevi mol ane purane morčha, golese kaj i nevi mol ka pharavol e morčha thaj i mol ka čhordol, a e morčha ka pharadon.</span></span>
@@ -923,7 +926,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>12 </span><span class='ff tex'  >Ane gola đivesa o Isus iklilo ko brego te molil pe e Devlese thaj sasa celo rat ano molipe e Devlesa.</span></span>
 <span class='ff ver'  ><span class='num'>13 </span><span class='ff tex'  >Kana sasa đive, akharda pe sikaden, lendar birisada dešudujen thaj akharda len apostolura:</span></span>
 <span class='ff ver'  ><span class='num'>14 </span><span class='ff tex'  >e Simone kas akharda Petar, thaj lese phrale e Andrija, e Jakove thaj e Jovane, e Filipe thaj e Vartolomeje,</span></span>
-<span class='ff ver'  ><span class='num'>15 </span><span class='ff tex'  >e Mateja thaj e Toma, e Jakove e Alfejevese čhave thaj e Simone savo sasa Ziloto,</span></span>
+<span class='ff ver'  ><span class='num'>15 </span><span class='ff tex'  >e Mateja thaj e Toma, e Jakove e Alfejevese čhave thaj e Simone savo sasa Zilot,</span></span>
 <span class='ff ver'  ><span class='num'>16 </span><span class='ff tex'  >e Juda e Jakoveso thaj e Juda e Iskariotskone, savo izdajisada le.</span></span>
 <span class='ff ver'  ><span class='num'>17 </span><span class='ff tex'  >O Isus ulilo taro brego pe Dešudujencar thaj ačhilo ko ravno than. Odori sesa but lese sikade thaj but manuša andari sa i Judeja, andaro Jerusalim, andare Tirska thaj Sidonska krajura thaj tare pašutne thana save si pašo more.</span></span>
 <span class='ff ver'  ><span class='num'>18 </span><span class='ff tex'  >Von avile te šunen le thaj te sastardon tare piro nasvalipe. Sastardile i kola save sesa mučime tare bilačhe duxura.</span></span>
@@ -931,7 +934,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>20 </span><span class='ff tex'  >O Isus dikhlja ane pe sikade thaj vaćarda: “Blagoslovime sen tumen save sen čore, golese kaj tumaro si o Carstvo e Devleso.</span></span>
 <span class='ff ver'  ><span class='num'>21 </span><span class='ff tex'  >Blagoslovime sen tumen save sen akana bokhale, golese kaj ka čaljon. Blagoslovime sen tumen save akana roven, golese kaj ka asan.</span></span>
 <span class='ff ver'  ><span class='num'>22 </span><span class='ff tex'  >Blagoslovime sen kana e manuša mrzin tumen, čhuden tumen, ladžaren tumen thaj tumaro alav ni manđen thaj dičhen tumen sar bilačhen golese so pačan ane mande, ano Čhavo e manušeso.</span></span>
-<span class='ff ver'  ><span class='num'>23 </span><span class='ff tex'  >Radujin tumen ane gova đive thaj čhelen, golese kaj bari si tumari plata ko nebo. Golese kaj gija ćerde e prorokurenđe i lenđe paradada.</span></span>
+<span class='ff ver'  ><span class='num'>23 </span><span class='ff tex'  >Radujin tumen ane gova đive thaj ćhelen, golese kaj bari si tumari plata ko nebo. Golese kaj gija ćerde e prorokurenđe i lenđe paradada.</span></span>
 <span class='ff ver'  ><span class='num'>24 </span><span class='ff tex'  >Al jao tumenđe e barvalenđe, golese so već lijen tumari uteha.</span></span>
 <span class='ff ver'  ><span class='num'>25 </span><span class='ff tex'  >Jao tumenđe save sen akana čale, golese so ka bokhavon. Jao tumenđe save akana asan, golese so ka tugujin thaj ka roven.</span></span>
 <span class='ff ver'  ><span class='num'>26 </span><span class='ff tex'  >Jao tumenđe kana sa e manuša vaćaren šukar tumendar, golese kaj gija i lenđe paradada vaćarde šukar tare xoxavne prorokura!”</span></span>
@@ -940,10 +943,10 @@ New Testament
 <span class='ff ver'  ><span class='num'>29 </span><span class='ff tex'  >Kolese savo čalavol tut pi čham, iri thaj aver čham, kole savo manđol tutar o ogrtači, de le te lol i ćo gad.</span></span>
 <span class='ff ver'  ><span class='num'>30 </span><span class='ff tex'  >De svakone kova so rodol tutar, thaj te khoni khanči lija tutar, ma rode gova te iril tuće.</span></span>
 <span class='ff ver'  ><span class='num'>31 </span><span class='ff tex'  >Gova so manđen te ćeren e manuša tumenđe, gova i tumen ćeren lenđe!</span></span>
-<span class='ff ver'  ><span class='num'>32 </span><span class='ff tex'  >Ako manđen samo kolen save tumen manđen, savi si tumari hvala? Golese kaj čak i e grešnikura manđen kolen save len manđen.</span></span>
-<span class='ff ver'  ><span class='num'>33 </span><span class='ff tex'  >Thaj ako ćeren šukar samo kolenđe save tumenđe ćeren šukar, savi si tumari hvala? Golese kaj i e grešnikura ćeren gija.</span></span>
+<span class='ff ver'  ><span class='num'>32 </span><span class='ff tex'  >Ako manđen samo kolen save tumen manđen, savi si tumari hvala? Golese so čak i e grešnikura manđen kolen save len manđen.</span></span>
+<span class='ff ver'  ><span class='num'>33 </span><span class='ff tex'  >Thaj ako ćeren šukar samo kolenđe save tumenđe ćeren šukar, savi si tumari hvala? Golese so i e grešnikura ćeren gija.</span></span>
 <span class='ff ver'  ><span class='num'>34 </span><span class='ff tex'  >Thaj ako den zajam kolenđe savendar ađućaren te irin o zajam, savi si tumari hvala? Golese kaj i e grešnikura e grešnikurenđe den zajam te len palem gaći.</span></span>
-<span class='ff ver'  ><span class='num'>35 </span><span class='ff tex'  >Nego, manđen tumare dušmanuren thaj ćeren lenđe šukar! Den zajam te ni manđen khanči golese. Gija ka avol tumen bari plata thaj ka aven čhave e Najbare Devlese, golese kaj si vov šukar i e nezahvalnonenđe thaj e bilačhenđe.</span></span>
+<span class='ff ver'  ><span class='num'>35 </span><span class='ff tex'  >Nego, manđen tumare dušmanuren thaj ćeren lenđe šukar! Den zajam te ni manđen khanči golestar. Gija ka avol tumen bari plata thaj ka aven čhave e Najbare Devlese, golese kaj si vov šukar i e nezahvalnonenđe thaj e bilačhenđe.</span></span>
 <span class='ff ver'  ><span class='num'>36 </span><span class='ff tex'  >Golese aven milosrdna sar so si tumaro Dad taro nebo milosrdno.”</span></span>
 <span class='ff ver'  ><span class='num'>37 </span><span class='ff tex'  >O Isus vadži vaćarda: “Ma sudin thaj ni ka aven sudime. Ma osudin thaj ni ka aven osudime. Oprostin thaj ka avol oprostimo tumenđe.</span></span>
 <span class='ff ver'  ><span class='num'>38 </span><span class='ff tex'  >Den thaj ka dol pe tumenđe. Pobari mera thaj popherdi ka dol pe tumenđe ane tumare vasta. Golese kaj, save merasa merin, gaći ka iril pe tumenđe.”</span></span>
@@ -976,9 +979,9 @@ New Testament
 </h2>
 
 <div class='chap'>
-<span class='ff ver'  ><span class='num'>1 </span><span class='ff tex'  >Kana vaćarda o Isus sa kava angle manuša, đelo ano foro Kafarnaum.</span></span>
-<span class='ff ver'  ><span class='num'>2 </span><span class='ff tex'  >Gothe jekhe rimskone kapetano sasa jekh sluga savo sasa nasvalo dži o meripe thaj save but manglja.</span></span>
-<span class='ff ver'  ><span class='num'>3 </span><span class='ff tex'  >Kana o kapetano šunda e Isusese, bičhalda leste nesave jevrejskone starešinen te molin le te avol te sastarol lese sluge.</span></span>
+<span class='ff ver'  ><span class='num'>1 </span><span class='ff tex'  >Kana vaćarda o Isus sa kava angle manuša, đelo ano foro o Kafarnaum.</span></span>
+<span class='ff ver'  ><span class='num'>2 </span><span class='ff tex'  >Gothe jekhe rimskone kapetano sasa jekh sluga savo sasa nasvalo dži o meripe thaj kas but manglja.</span></span>
+<span class='ff ver'  ><span class='num'>3 </span><span class='ff tex'  >Kana o kapetano šunda e Isusese, bičhalda leste nesave jevrejskone starešinen te molin le te avol te sastarol lese sluga.</span></span>
 <span class='ff ver'  ><span class='num'>4 </span><span class='ff tex'  >Kana avile ko Isus, but molisade le vaćarindoj: “Vov zaslužil gova te ćere lese,</span></span>
 <span class='ff ver'  ><span class='num'>5 </span><span class='ff tex'  >golese kaj manđol amaro narodo thaj ćerda amenđe sinagoga.”</span></span>
 <span class='ff ver'  ><span class='num'>6 </span><span class='ff tex'  >Gija, o Isus đelo lencar. Kana ni sesa dur taro čher, bičhalda o kapetano pe amalen te vaćaren lese: “Gospode! Ma čhuv tuće gova pharipe golesa so ka de ane mingro čher, golese kaj me naj sem dostojno te ave tali mingri streja.</span></span>
@@ -993,14 +996,14 @@ New Testament
 <span class='ff ver'  ><span class='num'>15 </span><span class='ff tex'  >O mulo čhavo bešlo thaj lija te vaćarol, a o Isus dija le lese daće.</span></span>
 <span class='ff ver'  ><span class='num'>16 </span><span class='ff tex'  >Savore darajle thaj hvalisade e Devle vaćarindoj: “Baro proroko si maškar amende!” Thaj: “O Dol avilo te pomognil pe manušenđe!”</span></span>
 <span class='ff ver'  ><span class='num'>17 </span><span class='ff tex'  >Kava šundilo taro Isus ani sa i Judeja thaj ane sa e pašutne thana.</span></span>
-<span class='ff ver'  ><span class='num'>18 </span><span class='ff tex'  >E Jovanese e Krstiteljese sikade vaćarde lese sa kava so o Isus ćerda. Tegani akharda o Jovane pe dujen sikaden</span></span>
+<span class='ff ver'  ><span class='num'>18 </span><span class='ff tex'  >E Jovanese e Krstiteljese sikade vaćarde lese sa kava so o Isus ćerda. Tegani akharda o Jovane pe duje sikaden</span></span>
 <span class='ff ver'  ><span class='num'>19 </span><span class='ff tex'  >thaj bičhalda len ko Gospod te pučen le: “Tu li san gova save obećisada o Dol kaj trubul te avol, il te ađućara avere?”</span></span>
 <span class='ff ver'  ><span class='num'>20 </span><span class='ff tex'  >Kana avile gola duj manuša ko Isus, phende lese: “O Jovane o Krstitelj bičhalda amen tute te puča tut: ‘Tu li san gova save obećisada o Dol kaj trubul te avol, il te ađućara avere?’”</span></span>
 <span class='ff ver'  ><span class='num'>21 </span><span class='ff tex'  >Ane gova sato o Isus sastarda buten taro lengo nasvalipe, tare lengo pharipe thaj tare bilačhe duxura thaj bute koren dija dičhipe.</span></span>
 <span class='ff ver'  ><span class='num'>22 </span><span class='ff tex'  >Gija o Isus phenda e Jovanese sikadenđe: “Džan thaj vaćaren e Jovanese so dikhljen thaj so šunden: e kore dičhen, e banđe phiren, e gubava thodon, e kašuće šunen, e mule ušten taro meripe thaj e čororenđe vaćarol pe o Lačho Lafi.</span></span>
-<span class='ff ver'  ><span class='num'>23 </span><span class='ff tex'  >Blagoslovimo si kova savo naj sablaznimo paše mande!”</span></span>
-<span class='ff ver'  ><span class='num'>24 </span><span class='ff tex'  >Kana đele e Jovanese sikade, o Isus lija te vaćarol taro Jovane e bute manušenđe: “So ikliljen te dičhen ki pustinja? I trska, savi banđol ki balval?</span></span>
-<span class='ff ver'  ><span class='num'>25 </span><span class='ff tex'  >Il so ikliljen te dičhen? Manuše ane barvale fostanura urade? Na! Kola save phiraven barvale fostanura thaj ano šukaripe, bešen ane carska palate.</span></span>
+<span class='ff ver'  ><span class='num'>23 </span><span class='ff tex'  >Blagoslovimo si kova savo mandar ni sablaznil pe!”</span></span>
+<span class='ff ver'  ><span class='num'>24 </span><span class='ff tex'  >Kana đele e Jovanese sikade, o Isus lija te vaćarol taro Jovane bute manušenđe: “So ikliljen te dičhen ki pustinja? I trska, savi banđol ki balval?</span></span>
+<span class='ff ver'  ><span class='num'>25 </span><span class='ff tex'  >Il so ikliljen te dičhen? Manuše ane barvale šeja urade? Na! Kola save phiraven barvale šeja ano šukaripe bešen ane carska palate.</span></span>
 <span class='ff ver'  ><span class='num'>26 </span><span class='ff tex'  >Il so ikliljen te dičhen? Proroko? Va, me phenav tumenđe, vov si pobut taro proroko.</span></span>
 <span class='ff ver'  ><span class='num'>27 </span><span class='ff tex'  >Golese so, o Jovane si manuš kastar si pisimo ano Sveto lil: ‘Akh, me bičhalav mingre glasniko angle tute, savo ka pripremil tuće o drom angle tute.’</span></span>
 <span class='ff ver'  ><span class='num'>28 </span><span class='ff tex'  >Vaćarav tumenđe: maškare sa e manuša save sesa bijande tare romnja, ni sasa khoni pobaro taro Jovane. Al i o emcikno ano Carstvo e Devleso pobaro si lestar.”</span></span>
@@ -1009,21 +1012,21 @@ New Testament
 <span class='ff ver'  ><span class='num'>31 </span><span class='ff tex'  >O Isus vaćarda: “Kasa te uporediv e manušen tari kaja kuštik save si akana džuvde? Sar kaste si von slična?</span></span>
 <span class='ff ver'  ><span class='num'>32 </span><span class='ff tex'  >Von si sar čhavore save bešen ko drom thaj akharen jekh avere vaćarindoj: ‘Bašaldam tumenđe vesela đilja, a tumen ni čhelden! Bašaldam tumenđe žalosna đilja, a tumen ni rujen!’</span></span>
 <span class='ff ver'  ><span class='num'>33 </span><span class='ff tex'  >Golese kaj, avilo o Jovane o Krstitelj savo ni xalja mangro thaj ni pijola mol, a tumen vaćaren: ‘O beng ane leste!’</span></span>
-<span class='ff ver'  ><span class='num'>34 </span><span class='ff tex'  >Aviljem me, o Čhavo e manušeso, savo xav thaj pijav, a tumen vaćaren: ‘Dikh, manuš halano thaj mato, amal e carincurengo thaj e grešnikurengo!’</span></span>
+<span class='ff ver'  ><span class='num'>34 </span><span class='ff tex'  >Aviljem me, o Čhavo e manušeso, savo xav thaj pijav, a tumen vaćaren: ‘Dikh, manuš xalano thaj mato, amal e carincurengo thaj e grešnikurengo!’</span></span>
 <span class='ff ver'  ><span class='num'>35 </span><span class='ff tex'  >Al, sa gola so prihvatisade gova sikajipe, phende kaj si e Devleso mudrost čačukano!”</span></span>
 <span class='ff ver'  ><span class='num'>36 </span><span class='ff tex'  >Jekh farisejo kaso alav sasa Simon dija vika e Isuse te avol te xal mangro ke leste. O Isus đelo ano čher e farisejeso thaj čhuta pe pašo astali.</span></span>
 <span class='ff ver'  ><span class='num'>37 </span><span class='ff tex'  >Thaj dikh, ane gova foro sasa i džuvli savaće džanglja pe kaj si grešnica. Voj šunda kaj si o Isus pašo astali ano čher e farisejeso, i avili andre thaj anda kučalo miris ko čaro savo sasa taro mermerno bar.</span></span>
 <span class='ff ver'  ><span class='num'>38 </span><span class='ff tex'  >Voj ačhili palo Isus thaj rojindoj, peli ke pe koča paše lese pingre thaj lija te thovol len pe jasvencar. Tegani koslja len pe balencar, čumidija lese pingre thaj makhlja len e mirisesa.</span></span>
-<span class='ff ver'  ><span class='num'>39 </span><span class='ff tex'  >Kana gova dikhlja o farisejo savo akharda le, vaćarda ane peste: “Te avol kava manuš proroko, bi džanola ko si kaja džuvli savi dolol le. Vov bi džanola kaj si grešnica!”</span></span>
+<span class='ff ver'  ><span class='num'>39 </span><span class='ff tex'  >Kana gova dikhlja o farisejo savo akharda le, vaćarda ane peste: “Te avol kava manuš proroko, bi džanola ko si kaja džuvli savi dotaknil le. Vov bi džanola kaj si grešnica!”</span></span>
 <span class='ff ver'  ><span class='num'>40 </span><span class='ff tex'  >O Isus phenda lese: “Simone! Isi man khanči te vaćarav tuće.” Vov vaćarda: “Učitelju, vaćar!”</span></span>
 <span class='ff ver'  ><span class='num'>41 </span><span class='ff tex'  >O Isus vaćarda: “Duj džene sesa dužna jekhe manušese. Jekh sasa dužno panšel srebrenjakura a o dujto pinda.</span></span>
-<span class='ff ver'  ><span class='num'>42 </span><span class='ff tex'  >Kana len naj sasa te irin, kova manuš oprostisada soldujenđe. Vaćar, tare kala duj savo ka manđol le pobut?”</span></span>
+<span class='ff ver'  ><span class='num'>42 </span><span class='ff tex'  >Kana len ni sasa te irin, kova manuš oprostisada soldujenđe. Vaćar, tare kala duj savo ka manđol le pobut?”</span></span>
 <span class='ff ver'  ><span class='num'>43 </span><span class='ff tex'  >O Simon vaćarda lese: “Pa bi phenava kolese kas sasa pobaro dugo.” A o Isus vaćarda lese: “Gija si, šukar vaćardan.”</span></span>
 <span class='ff ver'  ><span class='num'>44 </span><span class='ff tex'  >Tegani irisajlo o Isus premali džuvli thaj vaćarda e Simonese: “Dičhe li kala džuvlja? Kana me aviljem ane ćiro čher, ni paj ni andan te thovav me pingre, al voj pe jasvencar thoda len thaj pe balencar koslja len.</span></span>
 <span class='ff ver'  ><span class='num'>45 </span><span class='ff tex'  >Ni čumidipe ni dijan man, al voj sar aviljem, ni ačhili te čumidol mingre pingre.</span></span>
 <span class='ff ver'  ><span class='num'>46 </span><span class='ff tex'  >Uljesa ni makhljan mingro šoro, al voj mirisesa makhlja mingre pingre.</span></span>
 <span class='ff ver'  ><span class='num'>47 </span><span class='ff tex'  >Golese vaćarav tuće: ‘Baro manglipe sikada manđe, golese so si laće oprostime but bare grehura. Al kase zala oprostime, sikavol zala manglipe.’”</span></span>
-<span class='ff ver'  ><span class='num'>48 </span><span class='ff tex'  >A laće vaćarda: “Oprostime si ćire grehura.”</span></span>
+<span class='ff ver'  ><span class='num'>48 </span><span class='ff tex'  >A e džuvljaće vaćarda: “Oprostime si ćire grehura.”</span></span>
 <span class='ff ver'  ><span class='num'>49 </span><span class='ff tex'  >Tegani ane peste lije te vaćaren kola so sesa lesa pašo astali: “Ko si kava savo šaj oprostil e grehura?”</span></span>
 <span class='ff ver'  ><span class='num'>50 </span><span class='ff tex'  >Al o Isus vaćarda e džuvljaće: “Ćiro pačajipe spasisada tut. Dža ano mir!”</span></span>
 
@@ -1045,8 +1048,8 @@ New Testament
 
 <div class='chap'>
 <span class='ff ver'  ><span class='num'>1 </span><span class='ff tex'  >Pale gova o Isus đelo ane forura thaj ane gava. Sikada thaj vaćarda taro Lačho Lafi taro Carstvo e Devleso. Lesa đele e dešuduj sikade</span></span>
-<span class='ff ver'  ><span class='num'>2 </span><span class='ff tex'  >thaj nesave džuvlja save sesa sastarde tare benga thaj nasvalipe: i Marija (savi akhardola Magdalena, kastar iklile efta bilačhe duxura),</span></span>
-<span class='ff ver'  ><span class='num'>3 </span><span class='ff tex'  >thaj i Jovana (romni e Huzosi savo sasa upravitelji ko Irod) thaj i Suzana thaj avera but džuvlja save kandije pumare parencar e Isuse thaj lese sikaden.</span></span>
+<span class='ff ver'  ><span class='num'>2 </span><span class='ff tex'  >thaj nesave džuvlja save sesa sastarde tare benga thaj taro nasvalipe: i Marija (savi akhardola Magdalena, kastar iklile efta bilačhe duxura),</span></span>
+<span class='ff ver'  ><span class='num'>3 </span><span class='ff tex'  >thaj i Jovana (romni e Huzosi savo sasa upravitelji ko Irod) thaj i Suzana thaj avera but džuvlja save pomožisade pumare parencar e Isuse thaj lese sikaden.</span></span>
 <span class='ff ver'  ><span class='num'>4 </span><span class='ff tex'  >Kana ćidije pe but manuša tare sa e forura thaj avile pašo Isus, vov vaćarda lenđe paramič:</span></span>
 <span class='ff ver'  ><span class='num'>5 </span><span class='ff tex'  >“Iklilo o manuš savo čhudola o seme pi phuv. Thaj kana sejisada, nesavo seme pelo po drom. Gothe uštade le e manuša thaj e čiriklja sa xalje le.</span></span>
 <span class='ff ver'  ><span class='num'>6 </span><span class='ff tex'  >Nesavo seme pelo pe bara. Barilo thaj šućilo, golese kaj naj sasa paj ani phuv.</span></span>
@@ -1120,7 +1123,7 @@ New Testament
 <div class='chap'>
 <span class='ff ver'  ><span class='num'>1 </span><span class='ff tex'  >O Isus dija vika e dešuduje apostoluren thaj dija len zor thaj vlast pe sa e benga thaj te sastaren taro nasvalipe.</span></span>
 <span class='ff ver'  ><span class='num'>2 </span><span class='ff tex'  >Bičhalda len te propovedin taro Carstvo e Devleso thaj te sastaren e nasvalen.</span></span>
-<span class='ff ver'  ><span class='num'>3 </span><span class='ff tex'  >Vaćarda lenđe: “Khanči ma len dromese: ni rovli, ni trasta, ni mangro, ni pare thaj te ma avol tumen po duj fostanura.</span></span>
+<span class='ff ver'  ><span class='num'>3 </span><span class='ff tex'  >Vaćarda lenđe: “Khanči ma len dromese: ni rovli, ni trasta, ni mangro, ni pare thaj te ma avol tumen po duj gada.</span></span>
 <span class='ff ver'  ><span class='num'>4 </span><span class='ff tex'  >Kana džan ane nesavo čher, bešen gothe, dži kaj ni ka džan ane aver than.</span></span>
 <span class='ff ver'  ><span class='num'>5 </span><span class='ff tex'  >Te ni manglje tumen ane nesavo foro, ikljen gothar thaj tresin o praho tare tumare pingre sar svedočanstvo protiv lende.”</span></span>
 <span class='ff ver'  ><span class='num'>6 </span><span class='ff tex'  >E sikade đele thaj phirde taro gav dži ko gav. Propovedisade o Lačho Lafi thaj sastarde e manušen ke sa e thana.</span></span>
@@ -1141,20 +1144,20 @@ New Testament
 <span class='ff ver'  ><span class='num'>21 </span><span class='ff tex'  >O Isus zurale naredisada e sikadenđe te ma vaćaren khanikase kaj si vov o Hrist.</span></span>
 <span class='ff ver'  ><span class='num'>22 </span><span class='ff tex'  >Thaj phenda: “Me, o Čhavo e manušeso, trubul te avav but mučimo. E starešine, e šorutne sveštenikura thaj e učitelja tare Mojsijaso zakon ka čhuden man. Ka avav mudardo, al me trito đive ka uštav tare mule.”</span></span>
 <span class='ff ver'  ><span class='num'>23 </span><span class='ff tex'  >Tegani o Isus savorenđe vaćarda: “Ko manđol te džal pale mande, nek ačhavol korkoro pes thaj nek lol piro krsto svako đive thaj nek džal pale mande.</span></span>
-<span class='ff ver'  ><span class='num'>24 </span><span class='ff tex'  >Golese ko manđol piro džuvdipe te aračhol, ka hasarol le, al ko hasarol piro džuvdipe paše mande, ka aračhol le.</span></span>
+<span class='ff ver'  ><span class='num'>24 </span><span class='ff tex'  >Golese ko manđol piro džuvdipe te aračhol, ka hasarol le, al ko hasarol piro džuvdipe baše mande, ka aračhol le.</span></span>
 <span class='ff ver'  ><span class='num'>25 </span><span class='ff tex'  >Savo šukaripe ka avol e manuše ako sa o sveto dobil, al pes hasarol il upropastil pes?</span></span>
 <span class='ff ver'  ><span class='num'>26 </span><span class='ff tex'  >Golese, ko ladžal mandar thaj tare mingre lafura, lestar i me, o Čhavo e manušeso, ka ladžav kana ka avav ane mingri slava thaj ani slava mingre Dadesi thaj e svetone anđelurenđi.</span></span>
 <span class='ff ver'  ><span class='num'>27 </span><span class='ff tex'  >Čače vaćarav tumenđe, nesave tumendar save sen kate ni ka meren dok ni dičhen o Carstvo e Devleso.”</span></span>
 <span class='ff ver'  ><span class='num'>28 </span><span class='ff tex'  >Kana nakhle ohto đive pale gova, o Isus lija e Petre, e Jovane thaj e Jakove thaj iklilo ko brego te molil pe e Devlese.</span></span>
 <span class='ff ver'  ><span class='num'>29 </span><span class='ff tex'  >Kana molisajlo, leso muj ćerdilo averčhande thaj lese šeja ćerdile parne thaj sjajna.</span></span>
-<span class='ff ver'  ><span class='num'>30 </span><span class='ff tex'  >Thaj dikh, tari jekh drom iklile duj manuša thaj lije te vaćaren e Isusesa. Gola sesa o Mojsije thaj o Ilija.</span></span>
+<span class='ff ver'  ><span class='num'>30 </span><span class='ff tex'  >Thaj dikh, tari jekh drom iklile duj manuša thaj lije te vaćaren e Isusesa. Gova sesa o Mojsije thaj o Ilija.</span></span>
 <span class='ff ver'  ><span class='num'>31 </span><span class='ff tex'  >Sikadile ani slava thaj vaćarde tare leso meripe savo trubuja te avol ano Jerusalim.</span></span>
 <span class='ff ver'  ><span class='num'>32 </span><span class='ff tex'  >O Petar thaj kala so sesa lesa, zasute thaj kana džungadile dikhlje e Isuse ani slava thaj duje manušen sar lesa ačhen.</span></span>
 <span class='ff ver'  ><span class='num'>33 </span><span class='ff tex'  >Kana lije o Mojsije thaj o Ilija te crden pe taro Isus, o Petar phenda e Isusese: “Gospode! Šukar kaj sam kate. Te ćera trin senice: Jekh tuće, jekh e Mojsijase thaj jekh e Ilijase.” Ni džanglja so te vaćarol.</span></span>
 <span class='ff ver'  ><span class='num'>34 </span><span class='ff tex'  >A dok vov gova vaćarda, avilo o oblako savo učharda len. Thaj von, kana učharda len o oblako, darajle.</span></span>
 <span class='ff ver'  ><span class='num'>35 </span><span class='ff tex'  >Thaj šunde glaso andare kova oblako vaćarindoj: “Kava si mingro manglo čhavo save me birisadem. Le šunen!”</span></span>
 <span class='ff ver'  ><span class='num'>36 </span><span class='ff tex'  >Pale gova so šundilo o glaso, e sikade dikhlje samo e Isuse korkore. Thaj von khanči ni vaćarde khanikase tare gova so dikhlje.</span></span>
-<span class='ff ver'  ><span class='num'>37 </span><span class='ff tex'  >Thearinto đive kana o Isus thaj lese sikade ulile taro brego, but manuša avile ko Isus.</span></span>
+<span class='ff ver'  ><span class='num'>37 </span><span class='ff tex'  >Theara đive kana o Isus thaj lese sikade ulile taro brego, but manuša avile ko Isus.</span></span>
 <span class='ff ver'  ><span class='num'>38 </span><span class='ff tex'  >Thaj dikh, tare but manuša akharda le jekh: “Učitelju! Moliv tut, dikh pe mingro čhavo golese kaj si jekhoro.”</span></span>
 <span class='ff ver'  ><span class='num'>39 </span><span class='ff tex'  >O bilačho duxo dolol le thaj tari jekh drom lol te dol vika thaj čhudol le ane grčura tare savi ikljol i spuma taro leso muj thaj o duxo ni ačhavol le thaj sa malaksil le.</span></span>
 <span class='ff ver'  ><span class='num'>40 </span><span class='ff tex'  >“Molisadem ćire sikaden te ikalen e bilačhe duxo, al von naštine.”</span></span>
@@ -1207,11 +1210,11 @@ New Testament
 <span class='ff ver'  ><span class='num'>7 </span><span class='ff tex'  >Kana ka džan ane nesavo čher, ma džan tare gova čher ke aver. Ačhen ke gova čher thaj xan thaj pijen so isi len, golese kaj o bućarno dostojno si pe plataće.</span></span>
 <span class='ff ver'  ><span class='num'>8 </span><span class='ff tex'  >Kana ka den ane nesavo foro thaj gothe ka primin tumen, xan so anen angle tumende.</span></span>
 <span class='ff ver'  ><span class='num'>9 </span><span class='ff tex'  >Sastaren e nasvalen save si gothe, thaj vaćaren lenđe: ‘O Carstvo e Devleso avilo paše tumenđe.’</span></span>
-<span class='ff ver'  ><span class='num'>10 </span><span class='ff tex'  >Al kana ka džan ane nesavo foro thaj ni ka primin tumen gothe, ikljen ke lengo drom thaj vaćaren:</span></span>
+<span class='ff ver'  ><span class='num'>10 </span><span class='ff tex'  >Al kana ka džan ano nesavo foro thaj ni ka primin tumen gothe, ikljen ke lengo drom thaj vaćaren:</span></span>
 <span class='ff ver'  ><span class='num'>11 </span><span class='ff tex'  >‘Thaj o praho tare tumaro foro savo si pe amare pingre, amen kosa, sar svedočanstvo protiv lende. Al te džanen kaj paše avilo tumenđe o Carstvo e Devleso.’</span></span>
 <span class='ff ver'  ><span class='num'>12 </span><span class='ff tex'  >Vaćarav tumenđe kaj e manušenđe tari Sodoma ka avol poločhe ko đive e Sudoso, nego e manušenđe tare kava foro!”</span></span>
 <span class='ff ver'  ><span class='num'>13 </span><span class='ff tex'  >“Pharo tumenđe, manušalen taro Horazin! Pharo tumenđe, manušalen tari Vitsaida! Golese kaj, te bi ćerdona ano foro Tir thaj ano foro Sidon e čudura save ćerdile tumende, dumutane bi pokajina pe thaj bi bešena urade ano dorikalo čaršafi thaj ano praho.</span></span>
-<span class='ff ver'  ><span class='num'>14 </span><span class='ff tex'  >Al e manušenđe taro Tir thaj e manušenđe taro Sidon ka avol poločhe ko sudo, nego ka avol tumenđe.</span></span>
+<span class='ff ver'  ><span class='num'>14 </span><span class='ff tex'  >Al e manušenđe taro Tir thaj e manušenđe taro Sidon ka avol poločhe ko sudo, nego so ka avol tumenđe.</span></span>
 <span class='ff ver'  ><span class='num'>15 </span><span class='ff tex avh'  >A tumen manušalen taro Kafarnaum! Dži o nebo li ka ušten? Dži o than kaj si e mule ka peren!” <span class='not' dir='ltr'><a href='?13' onclick='ABDO(13);return false;' title='View previous annotation'>&lt;</a> Hadēs <a href="?Glossary#g86" onclick="ABDO('Glossary','g86');	return false;"	title='View definition'>g86</a> <a href='?17' onclick='ABDO(17);return false;' title='View next annotation'>&gt;</a></span></span></span>
 <span class='ff ver'  ><span class='num'>16 </span><span class='ff tex'  >Tegani vaćarda o Isus pe sikadenđe: “Ko tumen šunol, man šunol. Ko tumen čhudol, man čhudol. Ko čhudol man, čhudol e Devle savo bičhalda man.”</span></span>
 <span class='ff ver'  ><span class='num'>17 </span><span class='ff tex'  >Kana irisajle kola eftavardeš thaj duj sikade, radosno vaćarde e Isusese: “Gospode, e benga pokorisajle amenđe ke ćiro alav.”</span></span>
@@ -1224,7 +1227,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>24 </span><span class='ff tex'  >Golese kaj, vaćarav tumenđe kaj but prorokura thaj carura manglje te dičhen kova so tumen dičhen, al ni dikhlje, thaj manglje te šunen kova so tumen šunen, al ni šunde.”</span></span>
 <span class='ff ver'  ><span class='num'>25 </span><span class='ff tex avh'  >Tegani uštilo jekh tare učitelja tare Mojsijaso zakon te iskušil e Isuse thaj pučlja le: “Učitelju! So trubul te ćerav te dobiv o džuvdipe bizo meripe?” <span class='not' dir='ltr'><a href='?13' onclick='ABDO(13);return false;' title='View previous annotation'>&lt;</a> aiōnios <a href="?Glossary#g166" onclick="ABDO('Glossary','g166');	return false;"	title='View definition'>g166</a> <a href='?17' onclick='ABDO(17);return false;' title='View next annotation'>&gt;</a></span></span></span>
 <span class='ff ver'  ><span class='num'>26 </span><span class='ff tex'  >O Isus phenda lese: “So si pisimo ane Mojsijaso zakon? Sar tu gova haljare?”</span></span>
-<span class='ff ver'  ><span class='num'>27 </span><span class='ff tex'  >Vov phenda e Isusese: “‘Mang e Gospod ćire Devle sa ćire ilesa, sa ćire dušasa thaj sa ćire zorasa thaj sa ćire gođasa,’ thaj: ‘Mang ćire pašutne sar korkore tut.’”</span></span>
+<span class='ff ver'  ><span class='num'>27 </span><span class='ff tex'  >Vov phenda e Isusese: “Mang e Gospod ćire Devle sa ćire ilesa, sa ćire dušasa, sa ćire zorasa thaj sa ćire gođasa,” thaj: ‘‘Mang ćire pašutne sar korkore tut.”</span></span>
 <span class='ff ver'  ><span class='num'>28 </span><span class='ff tex'  >O Isus vaćarda lese: “Šukar vaćardan. Ćer gova thaj ka živi!”</span></span>
 <span class='ff ver'  ><span class='num'>29 </span><span class='ff tex'  >Al kova učitelji e zakoneso manglja te opravdil pe, pa pučlja e Isuse: “Ko si mingro pašutno?”</span></span>
 <span class='ff ver'  ><span class='num'>30 </span><span class='ff tex'  >Pe gova o Isus lija te vaćarol kava: “Jekh manuš đelo taro Jerusalim ano Jerihon thaj dolde le e čora. Von uljarde lese šeja, marde le, ačhade le opaš mule pašo drom thaj đele pese.</span></span>
@@ -1262,7 +1265,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>2 </span><span class='ff tex'  >O Isus vaćarda lenđe: “Kana molin tumen, vaćaren: ‘Dade [amareja ko nebo], te svetil pe ćiro alav! Te avol ćiro carstvo. [Te avol ćiro manglipe ki phuv sar ko nebo.]</span></span>
 <span class='ff ver'  ><span class='num'>3 </span><span class='ff tex'  >Xamase so trubul amen de amen svako đive.</span></span>
 <span class='ff ver'  ><span class='num'>4 </span><span class='ff tex'  >Oprosti amare grehura, sar so i amen oprosti kolenđe so ćeren grehura premal amende! [Thaj ikal amen taro bilačhipe].’”</span></span>
-<span class='ff ver'  ><span class='num'>5 </span><span class='ff tex'  >Pale gova o Isus vaćarda: “Den gođi sar bi avola kana bi khoni tumendar džala ke piro amal ki opaš i rat te rodol mangro lestar vaćarindoj: ‘Amala, de man trin mangre, pa ka irima tuće.</span></span>
+<span class='ff ver'  ><span class='num'>5 </span><span class='ff tex'  >Pale gova o Isus vaćarda: “Den gođi sar bi avola kana bi khoni tumendar džala ke piro amal ki opaš i rat te rodol mangro lestar vaćarindoj: ‘Amala, de man trin mangre, pa ka irivlen tuće.</span></span>
 <span class='ff ver'  ><span class='num'>6 </span><span class='ff tex'  >Golese kaj avilo ke mande taro drom mingro amal thaj naj so te čhuvav angle leste.’</span></span>
 <span class='ff ver'  ><span class='num'>7 </span><span class='ff tex'  >A vov andral te phenol: ‘Ačhav man ko miro! Mingro vudar si phanglo thaj mingre čhave si mancar ano than e pašljimaso thaj našti uštav te dav tut!’</span></span>
 <span class='ff ver'  ><span class='num'>8 </span><span class='ff tex'  >Vaćarav tumenđe: te ni uštilo golese kaj si leso amal, ka uštol te dol le golese so si uporno thaj ka dol le kobor trubul le.</span></span>
@@ -1272,7 +1275,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>12 </span><span class='ff tex'  >Il te manglja angro, te dol le škorpija?</span></span>
 <span class='ff ver'  ><span class='num'>13 </span><span class='ff tex'  >Kana tumen, bišukar manuša, džanen šukar buća te den tumare čhaven, kobor pobut tumaro Dad taro nebo ka dol Sveto Duxo kolenđe save molin le?”</span></span>
 <span class='ff ver'  ><span class='num'>14 </span><span class='ff tex'  >Jekh drom o Isus tradija e benđe taro manuš savo naštine te vaćarol. Kana iklilo o beng, kova manuš lija te vaćarol thaj e manuša sesa zadivime.</span></span>
-<span class='ff ver'  ><span class='num'>15 </span><span class='ff tex'  >Al nesave lendar vaćarde: “Zorasa e Veelzevulese, e benđenđe šorutnese, tradol e benđen.”</span></span>
+<span class='ff ver'  ><span class='num'>15 </span><span class='ff tex'  >Al nesave lendar vaćarde: “Vov tradol e benđen e Veelzevulese zorasa, savo si o šorutno e benđengo.”</span></span>
 <span class='ff ver'  ><span class='num'>16 </span><span class='ff tex'  >A avera iskušisade e Isuse gija so rodije znako te dičhen dal si bičhaldo taro Dol.</span></span>
 <span class='ff ver'  ><span class='num'>17 </span><span class='ff tex'  >Al o Isus džanglja so den gođi thaj phenda lenđe: “Dži jekh carstvo savo si ulado, ka properol thaj čher ane savo naj sloga, ka properol.</span></span>
 <span class='ff ver'  ><span class='num'>18 </span><span class='ff tex'  >Gija, te avol o Satana ulado ane peste, sar šaj te ačhol leso carstvo? Me phenav kava golese so vaćaren kaj me tradav e benđen e Veelzevulese zorasa.</span></span>
@@ -1285,10 +1288,10 @@ New Testament
 <span class='ff ver'  ><span class='num'>25 </span><span class='ff tex'  >Kana ka iril pe, aračhol gova čher šulado thaj lačhardo andral.</span></span>
 <span class='ff ver'  ><span class='num'>26 </span><span class='ff tex'  >Tegani džal thaj aračhol efta avere duxuren, pobilačhe pestar, thaj katane aven andre thaj bešen gothe. Thaj ko kraj avol e manušese pobilačhe nego angleder.”</span></span>
 <span class='ff ver'  ><span class='num'>27 </span><span class='ff tex'  >Kana gova vaćarda o Isus, jekh džuvli tare manuša dija vika zurale vaćarindoj: “Blagoslovimi i džuvli savi inđarda tut ane piro vođi thaj dija tut čuči!”</span></span>
-<span class='ff ver'  ><span class='num'>28 </span><span class='ff tex'  >Al o Isus phenda: “Vadži poblagoslovime si kola save šunen o Lafi e Devleso thaj ćeren le.”</span></span>
+<span class='ff ver'  ><span class='num'>28 </span><span class='ff tex'  >Al o Isus phenda: “Vadži po blagoslovime si kola save šunen o Lafi e Devleso thaj ćeren le.”</span></span>
 <span class='ff ver'  ><span class='num'>29 </span><span class='ff tex'  >Sar e manuša lije pobut te ćiden pe, o Isus lija te vaćarol lenđe: “Kaja generacija si bilačhi. Rodol znako thaj ni ka dol pe aver znako samo o znako savo sasa e prorokose e Jonase.</span></span>
-<span class='ff ver'  ><span class='num'>30 </span><span class='ff tex'  >Golese kaj, sar so o Jona sasa znako e manušenđe save živisade ano foro Niniva, gija i me, o Čhave e manušeso, ka avol znako e manušenđe tari kaja generacija.</span></span>
-<span class='ff ver'  ><span class='num'>31 </span><span class='ff tex'  >Ko đive taro baro sudo e Devleso i carica so angleder vladisada e južnone phuvasa, ka uštol thaj ka osudil e manušen tari kaja generacija, golese kaj avili tare empalune phuva te šunol e Solomonesi mudrost. Al akh, kate si khoni pobaro taro Solomon, a tumen ni manđen te šunen le.</span></span>
+<span class='ff ver'  ><span class='num'>30 </span><span class='ff tex'  >Golese kaj, sar so o Jona sasa znako e manušenđe save živisade ano foro Niniva, gija i me, o Čhave e manušeso, ka avav znako e manušenđe tari kaja generacija.</span></span>
+<span class='ff ver'  ><span class='num'>31 </span><span class='ff tex'  >Ko đive taro baro sudo e Devleso i carica so angleder vladisada e južnone phuvasa, ka uštol thaj ka osudil e manušen tari kaja generacija, golese kaj avili tare empalune phuva te šunol e Solomoneso mudrost. Al akh, kate si khoni pobaro taro Solomon, a tumen ni manđen te šunen le.</span></span>
 <span class='ff ver'  ><span class='num'>32 </span><span class='ff tex'  >Ko đive taro baro sudo e Devleso e manuša so bešle ano purano foro Niniva, ka ušten i ka osudin e manušen tari kaja generacija, golese kaj kajisajle kana o Jona propovedisada lenđe. Al akh, kate si khoni pobaro taro Jona, a tumen ni pokajisaljen!”</span></span>
 <span class='ff ver'  ><span class='num'>33 </span><span class='ff tex'  >“Khoni ni phabarol i svetiljka pa te čhuvol la talo garado than il talo čaro, nego čhuvol la ko than e svetiljkako te šaj dičhen o svetlost kola so den ano čher.</span></span>
 <span class='ff ver'  ><span class='num'>34 </span><span class='ff tex'  >Ćiri jakh si sar svetiljka e telose. Ako gija ćiri jakh si sasti, sa ćiro telo ka avol osvetlimo. Ako si ćiri jakh bilačhi, ćiro telo ka avol ani tama.</span></span>
@@ -1300,7 +1303,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>40 </span><span class='ff tex'  >Bigođaće! Naj li o Dol kova savo ćerda e manuše od andral thaj od avral?</span></span>
 <span class='ff ver'  ><span class='num'>41 </span><span class='ff tex'  >Nego, den so si andral sar milostinja thaj sa ka avol tumenđe thodo.</span></span>
 <span class='ff ver'  ><span class='num'>42 </span><span class='ff tex'  >Pharo tumenđe e farisejenđe so den dešto kotor tari nana, tari ruta thaj taro sa o povrće, al ni marin te ćeren averenđe kova so si pravedno thaj te manđen e Devle. Trubul te den dešto kotor, al ni trubun te ačhaven e považna buća.</span></span>
-<span class='ff ver'  ><span class='num'>43 </span><span class='ff tex'  >Pharo tumenđe e farisejenđe! Golese so volin te bešen ke anglune thana ane sinagoge thaj kana dičhen tumen e manuša, pherde poštuipe premal tumende, te pozdravin tumen ke trgura.</span></span>
+<span class='ff ver'  ><span class='num'>43 </span><span class='ff tex'  >Pharo tumenđe e farisejenđe! Golese so volin te bešen ke anglune thana ane sinagoge thaj kana dičhen tumen e manuša, pherde poštujipe premal tumende, te pozdravin tumen ke trgura.</span></span>
 <span class='ff ver'  ><span class='num'>44 </span><span class='ff tex'  >Pharo tumenđe [učiteljuralen tare Mojsijaso zakon thaj farisejonalen, dujemujenđe]! Tumen sen sar e neprimetna limora pe save e manuša uštaven a ni džanen kaj uštaven len.”</span></span>
 <span class='ff ver'  ><span class='num'>45 </span><span class='ff tex'  >Tegani phenda e Isusese nesavo učitelji tare Mojsijaso zakon: “Učitelju, kana kava phene, ladžare i amen!”</span></span>
 <span class='ff ver'  ><span class='num'>46 </span><span class='ff tex'  >O Isus phenda lese: “Pharo i tumenđe, učiteljuralen tare Mojsijaso zakon! Golese so čhuven pe manuša pharipe savo si but pharo inđarimase, a ni tumare najesa ni manđen te crden te pomožin nekase.</span></span>
@@ -1309,7 +1312,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>49 </span><span class='ff tex'  >Golese o Dol ane leso mudrost vaćarda tumendar: ‘Ka bičhalav lenđe prorokuren thaj apostoluren. Nesaven lendar ka mudaren, a e dujtonen ka progonin.’</span></span>
 <span class='ff ver'  ><span class='num'>50 </span><span class='ff tex'  >Golese, e manuša tari kaja generacija ka aven kaznime za ko rat savo thavdija tare sa e prorokura taro ćerdipe e svetoso,</span></span>
 <span class='ff ver'  ><span class='num'>51 </span><span class='ff tex'  >taro Aveljeso rat dži e Zaharijaso rat, savo sasa mudardo maškaro žrtveniko thaj o sveto than e Hrameso. Va, phenav tumenđe, ka rodol pe tari tumari generacija.</span></span>
-<span class='ff ver'  ><span class='num'>52 </span><span class='ff tex'  >Pharo tumenđe učiteljuralen tare Mojsijaso zakon! Golese so garaden o ključo taro džanglipe. Korkore ni den andre, a tumen ni dijen kolen save manglje te den andre.”</span></span>
+<span class='ff ver'  ><span class='num'>52 </span><span class='ff tex'  >Pharo tumenđe učiteljuralen tare Mojsijaso zakon! Golese so garaden o ključo taro džanglipe. Korkore ni den andre, a tumen ni mukhljen kolen save manglje te den andre.”</span></span>
 <span class='ff ver'  ><span class='num'>53 </span><span class='ff tex'  >Kana o Isus iklilo gothar, e učitelja tare Mojsijaso zakon thaj e fariseja lije ani bari holi te protivin pe thaj te pučen le tare but buća.</span></span>
 <span class='ff ver'  ><span class='num'>54 </span><span class='ff tex'  >Dikhlje te dolen le ani zamka lese lafurencar.</span></span>
 
@@ -1343,7 +1346,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>11 </span><span class='ff tex'  >Kana ka anen tumen anglo sudo ke sinagoge thaj angle šorutne thaj anglo vlast, ma daran sar ka branin tumen thaj so ka vaćaren.</span></span>
 <span class='ff ver'  ><span class='num'>12 </span><span class='ff tex'  >Golese kaj o Sveto Duxo ka sikavol tumen ane gova sato so trubul te vaćaren.”</span></span>
 <span class='ff ver'  ><span class='num'>13 </span><span class='ff tex'  >Tegani vaćarda khoni tare manuša e Isusese: “Učitelju, vaćar mingre phralese te ulavol mancar kova so ačhada amenđe amaro dad.”</span></span>
-<span class='ff ver'  ><span class='num'>14 </span><span class='ff tex'  >O Isus phenda lese: “Manušeja, ko man čhuta sudija il delioc pe tumende?”</span></span>
+<span class='ff ver'  ><span class='num'>14 </span><span class='ff tex'  >O Isus phenda lese: “Manušeja, ko man čhuta te avav sudija il delioc pe tumende?”</span></span>
 <span class='ff ver'  ><span class='num'>15 </span><span class='ff tex'  >Thaj vaćarda savorenđe o Isus: “Dičhen thaj aračhen tumen tari pohlepa! I sa gaći barvalipe te avol manuše, leso džuvdipe ni avol golestar so isi le.”</span></span>
 <span class='ff ver'  ><span class='num'>16 </span><span class='ff tex'  >Pale gova o Isus vaćarda lenđe kava paramič: “Nesave barvale manušesi phuv bijanda but bijandipe.</span></span>
 <span class='ff ver'  ><span class='num'>17 </span><span class='ff tex'  >Dija gođi ane peste vaćarindoj: ‘So ka ćerav? Naj ane soste te ćidav e milajeso ćidipe.’</span></span>
@@ -1353,12 +1356,12 @@ New Testament
 <span class='ff ver'  ><span class='num'>21 </span><span class='ff tex'  >Gija si kolesa savo ćidol pese barvalipe ki phuv, a ni ćidol barvalipe savo si šukar ane Devlese jakha.”</span></span>
 <span class='ff ver'  ><span class='num'>22 </span><span class='ff tex'  >Tegani o Isus pe sikadenđe phenda: “Golese vaćarav tumenđe: Ma daran za ko tumaro džuvdipe dal ka avol tumen so te xan, ni tumare telose so ka uraven!</span></span>
 <span class='ff ver'  ><span class='num'>23 </span><span class='ff tex'  >Golese kaj si o džuvdipe pobut taro xape thaj tumaro telo pobut taro urajipe.</span></span>
-<span class='ff ver'  ><span class='num'>24 </span><span class='ff tex'  >Dičhen e gavranuren! Sar ni sejin, ni ćiden, naj len ni podrumo ni kaj čhuven o điv, thaj o Dol parvarol len Kobor sen tumen povredna tare čiriklja?</span></span>
-<span class='ff ver'  ><span class='num'>25 </span><span class='ff tex'  >A šaj li khoni tumendar golesa so brinil pe te baravol piro džuvdipe paše jekh đive?</span></span>
+<span class='ff ver'  ><span class='num'>24 </span><span class='ff tex'  >Dičhen e gavranuren! Sar ni sejin, ni ćiden, naj len ni podrumo ni kaj čhuven o điv, thaj o Dol parvarol len. A kobor sen tumen povredna tare čiriklja?</span></span>
+<span class='ff ver'  ><span class='num'>25 </span><span class='ff tex'  >Šaj li khoni tumendar golesa so brinil pe te baravol piro džuvdipe paše jekh đive?</span></span>
 <span class='ff ver'  ><span class='num'>26 </span><span class='ff tex'  >Kana našti ni gova zala te ćeren, sose brinin tumen za ko sa aver?</span></span>
-<span class='ff ver'  ><span class='num'>27 </span><span class='ff tex'  >Dičhen e luluđa ki livada sar baron! Ni ćeren bući, ni suven pese šeja, a me vaćarav tumenđe kaj ni o caro o Solomon ane pe barvale šeja naj sasa urado sar jekh lendar.</span></span>
+<span class='ff ver'  ><span class='num'>27 </span><span class='ff tex'  >Dičhen e luluđa ki livada sar baron! Ni ćeren bući, ni suven pese šeja, a me vaćarav tumenđe kaj ni o caro o Solomon ane pe barvale šeja ni sasa urado sar jekh lendar.</span></span>
 <span class='ff ver'  ><span class='num'>28 </span><span class='ff tex'  >Te o Dol e čara gija uravol ko polje, savi si ađive thaj theara čhudol pe ani jag, dal ni ka brinil pe tumenđe vadži pobut? Sose gaći zala pačan?</span></span>
-<span class='ff ver'  ><span class='num'>29 </span><span class='ff tex'  >Golese, ma brinin tumen, isi li tumen so te xan il so te pijen. Ma daran!</span></span>
+<span class='ff ver'  ><span class='num'>29 </span><span class='ff tex'  >Golese, ma brinin tumen isi li tumen so te xan il so te pijen. Ma daran!</span></span>
 <span class='ff ver'  ><span class='num'>30 </span><span class='ff tex'  >Gija ćeren ke kava sveto e manuša save ni džanen e Devlese. Tumaro Dad ano nebo džanol kaj sa gova trubul tumenđe.</span></span>
 <span class='ff ver'  ><span class='num'>31 </span><span class='ff tex'  >Nego roden o Carstvo e Devleso thaj aver ka dodol pe tumenđe.</span></span>
 <span class='ff ver'  ><span class='num'>32 </span><span class='ff tex'  >Ma daran, mingre cikne bakre! Tumaro Dad manglja te dol tumen te aven ano Carstvo.</span></span>
@@ -1372,7 +1375,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>40 </span><span class='ff tex'  >Thaj tumen aven spremna, golese so me, o Čhavo e manušeso, ka avav kana ni ka den gođi ane savo sato.”</span></span>
 <span class='ff ver'  ><span class='num'>41 </span><span class='ff tex'  >A o Petar pučlja e Isuse: “Gospode! Vaćare li amenđe e sikadenđe kaja paramič, il savorenđe?”</span></span>
 <span class='ff ver'  ><span class='num'>42 </span><span class='ff tex'  >A o Isus vaćarda lese: “Savo si devlikano thaj džanglo sluga kas leso gospodari ka čhuvol upreder pe čherese sluge te dol len te xan ko vreme?</span></span>
-<span class='ff ver'  ><span class='num'>43 </span><span class='ff tex'  >Blagoslovimo si gova sluga kas o gospodari kana avol aračhol le sar ćerol gijate!</span></span>
+<span class='ff ver'  ><span class='num'>43 </span><span class='ff tex'  >Blagoslovimo si gova sluga kas o gospodari kana avol, aračhol le sar ćerol gijate!</span></span>
 <span class='ff ver'  ><span class='num'>44 </span><span class='ff tex'  >Čače vaćarav tumenđe, o gospodari pe sa piro barvalipe ka čhuvol e sluga.</span></span>
 <span class='ff ver'  ><span class='num'>45 </span><span class='ff tex'  >Ako vaćarol o sluga ane po ilo: ‘O gospodari ni ka avol sigate’ thaj lol te marol avere slugen thaj e sluškinjen thaj xal em pijol thaj matol.</span></span>
 <span class='ff ver'  ><span class='num'>46 </span><span class='ff tex'  >O gospodari ka avol ano đive kana vov ni ađućarol thaj ano sato kana ni dol gođi, ka čhinol e sluga ke kotora thaj ka čhuvol le maškar kola save ni pačan ano Dol.</span></span>
@@ -1383,12 +1386,12 @@ New Testament
 <span class='ff ver'  ><span class='num'>51 </span><span class='ff tex'  >Dal den gođi kaj me aviljem te anav mir ki phuv? Na, me aviljem te anav ulaipe maškare manuša.</span></span>
 <span class='ff ver'  ><span class='num'>52 </span><span class='ff tex'  >Golese od akana ka aven ulade e pandž čherutne: trin manuša ka aven ke mingri rig, a duj ka aven protiv gola trin.</span></span>
 <span class='ff ver'  ><span class='num'>53 </span><span class='ff tex'  >Ka uštol o dad protiv o čhavo thaj o čhavo protiv o dad, i dej protiv i čhej thaj i čhej protiv i dej, i sasuj protiv i bori thaj i bori protiv piri sasuj.”</span></span>
-<span class='ff ver'  ><span class='num'>54 </span><span class='ff tex'  >Thaj o Isus vaćarda e manušenđe: “Kana dičhen kaj e kale oblakura ćiden pe nakaro zapad tumen phenen: ‘Ka dolpese bršnd’, i gija avol.</span></span>
+<span class='ff ver'  ><span class='num'>54 </span><span class='ff tex'  >Thaj o Isus vaćarda e manušenđe: “Kana dičhen kaj e kale oblakura ćiden pe nakaro zapad tumen phenen: ‘Ka dolpese bršnd’, thaj gija avol.</span></span>
 <span class='ff ver'  ><span class='num'>55 </span><span class='ff tex'  >Kana dičhen taro jug phurdol, vaćaren: ‘Ka avol tatipe’ thaj gija avol.</span></span>
-<span class='ff ver'  ><span class='num'>56 </span><span class='ff tex'  >Dujemujenđe! O muj e phuvako thaj neboso pindžaren, a sar ni pindžaren akala znakura so ćerdon akana?</span></span>
+<span class='ff ver'  ><span class='num'>56 </span><span class='ff tex'  >Dujemujenđe! O muj e phuvako thaj neboso pindžaren, a sar ni pindžaren kala znakura so ćerdon akana?</span></span>
 <span class='ff ver'  ><span class='num'>57 </span><span class='ff tex'  >Tumen korkore trubul te džanen so si šukar!</span></span>
 <span class='ff ver'  ><span class='num'>58 </span><span class='ff tex'  >Te khoni tužil tumen zbog o dugo savo ni irisaden thaj inđarol tumen ko sudo, odrumal miri tut lesa, te ma vucil tut ko sudo, golese so o sudija šaj osudil tut thaj te dol tut ke piro manuš te phandol tut ano phanglipe.</span></span>
-<span class='ff ver'  ><span class='num'>59 </span><span class='ff tex'  >A ako phandol tut vaćarav tuće: Ni ka iklje gothar dok ni poćine dži i paluni para.”</span></span>
+<span class='ff ver'  ><span class='num'>59 </span><span class='ff tex'  >A ako phandol tut vaćarav tuće: Ni ka iklje gothar dok ni poćine dži i paluni parava.”</span></span>
 
 </div>
 <div id="word-menu-bottom">
@@ -1806,7 +1809,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>10 </span><span class='ff tex'  >Kana avilo o vreme te ćidol pe i drakh, bičhalda pe sluga ke gola manuša te ćidol o kotor taro bijandipe e drakhako so lese preperol. Al e vinogradara marde le thaj bičhalde le čuče vastencar.</span></span>
 <span class='ff ver'  ><span class='num'>11 </span><span class='ff tex'  >Golese o gospodari taro vinograd bičhalda avere sluga. Al i gole marde, ladžarde thaj bičhalde le čuče vastencar.</span></span>
 <span class='ff ver'  ><span class='num'>12 </span><span class='ff tex'  >Palem bičhalda ke lende avere sluga. Al von ratvarde le thaj tradije le taro vinograd.</span></span>
-<span class='ff ver'  ><span class='num'>13 </span><span class='ff tex'  >Tegani o gospodari taro vinograd vaćarda: ‘So te ćerav? Ka bičhalav mingre mangle čhave. Šaj le ka poštuin.’</span></span>
+<span class='ff ver'  ><span class='num'>13 </span><span class='ff tex'  >Tegani o gospodari taro vinograd vaćarda: ‘So te ćerav? Ka bičhalav mingre mangle čhave. Šaj le ka poštujin.’</span></span>
 <span class='ff ver'  ><span class='num'>14 </span><span class='ff tex'  >Al kana e vinogradara dikhlje lese čhave, vaćarde jekh averese: ‘Kava si leso nasledniko. Aven te mudara le te ačhol gova amenđe so si leso!’</span></span>
 <span class='ff ver'  ><span class='num'>15 </span><span class='ff tex'  >Gija ikalde le avral taro vinograd thaj mudarde le. So den gođi so ka ćerol o gospodari taro vinograd kale manušenđe kana ka šunol so ćerde?</span></span>
 <span class='ff ver'  ><span class='num'>16 </span><span class='ff tex'  >Ka avol thaj ka mudarol sa e vinogradaren thaj o vinograd ka iznajmil averenđe.” Kana kava šunde e manuša, vaćarde e Isuse: “Ma te dol o Dol gova te avol!”</span></span>
@@ -2059,7 +2062,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>53 </span><span class='ff tex'  >Pale gova o Josif uljarda e Isuseso telo taro krsto, paćarda le čaršafesa thaj čhuta le ano limori savo sasa hundo ani stena thaj ane savo khoni naj sasa čhuto.</span></span>
 <span class='ff ver'  ><span class='num'>54 </span><span class='ff tex'  >Ćerda gova jekh đive anglo savato, savo lija te ikljol.</span></span>
 <span class='ff ver'  ><span class='num'>55 </span><span class='ff tex'  >E džuvlja save avile e Isusesa andari Galileja, đele palo Josif i dikhlje o limori i sar čhute gothe e Isuseso telo.</span></span>
-<span class='ff ver'  ><span class='num'>56 </span><span class='ff tex'  >Pale gova irisajle čhere te ćeren e mirisna čara thaj e uljura te mačhen e Isuseso telo. Kana sa ćerde, već avilo o savato i naštine ćeren gova te poštuin e Mojsijaso zakon.</span></span>
+<span class='ff ver'  ><span class='num'>56 </span><span class='ff tex'  >Pale gova irisajle čhere te ćeren e mirisna čara thaj e uljura te mačhen e Isuseso telo. Kana sa ćerde, već avilo o savato i naštine ćeren gova te poštujin e Mojsijaso zakon.</span></span>
 
 </div>
 <div id="word-menu-bottom">
@@ -2556,7 +2559,7 @@ World Nations
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// PAGER
+// PAGER - The heart of the PWA that allows navigating through the page content array AB_Bible
 function ABDO(goto, anchor=null, push=true) {
 	// validate request
 	if      (typeof goto == 'number')  {				gonu = goto; }
@@ -2586,6 +2589,11 @@ function ABDO(goto, anchor=null, push=true) {
 	}
 	document.getElementById('body').innerHTML = AB_Bible[AB_Page];
 
+	// Set the update and install links 
+	if (AB_Page < 2) {
+		AionianBible_PWA_UpdateInstall();
+	}
+
 	// push history to browser
 	if (anchor && anchor[0]=='#') { anchor = anchor.substr(1); }
 	if (push && (window.history.state === null || typeof window.history.state.go == "undefined" || window.history.state.go != goto)) {
@@ -2607,7 +2615,7 @@ function ABDO(goto, anchor=null, push=true) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// BROWSER HISTORY
+// BROWSER HISTORY - Since we page without re-loading this sets the brower history
 window.addEventListener('popstate', function (event) {
     if (event.state) {
 		ABDO(event.state.go, null, false);
@@ -2619,7 +2627,7 @@ window.addEventListener('popstate', function (event) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// COOKIES
+// COOKIES - Used for bookmarking pages
 function AionianBible_writeCookie(cname, cvalue) {
 	var date = new Date();
 	date.setTime(date.getTime() + (1000 * 24 * 60 * 60 * 1000));
@@ -2645,7 +2653,7 @@ function AionianBible_readCookie(cname) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// BOOKMARK
+// BOOKMARK - Save bookmarks to Cookies
 function AionianBible_Set() {
 	AB_Bookmark2 = AB_Page;
 	AionianBible_writeCookie("AionianBible.Bookmark2", AB_Bookmark2);
@@ -2661,7 +2669,7 @@ function AionianBible_Get() {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// ACCESSIBILITY
+// ACCESSIBILITY - Increase font size for readability
 function AionianBible_Accessible() {
 	AB_Accessible = document.getElementById('body');
 	if (null !== AB_Accessible) {
@@ -2687,7 +2695,7 @@ function AionianBible_Accessible() {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// SWIPE
+// SWIPE - Swipe pagination
 function AionianBible_SwipeListener(handleswipe) {
 	var swipedir, startX, startY, distX, distY, elapsedTime, startTime;
 	document.body.addEventListener('touchstart', function(e) {
@@ -2723,7 +2731,7 @@ AionianBible_SwipeLinks();
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// RELOAD
+// RELOAD - Reload the HTM file and all resources
 function AionianBible_Reload() {
 	const myRequest = new Request(window.location.href);
 	fetch(myRequest,{cache: 'reload'}).then((response) => {
@@ -2746,25 +2754,31 @@ function AionianBible_Reload() {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// PWA 
+// PWA - Display install and update links accordingly, called from various contexts
 var AionianBible_PWA_InstallPromptEvent = null;
-function AionianBible_PWA_Install() {
-	var java = document.getElementById('java');
-	if (java) { java.innerHTML = "<a href='?PWA' onclick='AionianBible_PWA_InstallPrompt();return false;' title='Install Progressive Web Application'>( Install Bible App )</a>"; }
+function AionianBible_PWA_UpdateInstall() {
+	var upin = document.getElementById('upin');
+	if (upin) {
+		// No install prompt or 'minimal-ui' display so must already be installed
+		if (!AionianBible_PWA_InstallPromptEvent || window.matchMedia('(display-mode: minimal-ui)').matches) {
+			upin.innerHTML = "<a title='Internet connection required' href='?PWA' onclick='AionianBible_Reload();return false;'>( Update Bible App )</a><br>";
+		}
+		// offer install function */
+		else {
+			upin.innerHTML = "<a href='?PWA' onclick='AionianBible_PWA_InstallPrompt();return false;' title='Install Progressive Web Application'>( Install Bible App )</a><br>";
+		}
+	}
 }
-function AionianBible_PWA_Update() {
-	var java = document.getElementById('java');
-	if (java) { java.innerHTML = "<a title='Internet connection required' href='?PWA' onclick='AionianBible_Reload();return false;'>( Update Bible App )</a>"; }
-}
-// install request
+// install prompt event captured on page load
 async function AionianBible_PWA_InstallPrompt() {
 	if (AionianBible_PWA_InstallPromptEvent) {
 		const result = await AionianBible_PWA_InstallPromptEvent.prompt();
 		console.log(`Aionian Bible App install prompt: ${result.outcome}`);
-		AionianBible_PWA_Update();
+		AionianBible_PWA_InstallPromptEvent = null;
+		AionianBible_PWA_UpdateInstall();
 	}
 }
-// recache message
+// message the service worker to reload the cache - currently unused
 async function AionianBible_PWA_ReInstall() {
 	if ("serviceWorker" in navigator && navigator.serviceWorker.controller) {
 		navigator.serviceWorker.controller.postMessage({
@@ -2778,7 +2792,7 @@ async function AionianBible_PWA_ReInstall() {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// ONLOAD
+// ONLOAD - Initialize the PWA
 window.onload = function() {
 	// bookmarks
 	AB_Bookmark = AionianBible_readCookie("AionianBible.Bookmark");
@@ -2792,22 +2806,30 @@ window.onload = function() {
 		AionianBible_writeCookie("AionianBible.Bookmark", AB_Bookmark2);
 	}
 
-	// homepage
-	AionianBible_PWA_Update();
+	// remove javascript warning and save homepage to array
+	var upin = document.getElementById('upin');
+	if (upin) { upin.innerHTML = ''; }
 	AB_Bible[0] = document.getElementById('body').innerHTML;
-	const query = window.location.search;
-	if (query && query != "?PWA") {	ABDO(query.substr(1), window.location.hash); }
-	else {							window.history.replaceState({go:'PWA'}, '', location.pathname + "?PWA"); }
 
-	// install
-	AionianBible_PWA_Update();
+	// load queried page
+	const query = window.location.search;
+	if (query && query != "?PWA") {
+		ABDO(query.substr(1), window.location.hash);
+	}
+	// homepage already loaded, but indicate update or install
+	else {
+		window.history.replaceState({go:'PWA'}, '', location.pathname + "?PWA");
+		AionianBible_PWA_UpdateInstall();
+	}
+
+	// seize the install prompt
 	window.addEventListener("beforeinstallprompt", (event) => {
 		event.preventDefault();
 		AionianBible_PWA_InstallPromptEvent = event;
-		AionianBible_PWA_Install();
+		AionianBible_PWA_UpdateInstall();
 	});
-	
-	// service worker
+
+	// register the service worker
 	if ("serviceWorker" in navigator) {
 		navigator.serviceWorker.register("pwa.js");
 	}

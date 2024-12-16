@@ -3,7 +3,7 @@
 <!-- Short: ETC -->
 <!-- Font:  -->
 <!-- Publisher: https://NAINOIA-INC.signedon.net -->
-<!-- Formatted: ABCMS on 12/15/2024 09:26:26 -->
+<!-- Formatted: ABCMS on 12/16/2024 03:49:11 -->
 <!-- Website: https://www.AionianBible.org -->
 <!-- Resources: https://resources.AionianBible.org -->
 <!-- Repository: https://github.com/Nainoia-Inc -->
@@ -11,9 +11,14 @@
 <!-- Language: English -->
 <!-- Source: Robert Adam Boyd -->
 <!-- Source copyright: Creative Commons Attribution 4.0 -->
-<!-- Source version: 12/5/2024 -->
+<!-- Source version: 12/14/2024 -->
 <!-- Source text: https://ebible.org/details.php?id=engtcent -->
 
+<!-- The Aionian Bible project also serves all its translations as Progressive Web Apps. -->
+<!-- Each Bible translation is contained in a single HTM file using javascript to paginate. -->
+<!-- The PWA listing, manifests, service workers, and icons are served dynamically. -->
+<!-- Dynamic files could be pre-generated, but dynamic results in a simpler GitHub package. -->
+<!-- .htaccess rules masquerade each PWA into its own folder allowing multiple-installs. -->
 
 
 
@@ -29,7 +34,7 @@
 <meta name="description" content="Holy Bible Aionian Edition® ~ Boyd Text-Critical English NT ~ The world's first Holy Bible untranslation! ~ Progressive Web Application PWA">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="generator" content="ABCMS™">
-<meta name="version" content="12/15/2024 09:26:26">
+<meta name="version" content="12/16/2024 03:49:11">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
@@ -125,8 +130,7 @@ a:hover { color: #9966CC; }
 #aion { padding: 0 0 15px 0; font-style: italic; font-size: 130%; font-weight: bold; color: #191919; }
 #moto { margin: 10px 0 0 0; color: #663399; }
 .RegisteredTM { font-size: 75%; }
-#java { text-align: center; font-weight: bold; }
-#java .red { color: red; }
+#upin.home { text-align: center; font-weight: bold; color: red; }
 
 /* PAGE HEAD */
 #page {	height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 10px; background-color: #FFFFFF; }
@@ -300,9 +304,9 @@ body.word-read #body { max-width: 1024px; margin: 0 auto; padding: 110px 3% 2% 3
 <a href="?Prev" title="Previous page" class="nav left" onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
 <a href="?Next" title="Next page" class="nav right" onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
 </div>
-<div id='body' class=''>
+<div id='body'>
 
-<div id='java'><span class='red'>( Javascript and cookies required )</span></div>
+<div id='upin' class='home'><span class='java'>( Javascript and cookies required )<br></span></div>
 <div id='home1'>
 <a title="Return to last page read or TOC" href="?Bookmark" onclick="ABDO('Bookmark'); return false;">
 <div id='home2'>
@@ -318,7 +322,7 @@ One of three hundred seventy-six versions<br>
 One of one hundred sixty-five languages<br>
 Anonymous on TOR network<br>
 100% free to copy &amp; print<br>
-Updated 12/15/2024 09:26:26<br>
+Updated 12/16/2024 03:49:11<br>
 <br>
 Also known as 'The Purple Bible'
 </div>
@@ -340,7 +344,7 @@ Also known as 'The Purple Bible'
 
 <script>
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// Globals
+// Globals to control javascript paging
 var AB_Accessible	= null;
 var AB_Bookmark		= 'TOC';
 var AB_Bookmark2	= 'TOC';
@@ -351,7 +355,7 @@ var AB_Page			= 0;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// Bible pages map
+// Bible pages object map page name to AB_Bible index
 const AB_Map = {
 'PWA'		:	0,
 'TOC'		:	1,
@@ -382,7 +386,7 @@ const AB_Map = {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// Bible pages
+// Bible pages array of all Bible content by chapter
 const AB_Bible = [
 
 
@@ -390,7 +394,7 @@ const AB_Bible = [
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// Homepage populated dynamically from HTML #body on page load
+// Homepage populated dynamically from HTML #body on page load so homepage is only defined one place
 ``,
 
 
@@ -398,7 +402,7 @@ const AB_Bible = [
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// TOC
+// TOC - Table of Contents
 `
 <h2 class='title'>
 <a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
@@ -407,8 +411,7 @@ Table of Contents
 <a title="Return to last page read or TOC" href="?Bookmark" onclick="ABDO('Bookmark'); return false;">Boyd Text-Critical English NT</a>
 </h2>
 <a title="AionianBible.org online"		href="https://www.AionianBible.org/Read" target="_blank">AionianBible.org for all Bibles</a><br>
-<a title='Internet connection required'	href='?TOC' onclick="AionianBible_Reload();return false;">Update Bible App</a><br>
-<a title='Internet connection required'	href='?TOC' onclick="AionianBible_PWA_ReInstall();return false;">Update Bible App Cache</a><br>
+<div id='upin'></div>
 <a title="Copyright"					href="?Copyright"	onclick="ABDO('Copyright');	return false;">Copyright</a><br>
 <a title="Preface"						href="?Preface"		onclick="ABDO('Preface');	return false;">Preface</a><br>
 <a title="Aiōnios and Aïdios"			href="?Aionian"		onclick="ABDO('Aionian');	return false;">Aiōnios and Aïdios</a>
@@ -451,7 +454,7 @@ Copyright
 Publisher: Nainoia Inc<br>
 Copyright: <a href='https://creativecommons.org/licenses/by/4.0/' target='_blank'>Creative Commons Attribution 4.0 International, 2018-2024</a><br>
 Language: English<br>
-Formatted: ABCMS <a href='https://en.wikipedia.org/wiki/Progressive_web_app' target='_blank' title='Web pages designed for off-line viewing'>Progressive Web Application</a> on 12/15/2024 09:26:26<br>
+Formatted: ABCMS <a href='https://en.wikipedia.org/wiki/Progressive_web_app' target='_blank' title='Web pages designed for off-line viewing'>Progressive Web Application</a> on 12/16/2024 03:49:11<br>
 Formats:
 <a href='https://www.AionianBible.org/Bibles/English---Text-Critical' target='_blank' title='Read online'>Online</a>,
 <a href='https://www.AionianBible.org/TOR/Bibles/English---Text-Critical' target='_blank' title='Read TOR anonymously'>TOR Anonymously</a>,
@@ -464,7 +467,7 @@ Formats:
 <br>
 Source: Robert Adam Boyd<br>
 Source copyright: Creative Commons Attribution 4.0<br>
-Source version: 12/5/2024<br>
+Source version: 12/14/2024<br>
 Source text: <a href='https://ebible.org/details.php?id=engtcent' target='_blank' title='Download Source File'>https://ebible.org/details.php?id=engtcent</a><br>
 <br>
 We pray for a modern public domain translation in every language.<br>
@@ -1391,7 +1394,7 @@ New Testament
 <span class='ff ver' lang='en' ><span class='num'>21 </span><span class='ff tex' lang='en' >From that time Jesus began to show his disciples that he must go to Jerusalem and suffer many things at the hands of the elders, chief priests, and scribes, and that he must be killed and on the third day be raised up.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>22 </span><span class='ff tex' lang='en' >So Peter took him aside and began to rebuke him, saying, “God forbid, Lord! This shall certainly not happen to yoʋ.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>23 </span><span class='ff tex' lang='en' >But he turned around and said to Peter, “Get behind me, Satan! Yoʋ are a stumbling block to me, for yoʋ are not thinking about the things of God, but the things of men.”</span></span>
-<span class='ff ver' lang='en' ><span class='num'>24 </span><span class='ff tex' lang='en' >Then Jesus said to his disciples, “If anyone wants to come after me, he must deny himself, take up his cross, and follow me.</span></span>
+<span class='ff ver' lang='en' ><span class='num'>24 </span><span class='ff tex' lang='en' >Then Jesus said to his disciples, “If anyone wants to be one of my disciples, he must deny himself, take up his cross, and follow me.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>25 </span><span class='ff tex' lang='en' >For whoever wants to save his life will lose it, but whoever loses his life for my sake will find it.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>26 </span><span class='ff tex' lang='en' >For what does it benefit a person if he gains the whole world but forfeits his soul? Or what can a person give in exchange for his soul?</span></span>
 <span class='ff ver' lang='en' ><span class='num'>27 </span><span class='ff tex' lang='en' >For the Son of Man will come with his angels in the glory of his Father, and then he will repay each person according to what he has done.</span></span>
@@ -2605,7 +2608,7 @@ New Testament
 <span class='ff ver' lang='en' ><span class='num'>31 </span><span class='ff tex' lang='en' >Then he began to teach them that the Son of Man must suffer many things and be rejected by the elders, the chief priests, and the scribes, and that he must be killed and after three days rise again.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>32 </span><span class='ff tex' lang='en' >He was stating the matter plainly, so Peter took him aside and began to rebuke him.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>33 </span><span class='ff tex' lang='en' >But turning around and looking at his disciples, he rebuked Peter, saying, “Get behind me, Satan! For yoʋ are not thinking about the things of God, but the things of men.”</span></span>
-<span class='ff ver' lang='en' ><span class='num'>34 </span><span class='ff tex' lang='en' >Then he called the crowd over, along with his disciples, and said to them, “If anyone wants to follow me, he must deny himself, take up his cross, and follow me.</span></span>
+<span class='ff ver' lang='en' ><span class='num'>34 </span><span class='ff tex' lang='en' >Then he called the crowd over, along with his disciples, and said to them, “If anyone wants to be one of my disciples, he must deny himself, take up his cross, and follow me.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>35 </span><span class='ff tex' lang='en' >For whoever wants to save his life will lose it, but whoever loses his life for my sake and for the sake of the gospel will save it.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>36 </span><span class='ff tex' lang='en' >For what will it benefit a person if he gains the whole world but forfeits his soul?</span></span>
 <span class='ff ver' lang='en' ><span class='num'>37 </span><span class='ff tex' lang='en' >Or what can a person give in exchange for his soul?</span></span>
@@ -3725,7 +3728,7 @@ New Testament
 <span class='ff ver' lang='en' ><span class='num'>20 </span><span class='ff tex' lang='en' >Then he said to them, “But who do you say that I am?” Peter answered, “The Christ of God.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>21 </span><span class='ff tex' lang='en' >Jesus then warned them and instructed them to tell this to no one,</span></span>
 <span class='ff ver' lang='en' ><span class='num'>22 </span><span class='ff tex' lang='en' >saying, “The Son of Man must suffer many things and be rejected by the elders, chief priests, and scribes, and he must be killed and on the third day rise again.”</span></span>
-<span class='ff ver' lang='en' ><span class='num'>23 </span><span class='ff tex' lang='en' >Then he said to them all, “If anyone wants to come after me, he must deny himself, take up his cross, and follow me.</span></span>
+<span class='ff ver' lang='en' ><span class='num'>23 </span><span class='ff tex' lang='en' >Then he said to them all, “If anyone wants to be one of my disciples, he must deny himself, take up his cross, and follow me.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>24 </span><span class='ff tex' lang='en' >For whoever wants to save his life will lose it, but whoever loses his life for my sake will save it.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>25 </span><span class='ff tex' lang='en' >For what does it benefit a person if he gains the whole world but loses or forfeits himself?</span></span>
 <span class='ff ver' lang='en' ><span class='num'>26 </span><span class='ff tex' lang='en' >If anyone is ashamed of me and my words, the Son of Man will be ashamed of him when he comes in his glory and the glory of the Father and the holy angels.</span></span>
@@ -4071,7 +4074,7 @@ New Testament
 <span class='ff ver' lang='en' ><span class='num'>24 </span><span class='ff tex' lang='en' >For I tell you that none of those men who were invited will get a taste of my banquet.’ For many are called, but few are chosen.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>25 </span><span class='ff tex' lang='en' >Now large crowds were traveling with Jesus, and he turned and said to them,</span></span>
 <span class='ff ver' lang='en' ><span class='num'>26 </span><span class='ff tex' lang='en' >“If anyone comes to me and does not hate his father and mother, wife and children, brothers and sisters, and even his own life, he cannot be my disciple.</span></span>
-<span class='ff ver' lang='en' ><span class='num'>27 </span><span class='ff tex' lang='en' >And whoever does not bear his own cross and come after me cannot be my disciple.</span></span>
+<span class='ff ver' lang='en' ><span class='num'>27 </span><span class='ff tex' lang='en' >And whoever does not bear his own cross and follow me cannot be my disciple.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>28 </span><span class='ff tex' lang='en' >For which of you who wants to build a tower does not first sit down and estimate the cost, to see if he has what he needs to complete it?</span></span>
 <span class='ff ver' lang='en' ><span class='num'>29 </span><span class='ff tex' lang='en' >For if he lays the foundation and is not able to finish it, all who are looking on will begin to mock him,</span></span>
 <span class='ff ver' lang='en' ><span class='num'>30 </span><span class='ff tex' lang='en' >saying, ‘This man began to build and was not able to finish.’</span></span>
@@ -4832,13 +4835,13 @@ New Testament
 <span class='ff ver' lang='en' ><span class='num'>7 </span><span class='ff tex' lang='en' >Jesus said to the servants, “Fill the jars with water.” So they filled them up to the brim.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>8 </span><span class='ff tex' lang='en' >Then he said to them, “Now draw some out and take it to the master of the feast.” So they took it,</span></span>
 <span class='ff ver' lang='en' ><span class='num'>9 </span><span class='ff tex' lang='en' >and the master of the feast tasted the water, which had been turned into wine. He did not know where it had come from, but the servants who had drawn the water knew. Then the master of the feast called the bridegroom aside</span></span>
-<span class='ff ver' lang='en' ><span class='num'>10 </span><span class='ff tex' lang='en' >and said to him, “Everyone serves the good wine first, and then the inferior wine after the guests have drunk freely; but yoʋ have kept the good wine until now.”</span></span>
+<span class='ff ver' lang='en' ><span class='num'>10 </span><span class='ff tex' lang='en' >and said to him, “Everyone else serves the good wine first, and then the inferior wine after the guests have drunk freely; but yoʋ have kept the good wine until now.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>11 </span><span class='ff tex' lang='en' >Jesus did this in Cana of Galilee as the first of his signs. He revealed his glory, and his disciples believed in him.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>12 </span><span class='ff tex' lang='en' >After this he went down to Capernaum with his mother, his brothers, and his disciples, and they stayed there for a few days.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>13 </span><span class='ff tex' lang='en' >Now the Passover of the Jews was near, so Jesus went up to Jerusalem.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>14 </span><span class='ff tex' lang='en' >In the temple courts he found those who were selling oxen, sheep, and doves, and he also found the money changers sitting at their tables.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>15 </span><span class='ff tex' lang='en' >So he made a whip of cords and drove them all out of the temple courts, along with their sheep and oxen. He also poured out the coins of the money changers and overturned their tables.</span></span>
-<span class='ff ver' lang='en' ><span class='num'>16 </span><span class='ff tex' lang='en' >Then he said to those who were selling doves, “Take these things away from here; do not make my Father's house a house of trade.”</span></span>
+<span class='ff ver' lang='en' ><span class='num'>16 </span><span class='ff tex' lang='en' >Then he said to those who were selling doves, “Take these things away from here; stop making my Father's house a marketplace.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>17 </span><span class='ff tex' lang='en' >And his disciples remembered that it is written, “Zeal for yoʋr house will consume me.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>18 </span><span class='ff tex' lang='en' >In response the Jews said to him, “What sign can yoʋ show us to prove yoʋr authority to do these things?”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>19 </span><span class='ff tex' lang='en' >Jesus answered them, “Destroy this temple, and in three days I will raise it up.”</span></span>
@@ -4867,7 +4870,7 @@ New Testament
 
 <div class='chap'>
 <span class='ff ver' lang='en' ><span class='num'>1 </span><span class='ff tex' lang='en' >Now there was a man of the Pharisees named Nicodemus, a ruler of the Jews.</span></span>
-<span class='ff ver' lang='en' ><span class='num'>2 </span><span class='ff tex' lang='en' >He came to Jesus by night and said to him, “Rabbi, we know that yoʋ are a teacher who has come from God, for no one can do these signs that yoʋ are doing unless God is with him.”</span></span>
+<span class='ff ver' lang='en' ><span class='num'>2 </span><span class='ff tex' lang='en' >He came to Jesus by night and said to him, “Rabbi, we know that yoʋ are a teacher who has come from God, for no one can do these signs yoʋ are doing unless God is with him.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>3 </span><span class='ff tex' lang='en' >Jesus answered him, “Truly, truly, I say to yoʋ, unless one is born again, he cannot see the kingdom of God.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>4 </span><span class='ff tex' lang='en' >Nicodemus said to him, “How can a person be born when he is old? Can he enter the womb of his mother a second time and be born?”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>5 </span><span class='ff tex' lang='en' >Jesus answered, “Truly, truly, I say to yoʋ, unless one is born of water and the Spirit, he cannot enter the kingdom of God.</span></span>
@@ -4886,12 +4889,12 @@ New Testament
 <span class='ff ver' lang='en' ><span class='num'>18 </span><span class='ff tex' lang='en' >Whoever believes in him is not condemned, but whoever does not believe has been condemned already, because he has not believed in the name of the one and only Son of God.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>19 </span><span class='ff tex' lang='en' >This is the judgment: The light has come into the world, but people loved the darkness rather than the light because their works were evil.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>20 </span><span class='ff tex' lang='en' >For whoever does evil hates the light and does not come to the light, so that his works may not be exposed.</span></span>
-<span class='ff ver' lang='en' ><span class='num'>21 </span><span class='ff tex' lang='en' >But whoever lives by the truth comes to the light, so that it may be evident that his works have been done in God.”</span></span>
-<span class='ff ver' lang='en' ><span class='num'>22 </span><span class='ff tex' lang='en' >After this Jesus went into the Judean countryside along with his disciples, and he spent some time there with them and baptized.</span></span>
-<span class='ff ver' lang='en' ><span class='num'>23 </span><span class='ff tex' lang='en' >Now John was also baptizing in Aenon near Salem, because there was much water there, and people were coming to him and being baptized.</span></span>
+<span class='ff ver' lang='en' ><span class='num'>21 </span><span class='ff tex' lang='en' >But whoever lives by the truth comes to the light, so that it may be evident that his works have been done in obedience to God.”</span></span>
+<span class='ff ver' lang='en' ><span class='num'>22 </span><span class='ff tex' lang='en' >After this Jesus went into the Judean countryside along with his disciples, and he spent some time there with them, baptizing people.</span></span>
+<span class='ff ver' lang='en' ><span class='num'>23 </span><span class='ff tex' lang='en' >Now John was also baptizing people in Aenon near Salem, because there was plenty of water there, and people were coming to him and being baptized.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>24 </span><span class='ff tex' lang='en' >(For John had not yet been thrown into prison.)</span></span>
 <span class='ff ver' lang='en' ><span class='num'>25 </span><span class='ff tex' lang='en' >Now a discussion arose between the disciples of John and a Jew about purification.</span></span>
-<span class='ff ver' lang='en' ><span class='num'>26 </span><span class='ff tex' lang='en' >So John's disciples came and said to him, “Rabbi, he who was with yoʋ beyond the Jordan, about whom yoʋ have testified, behold, he is baptizing, and everyone is going to him.”</span></span>
+<span class='ff ver' lang='en' ><span class='num'>26 </span><span class='ff tex' lang='en' >So John's disciples came and said to him, “Rabbi, he who was with yoʋ beyond the Jordan, about whom yoʋ have testified, behold, he is baptizing people, and everyone is going to him.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>27 </span><span class='ff tex' lang='en' >John replied, “A person cannot receive anything unless it is given to him from heaven.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>28 </span><span class='ff tex' lang='en' >You yourselves can testify that I said, ‘I am not the Christ,’ but rather, ‘I have been sent ahead of him.’</span></span>
 <span class='ff ver' lang='en' ><span class='num'>29 </span><span class='ff tex' lang='en' >He who has the bride is the bridegroom. But the friend of the bridegroom, who stands and listens for him, rejoices greatly at the bridegroom's voice. So this joy of mine has been made full.</span></span>
@@ -4928,7 +4931,7 @@ New Testament
 <span class='ff ver' lang='en' ><span class='num'>6 </span><span class='ff tex' lang='en' >Jacob's well was there, so Jesus, wearied as he was from the journey, sat by the well. It was about the sixth hour.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>7 </span><span class='ff tex' lang='en' >When a woman from Samaria came to draw water, Jesus said to her, “Give me some water to drink.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>8 </span><span class='ff tex' lang='en' >(For his disciples had gone into the city to buy food.)</span></span>
-<span class='ff ver' lang='en' ><span class='num'>9 </span><span class='ff tex' lang='en' >So the Samaritan woman said to him, “How is it that yoʋ, being a Jew, ask for water to drink from me, a Samaritan woman?” (For Jews have no dealings with Samaritans.)</span></span>
+<span class='ff ver' lang='en' ><span class='num'>9 </span><span class='ff tex' lang='en' >So the Samaritan woman said to him, “How is it that yoʋ, a Jew, ask for water to drink from me, a Samaritan woman?” (For Jews have no dealings with Samaritans.)</span></span>
 <span class='ff ver' lang='en' ><span class='num'>10 </span><span class='ff tex' lang='en' >Jesus answered her, “If yoʋ knew the gift of God and who it is that is saying to yoʋ, ‘Give me some water to drink,’ yoʋ would have asked him, and he would have given yoʋ living water.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>11 </span><span class='ff tex' lang='en' >The woman said to him, “Sir, yoʋ do not even have a bucket to draw with, and the well is deep. Where then can yoʋ get this living water?</span></span>
 <span class='ff ver' lang='en' ><span class='num'>12 </span><span class='ff tex' lang='en' >Are yoʋ greater than our father Jacob, who gave us this well and drank from it himself, as did his sons and livestock?”</span></span>
@@ -4936,7 +4939,7 @@ New Testament
 <span class='ff ver' lang='en' ><span class='num'>14 </span><span class='ff tex avh' lang='en' >but whoever drinks the water I give him will certainly never thirst again. On the contrary, the water I give him will become in him a spring of water welling up to eternal life.” <span class='not' dir='ltr'><a href='?76' onclick='ABDO(76);return false;' title='View previous annotation'>&lt;</a> aiōn <a href="?Glossary#g165" onclick="ABDO('Glossary','g165');	return false;"	title='View definition'>g165</a>, aiōnios <a href="?Glossary#g166" onclick="ABDO('Glossary','g166');	return false;"	title='View definition'>g166</a> <a href='?78' onclick='ABDO(78);return false;' title='View next annotation'>&gt;</a></span></span></span>
 <span class='ff ver' lang='en' ><span class='num'>15 </span><span class='ff tex' lang='en' >The woman said to him, “Sir, give me this water so that I will not get thirsty again and have to come here to draw water.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>16 </span><span class='ff tex' lang='en' >Jesus said to her, “Go call yoʋr husband and come back here.”</span></span>
-<span class='ff ver' lang='en' ><span class='num'>17 </span><span class='ff tex' lang='en' >The woman answered, “I have no husband.” Jesus said to her, “Yoʋ have rightly said, ‘I have no husband,’</span></span>
+<span class='ff ver' lang='en' ><span class='num'>17 </span><span class='ff tex' lang='en' >The woman said in response, “I have no husband.” Jesus said to her, “Yoʋ have rightly said, ‘I have no husband,’</span></span>
 <span class='ff ver' lang='en' ><span class='num'>18 </span><span class='ff tex' lang='en' >for yoʋ have had five husbands, and the man yoʋ now have is not yoʋr husband; what yoʋ have said is true.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>19 </span><span class='ff tex' lang='en' >The woman said to him, “Sir, I see that yoʋ are a prophet.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>20 </span><span class='ff tex' lang='en' >Our fathers worshiped on this mountain, but you say that the place where people must worship is in Jerusalem.”</span></span>
@@ -4946,7 +4949,7 @@ New Testament
 <span class='ff ver' lang='en' ><span class='num'>24 </span><span class='ff tex' lang='en' >God is spirit, and those who worship him must worship in spirit and truth.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>25 </span><span class='ff tex' lang='en' >The woman said to him, “I know that Messiah is coming” (who is called Christ). “When he comes, he will explain everything to us.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>26 </span><span class='ff tex' lang='en' >Jesus said to her, “I who speak to yoʋ am he.”</span></span>
-<span class='ff ver' lang='en' ><span class='num'>27 </span><span class='ff tex' lang='en' >Just then his disciples came back, and they were amazed that he was speaking with a woman. However, no one said, “What do yoʋ seek?” or, “Why are yoʋ speaking with her?”</span></span>
+<span class='ff ver' lang='en' ><span class='num'>27 </span><span class='ff tex' lang='en' >Just then his disciples came back, and they were amazed that he was speaking with a woman. However, no one said, “What do yoʋ want?” or, “Why are yoʋ speaking with her?”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>28 </span><span class='ff tex' lang='en' >Then the woman left her water jar, went into the town, and said to the people,</span></span>
 <span class='ff ver' lang='en' ><span class='num'>29 </span><span class='ff tex' lang='en' >“Come see a man who told me everything I have ever done. Could this be the Christ?”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>30 </span><span class='ff tex' lang='en' >So they left the town and began coming to him.</span></span>
@@ -4957,8 +4960,8 @@ New Testament
 <span class='ff ver' lang='en' ><span class='num'>35 </span><span class='ff tex' lang='en' >Do you not say, ‘There are still four months and then comes the harvest’? I tell you, lift up your eyes and see that the fields are already ripe for harvest.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>36 </span><span class='ff tex avh' lang='en' >He who reaps receives wages and gathers fruit for eternal life, so that both he who sows and he who reaps may rejoice together. <span class='not' dir='ltr'><a href='?76' onclick='ABDO(76);return false;' title='View previous annotation'>&lt;</a> aiōnios <a href="?Glossary#g166" onclick="ABDO('Glossary','g166');	return false;"	title='View definition'>g166</a> <a href='?78' onclick='ABDO(78);return false;' title='View next annotation'>&gt;</a></span></span></span>
 <span class='ff ver' lang='en' ><span class='num'>37 </span><span class='ff tex' lang='en' >For in this the true saying is verified: ‘One sows and another reaps.’</span></span>
-<span class='ff ver' lang='en' ><span class='num'>38 </span><span class='ff tex' lang='en' >I sent you to reap that for which you have not labored; others have labored, and you have entered into their labor.”</span></span>
-<span class='ff ver' lang='en' ><span class='num'>39 </span><span class='ff tex' lang='en' >Now many of the Samaritans from that town believed in Jesus because of the woman's testimony: “He told me everything I have ever done.”</span></span>
+<span class='ff ver' lang='en' ><span class='num'>38 </span><span class='ff tex' lang='en' >I sent you to reap what you have not labored for; others have labored, and you have entered into their labor.”</span></span>
+<span class='ff ver' lang='en' ><span class='num'>39 </span><span class='ff tex' lang='en' >Many of the Samaritans from that town believed in Jesus because of the woman's testimony: “He told me everything I have ever done.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>40 </span><span class='ff tex' lang='en' >So when the Samaritans came to him, they asked him to stay with them, and he stayed there for two days.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>41 </span><span class='ff tex' lang='en' >And many more believed because of his word.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>42 </span><span class='ff tex' lang='en' >So they said to the woman, “It is no longer because of yoʋr report that we believe, for we ourselves have heard, and we know that this is truly the Christ, the Savior of the world.”</span></span>
@@ -4971,7 +4974,7 @@ New Testament
 <span class='ff ver' lang='en' ><span class='num'>49 </span><span class='ff tex' lang='en' >The royal official said to him, “Sir, come down before my boy dies.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>50 </span><span class='ff tex' lang='en' >Jesus said to him, “Go; yoʋr son will live.” And the man believed what Jesus said to him and went on his way.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>51 </span><span class='ff tex' lang='en' >As he was going back down to his house, his servants met him and told him, “Yoʋr son is alive.”</span></span>
-<span class='ff ver' lang='en' ><span class='num'>52 </span><span class='ff tex' lang='en' >So he asked them what hour he began to get better. They said to him, “Yesterday at the seventh hour the fever left him.”</span></span>
+<span class='ff ver' lang='en' ><span class='num'>52 </span><span class='ff tex' lang='en' >So he asked them the hour when he began to get better. They said to him, “Yesterday at the seventh hour the fever left him.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>53 </span><span class='ff tex' lang='en' >Then the father realized that this was the hour when Jesus had said to him, “Yoʋr son will live.” So he believed, along with his entire household.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>54 </span><span class='ff tex' lang='en' >This was the second sign that Jesus did after coming from Judea to Galilee.</span></span>
 
@@ -5005,7 +5008,7 @@ New Testament
 <span class='ff ver' lang='en' ><span class='num'>11 </span><span class='ff tex' lang='en' >He answered them, “The man who made me well said to me, ‘Pick up yoʋr mat and walk.’”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>12 </span><span class='ff tex' lang='en' >So they asked him, “Who is the man who said to yoʋ, ‘Pick up yoʋr mat and walk’?”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>13 </span><span class='ff tex' lang='en' >But the man who had been healed did not know who it was, for Jesus had slipped away, since there was a crowd in that place.</span></span>
-<span class='ff ver' lang='en' ><span class='num'>14 </span><span class='ff tex' lang='en' >After this Jesus found the man in the temple courts and said to him, “Behold, yoʋ have become well; do not sin anymore, lest something worse happen to yoʋ.”</span></span>
+<span class='ff ver' lang='en' ><span class='num'>14 </span><span class='ff tex' lang='en' >After this Jesus found the man in the temple courts and said to him, “Behold, yoʋ have been made well; do not sin anymore, lest something worse happen to yoʋ.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>15 </span><span class='ff tex' lang='en' >Then the man went and told the Jews that it was Jesus who had made him well.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>16 </span><span class='ff tex' lang='en' >So the Jews began persecuting Jesus and seeking to kill him, because he was doing these things on the Sabbath.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>17 </span><span class='ff tex' lang='en' >But Jesus responded to them, “My Father is still working even now, and I too am working.”</span></span>
@@ -5035,9 +5038,9 @@ New Testament
 <span class='ff ver' lang='en' ><span class='num'>41 </span><span class='ff tex' lang='en' >I do not receive glory from men.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>42 </span><span class='ff tex' lang='en' >But I know that you do not have the love of God within you.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>43 </span><span class='ff tex' lang='en' >I have come in the name of my Father, and yet you do not receive me. If another comes in his own name, you will receive him.</span></span>
-<span class='ff ver' lang='en' ><span class='num'>44 </span><span class='ff tex' lang='en' >How can you believe when you receive glory from one another and do not seek the glory that is from the only God?</span></span>
+<span class='ff ver' lang='en' ><span class='num'>44 </span><span class='ff tex' lang='en' >How can you believe when you receive glory from one another but do not seek the glory that comes from the one and only God?</span></span>
 <span class='ff ver' lang='en' ><span class='num'>45 </span><span class='ff tex' lang='en' >Do not think that I will accuse you before the Father. The one who accuses you is Moses, in whom you have set your hope.</span></span>
-<span class='ff ver' lang='en' ><span class='num'>46 </span><span class='ff tex' lang='en' >If you believed Moses, you would believe me, for he wrote about me.</span></span>
+<span class='ff ver' lang='en' ><span class='num'>46 </span><span class='ff tex' lang='en' >If you had believed Moses, you would believe me, for he wrote about me.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>47 </span><span class='ff tex' lang='en' >But if you do not believe his writings, how will you believe my words?”</span></span>
 
 </div>
@@ -5096,7 +5099,7 @@ New Testament
 <span class='ff ver' lang='en' ><span class='num'>37 </span><span class='ff tex' lang='en' >Everyone the Father gives me will come to me, and I will never cast out anyone who comes to me.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>38 </span><span class='ff tex' lang='en' >For I have come down from heaven not to do my own will, but the will of him who sent me.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>39 </span><span class='ff tex' lang='en' >And this is the will of the Father who sent me, that I should lose none of those he has given me, but should raise them up on the last day.</span></span>
-<span class='ff ver' lang='en' ><span class='num'>40 </span><span class='ff tex avh' lang='en' >And this is the will of him who sent me, that everyone who looks to the Son and believes in him should have eternal life, and I will raise him up on the last day.” <span class='not' dir='ltr'><a href='?78' onclick='ABDO(78);return false;' title='View previous annotation'>&lt;</a> aiōnios <a href="?Glossary#g166" onclick="ABDO('Glossary','g166');	return false;"	title='View definition'>g166</a> <a href='?81' onclick='ABDO(81);return false;' title='View next annotation'>&gt;</a></span></span></span>
+<span class='ff ver' lang='en' ><span class='num'>40 </span><span class='ff tex avh' lang='en' >And this is the will of him who sent me, that anyone who looks to the Son and believes in him should have eternal life, and I will raise him up on the last day.” <span class='not' dir='ltr'><a href='?78' onclick='ABDO(78);return false;' title='View previous annotation'>&lt;</a> aiōnios <a href="?Glossary#g166" onclick="ABDO('Glossary','g166');	return false;"	title='View definition'>g166</a> <a href='?81' onclick='ABDO(81);return false;' title='View next annotation'>&gt;</a></span></span></span>
 <span class='ff ver' lang='en' ><span class='num'>41 </span><span class='ff tex' lang='en' >Then the Jews began to grumble about him because he said, “I am the bread that came down from heaven.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>42 </span><span class='ff tex' lang='en' >They said, “Is this not Jesus, the son of Joseph, whose father and mother we know? How then can he say, ‘I have come down from heaven’?”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>43 </span><span class='ff tex' lang='en' >Jesus answered them, “Do not grumble among yourselves.</span></span>
@@ -5110,16 +5113,16 @@ New Testament
 <span class='ff ver' lang='en' ><span class='num'>51 </span><span class='ff tex avh' lang='en' >I am the living bread that has come down from heaven. If anyone eats of this bread, he will live forever. And the bread that I will give for the life of the world is my flesh.” <span class='not' dir='ltr'><a href='?78' onclick='ABDO(78);return false;' title='View previous annotation'>&lt;</a> aiōn <a href="?Glossary#g165" onclick="ABDO('Glossary','g165');	return false;"	title='View definition'>g165</a> <a href='?81' onclick='ABDO(81);return false;' title='View next annotation'>&gt;</a></span></span></span>
 <span class='ff ver' lang='en' ><span class='num'>52 </span><span class='ff tex' lang='en' >Then the Jews began to quarrel with one another, saying, “How can this man give us his flesh to eat?”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>53 </span><span class='ff tex' lang='en' >So Jesus said to them, “Truly, truly, I say to you, if you do not eat the flesh of the Son of Man and drink his blood, you have no life in yourselves.</span></span>
-<span class='ff ver' lang='en' ><span class='num'>54 </span><span class='ff tex avh' lang='en' >Whoever eats my flesh and drinks my blood has eternal life, and I will raise him up on the last day. <span class='not' dir='ltr'><a href='?78' onclick='ABDO(78);return false;' title='View previous annotation'>&lt;</a> aiōnios <a href="?Glossary#g166" onclick="ABDO('Glossary','g166');	return false;"	title='View definition'>g166</a> <a href='?81' onclick='ABDO(81);return false;' title='View next annotation'>&gt;</a></span></span></span>
+<span class='ff ver' lang='en' ><span class='num'>54 </span><span class='ff tex avh' lang='en' >Anyone who eats my flesh and drinks my blood has eternal life, and I will raise him up on the last day. <span class='not' dir='ltr'><a href='?78' onclick='ABDO(78);return false;' title='View previous annotation'>&lt;</a> aiōnios <a href="?Glossary#g166" onclick="ABDO('Glossary','g166');	return false;"	title='View definition'>g166</a> <a href='?81' onclick='ABDO(81);return false;' title='View next annotation'>&gt;</a></span></span></span>
 <span class='ff ver' lang='en' ><span class='num'>55 </span><span class='ff tex' lang='en' >For my flesh is true food, and my blood is true drink.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>56 </span><span class='ff tex' lang='en' >Whoever eats my flesh and drinks my blood abides in me, and I in him.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>57 </span><span class='ff tex' lang='en' >Just as the living Father sent me, and I live because of the Father, so whoever feeds on me will also live because of me.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>58 </span><span class='ff tex avh' lang='en' >This is the bread that came down from heaven, not as your fathers ate the manna, and died. Whoever eats this bread will live forever.” <span class='not' dir='ltr'><a href='?78' onclick='ABDO(78);return false;' title='View previous annotation'>&lt;</a> aiōn <a href="?Glossary#g165" onclick="ABDO('Glossary','g165');	return false;"	title='View definition'>g165</a> <a href='?81' onclick='ABDO(81);return false;' title='View next annotation'>&gt;</a></span></span></span>
 <span class='ff ver' lang='en' ><span class='num'>59 </span><span class='ff tex' lang='en' >He said these things in a synagogue while teaching in Capernaum.</span></span>
-<span class='ff ver' lang='en' ><span class='num'>60 </span><span class='ff tex' lang='en' >After hearing this, many of his disciples said, “This is a hard saying; who can accept it?”</span></span>
+<span class='ff ver' lang='en' ><span class='num'>60 </span><span class='ff tex' lang='en' >After hearing this, many of his disciples said, “This teaching is difficult; who can accept it?”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>61 </span><span class='ff tex' lang='en' >But Jesus, aware that his disciples were grumbling about this, said to them, “Does this offend you?</span></span>
 <span class='ff ver' lang='en' ><span class='num'>62 </span><span class='ff tex' lang='en' >Then what if you see the Son of Man ascending to where he was before?</span></span>
-<span class='ff ver' lang='en' ><span class='num'>63 </span><span class='ff tex' lang='en' >It is the Spirit who gives life; the flesh is of no benefit. The words that I speak to you are spirit and life.</span></span>
+<span class='ff ver' lang='en' ><span class='num'>63 </span><span class='ff tex' lang='en' >It is the Spirit who gives life; the flesh is of no benefit. The words I speak to you are spirit and life.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>64 </span><span class='ff tex' lang='en' >But there are some among you who do not believe.” (For Jesus knew from the beginning which of them did not believe and who it was that would betray him.)</span></span>
 <span class='ff ver' lang='en' ><span class='num'>65 </span><span class='ff tex' lang='en' >Then he said, “That is why I told you that no one can come to me unless it has been granted to him by my Father.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>66 </span><span class='ff tex' lang='en' >At that point many of his disciples went back and no longer walked with him.</span></span>
@@ -5157,31 +5160,31 @@ New Testament
 <span class='ff ver' lang='en' ><span class='num'>9 </span><span class='ff tex' lang='en' >After saying this to them, he remained in Galilee.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>10 </span><span class='ff tex' lang='en' >However, after his brothers had gone up to the feast, Jesus also went up, not openly but in secret.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>11 </span><span class='ff tex' lang='en' >Now the Jews were looking for him at the feast, saying, “Where is that man?”</span></span>
-<span class='ff ver' lang='en' ><span class='num'>12 </span><span class='ff tex' lang='en' >And there was much murmuring about him among the crowds. Some were saying, “He is a good man.” Others were saying, “No, he is deceiving the crowd.”</span></span>
+<span class='ff ver' lang='en' ><span class='num'>12 </span><span class='ff tex' lang='en' >And there was much murmuring about him among the crowds. Some were saying, “He is a good man.” Others were saying, “No, he is deceiving the people.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>13 </span><span class='ff tex' lang='en' >No one, however, was speaking openly about him for fear of the Jews.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>14 </span><span class='ff tex' lang='en' >Midway through the feast, Jesus went up to the temple courts and began to teach.</span></span>
-<span class='ff ver' lang='en' ><span class='num'>15 </span><span class='ff tex' lang='en' >The Jews were amazed, saying, “How does this man have such learning, since he has never had formal instruction?”</span></span>
+<span class='ff ver' lang='en' ><span class='num'>15 </span><span class='ff tex' lang='en' >The Jews were amazed, saying, “How does this man know so much, when he has never had any formal instruction?”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>16 </span><span class='ff tex' lang='en' >Jesus answered them, “My teaching is not my own; it comes from him who sent me.</span></span>
-<span class='ff ver' lang='en' ><span class='num'>17 </span><span class='ff tex' lang='en' >If anyone wants to do his will, he will know whether my teaching comes from God or whether I am speaking on my own authority.</span></span>
+<span class='ff ver' lang='en' ><span class='num'>17 </span><span class='ff tex' lang='en' >If anyone wants to do God's will, he will know whether my teaching comes from God or whether I am speaking on my own authority.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>18 </span><span class='ff tex' lang='en' >He who speaks on his own authority seeks his own glory, but he who seeks the glory of the one who sent him is true, and there is no unrighteousness in him.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>19 </span><span class='ff tex' lang='en' >Did not Moses give you the law? Yet none of you keeps the law. Why are you seeking to kill me?”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>20 </span><span class='ff tex' lang='en' >The crowd answered, “Yoʋ have a demon! Who is seeking to kill yoʋ?”</span></span>
-<span class='ff ver' lang='en' ><span class='num'>21 </span><span class='ff tex' lang='en' >Jesus answered them, “I did one work, and you are all amazed.</span></span>
+<span class='ff ver' lang='en' ><span class='num'>21 </span><span class='ff tex' lang='en' >Jesus answered them, “I performed one miracle, and you are all amazed.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>22 </span><span class='ff tex' lang='en' >Moses gave you circumcision (not that it came from Moses, but from the fathers), and that is why you circumcise a man on the Sabbath.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>23 </span><span class='ff tex' lang='en' >If a man receives circumcision on the Sabbath so that the law of Moses will not be broken, why are you angry with me because I made a man entirely well on the Sabbath?</span></span>
 <span class='ff ver' lang='en' ><span class='num'>24 </span><span class='ff tex' lang='en' >Do not judge according to appearance, but judge with right judgment.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>25 </span><span class='ff tex' lang='en' >Now some of the people of Jerusalem were saying, “Is this not the man whom they are seeking to kill?</span></span>
-<span class='ff ver' lang='en' ><span class='num'>26 </span><span class='ff tex' lang='en' >And behold, he is speaking openly, and they are saying nothing to him. Could it be that the rulers indeed know that this is truly the Christ?</span></span>
+<span class='ff ver' lang='en' ><span class='num'>26 </span><span class='ff tex' lang='en' >And behold, he is speaking openly, and they are saying nothing to him. Could it be that the rulers indeed know that he is truly the Christ?</span></span>
 <span class='ff ver' lang='en' ><span class='num'>27 </span><span class='ff tex' lang='en' >Yet we know where this man is from, but when the Christ comes, no one will know where he is from.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>28 </span><span class='ff tex' lang='en' >Then Jesus cried out as he taught in the temple courts, “You know me and you know where I am from. Yet I have not come on my own authority, but he who sent me is true. You do not know him,</span></span>
-<span class='ff ver' lang='en' ><span class='num'>29 </span><span class='ff tex' lang='en' >but I know him, because I have come from him, and he sent me.”</span></span>
+<span class='ff ver' lang='en' ><span class='num'>29 </span><span class='ff tex' lang='en' >but I know him, because I have come from him, and he is the one who sent me.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>30 </span><span class='ff tex' lang='en' >So they were seeking to arrest him, but no one laid a hand on him, because his hour had not yet come.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>31 </span><span class='ff tex' lang='en' >Still, many from among the crowd believed in him and said, “When the Christ comes, will he do more signs than this man has done?”</span></span>
-<span class='ff ver' lang='en' ><span class='num'>32 </span><span class='ff tex' lang='en' >The Pharisees heard the crowd murmuring these things about him, so the Pharisees and the chief priests sent officers to arrest him.</span></span>
-<span class='ff ver' lang='en' ><span class='num'>33 </span><span class='ff tex' lang='en' >Then Jesus said, “I am with you for a little while longer, and then I am going to him who sent me.</span></span>
-<span class='ff ver' lang='en' ><span class='num'>34 </span><span class='ff tex' lang='en' >You will seek me, but you will not find me; and where I am, you cannot come.”</span></span>
+<span class='ff ver' lang='en' ><span class='num'>32 </span><span class='ff tex' lang='en' >The Pharisees heard the crowd murmuring these things about Jesus, so the Pharisees and the chief priests sent officers to arrest him.</span></span>
+<span class='ff ver' lang='en' ><span class='num'>33 </span><span class='ff tex' lang='en' >Then Jesus said, “I will be with you for only a little while longer, and then I am going to him who sent me.</span></span>
+<span class='ff ver' lang='en' ><span class='num'>34 </span><span class='ff tex' lang='en' >You will seek me, but you will not find me; and where I am going, you cannot come.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>35 </span><span class='ff tex' lang='en' >Then the Jews said to one another, “Where is this man about to go that we will not find him? Is he about to go to the Jews who are scattered among the Greeks and teach the Greeks?</span></span>
-<span class='ff ver' lang='en' ><span class='num'>36 </span><span class='ff tex' lang='en' >What does he mean by saying, ‘You will seek me, but you will not find me; and where I am, you cannot come’?”</span></span>
+<span class='ff ver' lang='en' ><span class='num'>36 </span><span class='ff tex' lang='en' >What does he mean by saying, ‘You will seek me, but you will not find me; and where I am going, you cannot come’?”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>37 </span><span class='ff tex' lang='en' >On the last day, the great day of the feast, Jesus stood up and cried out, “If anyone is thirsty, let him come to me and drink.</span></span>
 <span class='ff ver' lang='en' ><span class='num'>38 </span><span class='ff tex' lang='en' >Whoever believes in me, just as the Scripture has said, ‘From his innermost being will flow rivers of living water.’”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>39 </span><span class='ff tex' lang='en' >(He said this about the Spirit, whom those who believed in him were going to receive, for the Holy Spirit had not yet been given, because Jesus had not yet been glorified.)</span></span>
@@ -5194,7 +5197,7 @@ New Testament
 <span class='ff ver' lang='en' ><span class='num'>46 </span><span class='ff tex' lang='en' >The officers answered, “Never has anyone spoken like this man.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>47 </span><span class='ff tex' lang='en' >The Pharisees answered them, “Have you also been deceived?</span></span>
 <span class='ff ver' lang='en' ><span class='num'>48 </span><span class='ff tex' lang='en' >None of the rulers or the Pharisees have believed in him, have they?</span></span>
-<span class='ff ver' lang='en' ><span class='num'>49 </span><span class='ff tex' lang='en' >But this crowd that does not know the law is accursed.”</span></span>
+<span class='ff ver' lang='en' ><span class='num'>49 </span><span class='ff tex' lang='en' >But this crowd does not know the law; they are accursed.”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>50 </span><span class='ff tex' lang='en' >Then Nicodemus, who had gone to Jesus by night and who was one of the rulers, said,</span></span>
 <span class='ff ver' lang='en' ><span class='num'>51 </span><span class='ff tex' lang='en' >“Does our law condemn a man without first giving him a hearing and finding out what he is doing?”</span></span>
 <span class='ff ver' lang='en' ><span class='num'>52 </span><span class='ff tex' lang='en' >They answered him, “Are yoʋ also from Galilee? Search and see that no prophet has ever arisen from Galilee.”</span></span>
@@ -13838,7 +13841,7 @@ World Nations
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// PAGER
+// PAGER - The heart of the PWA that allows navigating through the page content array AB_Bible
 function ABDO(goto, anchor=null, push=true) {
 	// validate request
 	if      (typeof goto == 'number')  {				gonu = goto; }
@@ -13868,6 +13871,11 @@ function ABDO(goto, anchor=null, push=true) {
 	}
 	document.getElementById('body').innerHTML = AB_Bible[AB_Page];
 
+	// Set the update and install links 
+	if (AB_Page < 2) {
+		AionianBible_PWA_UpdateInstall();
+	}
+
 	// push history to browser
 	if (anchor && anchor[0]=='#') { anchor = anchor.substr(1); }
 	if (push && (window.history.state === null || typeof window.history.state.go == "undefined" || window.history.state.go != goto)) {
@@ -13889,7 +13897,7 @@ function ABDO(goto, anchor=null, push=true) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// BROWSER HISTORY
+// BROWSER HISTORY - Since we page without re-loading this sets the brower history
 window.addEventListener('popstate', function (event) {
     if (event.state) {
 		ABDO(event.state.go, null, false);
@@ -13901,7 +13909,7 @@ window.addEventListener('popstate', function (event) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// COOKIES
+// COOKIES - Used for bookmarking pages
 function AionianBible_writeCookie(cname, cvalue) {
 	var date = new Date();
 	date.setTime(date.getTime() + (1000 * 24 * 60 * 60 * 1000));
@@ -13927,7 +13935,7 @@ function AionianBible_readCookie(cname) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// BOOKMARK
+// BOOKMARK - Save bookmarks to Cookies
 function AionianBible_Set() {
 	AB_Bookmark2 = AB_Page;
 	AionianBible_writeCookie("AionianBible.Bookmark2", AB_Bookmark2);
@@ -13943,7 +13951,7 @@ function AionianBible_Get() {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// ACCESSIBILITY
+// ACCESSIBILITY - Increase font size for readability
 function AionianBible_Accessible() {
 	AB_Accessible = document.getElementById('body');
 	if (null !== AB_Accessible) {
@@ -13969,7 +13977,7 @@ function AionianBible_Accessible() {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// SWIPE
+// SWIPE - Swipe pagination
 function AionianBible_SwipeListener(handleswipe) {
 	var swipedir, startX, startY, distX, distY, elapsedTime, startTime;
 	document.body.addEventListener('touchstart', function(e) {
@@ -14005,7 +14013,7 @@ AionianBible_SwipeLinks();
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// RELOAD
+// RELOAD - Reload the HTM file and all resources
 function AionianBible_Reload() {
 	const myRequest = new Request(window.location.href);
 	fetch(myRequest,{cache: 'reload'}).then((response) => {
@@ -14028,25 +14036,31 @@ function AionianBible_Reload() {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// PWA 
+// PWA - Display install and update links accordingly, called from various contexts
 var AionianBible_PWA_InstallPromptEvent = null;
-function AionianBible_PWA_Install() {
-	var java = document.getElementById('java');
-	if (java) { java.innerHTML = "<a href='?PWA' onclick='AionianBible_PWA_InstallPrompt();return false;' title='Install Progressive Web Application'>( Install Bible App )</a>"; }
+function AionianBible_PWA_UpdateInstall() {
+	var upin = document.getElementById('upin');
+	if (upin) {
+		// No install prompt or 'minimal-ui' display so must already be installed
+		if (!AionianBible_PWA_InstallPromptEvent || window.matchMedia('(display-mode: minimal-ui)').matches) {
+			upin.innerHTML = "<a title='Internet connection required' href='?PWA' onclick='AionianBible_Reload();return false;'>( Update Bible App )</a><br>";
+		}
+		// offer install function */
+		else {
+			upin.innerHTML = "<a href='?PWA' onclick='AionianBible_PWA_InstallPrompt();return false;' title='Install Progressive Web Application'>( Install Bible App )</a><br>";
+		}
+	}
 }
-function AionianBible_PWA_Update() {
-	var java = document.getElementById('java');
-	if (java) { java.innerHTML = "<a title='Internet connection required' href='?PWA' onclick='AionianBible_Reload();return false;'>( Update Bible App )</a>"; }
-}
-// install request
+// install prompt event captured on page load
 async function AionianBible_PWA_InstallPrompt() {
 	if (AionianBible_PWA_InstallPromptEvent) {
 		const result = await AionianBible_PWA_InstallPromptEvent.prompt();
 		console.log(`Aionian Bible App install prompt: ${result.outcome}`);
-		AionianBible_PWA_Update();
+		AionianBible_PWA_InstallPromptEvent = null;
+		AionianBible_PWA_UpdateInstall();
 	}
 }
-// recache message
+// message the service worker to reload the cache - currently unused
 async function AionianBible_PWA_ReInstall() {
 	if ("serviceWorker" in navigator && navigator.serviceWorker.controller) {
 		navigator.serviceWorker.controller.postMessage({
@@ -14060,7 +14074,7 @@ async function AionianBible_PWA_ReInstall() {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// ONLOAD
+// ONLOAD - Initialize the PWA
 window.onload = function() {
 	// bookmarks
 	AB_Bookmark = AionianBible_readCookie("AionianBible.Bookmark");
@@ -14074,22 +14088,30 @@ window.onload = function() {
 		AionianBible_writeCookie("AionianBible.Bookmark", AB_Bookmark2);
 	}
 
-	// homepage
-	AionianBible_PWA_Update();
+	// remove javascript warning and save homepage to array
+	var upin = document.getElementById('upin');
+	if (upin) { upin.innerHTML = ''; }
 	AB_Bible[0] = document.getElementById('body').innerHTML;
-	const query = window.location.search;
-	if (query && query != "?PWA") {	ABDO(query.substr(1), window.location.hash); }
-	else {							window.history.replaceState({go:'PWA'}, '', location.pathname + "?PWA"); }
 
-	// install
-	AionianBible_PWA_Update();
+	// load queried page
+	const query = window.location.search;
+	if (query && query != "?PWA") {
+		ABDO(query.substr(1), window.location.hash);
+	}
+	// homepage already loaded, but indicate update or install
+	else {
+		window.history.replaceState({go:'PWA'}, '', location.pathname + "?PWA");
+		AionianBible_PWA_UpdateInstall();
+	}
+
+	// seize the install prompt
 	window.addEventListener("beforeinstallprompt", (event) => {
 		event.preventDefault();
 		AionianBible_PWA_InstallPromptEvent = event;
-		AionianBible_PWA_Install();
+		AionianBible_PWA_UpdateInstall();
 	});
-	
-	// service worker
+
+	// register the service worker
 	if ("serviceWorker" in navigator) {
 		navigator.serviceWorker.register("pwa.js");
 	}

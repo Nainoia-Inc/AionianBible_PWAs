@@ -3,7 +3,7 @@
 <!-- Short: RCL -->
 <!-- Font:  -->
 <!-- Publisher: https://NAINOIA-INC.signedon.net -->
-<!-- Formatted: ABCMS on 12/15/2024 09:26:26 -->
+<!-- Formatted: ABCMS on 12/16/2024 03:49:11 -->
 <!-- Website: https://www.AionianBible.org -->
 <!-- Resources: https://resources.AionianBible.org -->
 <!-- Repository: https://github.com/Nainoia-Inc -->
@@ -11,9 +11,14 @@
 <!-- Language: Romani Vlax, Chergash -->
 <!-- Source: Pioneers.org -->
 <!-- Source copyright: Creative Commons Attribution 4.0 -->
-<!-- Source version: 12/6/2024 -->
+<!-- Source version: 12/14/2024 -->
 <!-- Source text: https://ebible.org/details.php?id=rmyChergash -->
 
+<!-- The Aionian Bible project also serves all its translations as Progressive Web Apps. -->
+<!-- Each Bible translation is contained in a single HTM file using javascript to paginate. -->
+<!-- The PWA listing, manifests, service workers, and icons are served dynamically. -->
+<!-- Dynamic files could be pre-generated, but dynamic results in a simpler GitHub package. -->
+<!-- .htaccess rules masquerade each PWA into its own folder allowing multiple-installs. -->
 
 
 
@@ -29,7 +34,7 @@
 <meta name="description" content="Holy Bible Aionian Edition® ~ Chergash Luke ~ The world's first Holy Bible untranslation! ~ Progressive Web Application PWA">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="generator" content="ABCMS™">
-<meta name="version" content="12/15/2024 09:26:26">
+<meta name="version" content="12/16/2024 03:49:11">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
@@ -125,8 +130,7 @@ a:hover { color: #9966CC; }
 #aion { padding: 0 0 15px 0; font-style: italic; font-size: 130%; font-weight: bold; color: #191919; }
 #moto { margin: 10px 0 0 0; color: #663399; }
 .RegisteredTM { font-size: 75%; }
-#java { text-align: center; font-weight: bold; }
-#java .red { color: red; }
+#upin.home { text-align: center; font-weight: bold; color: red; }
 
 /* PAGE HEAD */
 #page {	height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 10px; background-color: #FFFFFF; }
@@ -300,9 +304,9 @@ body.word-read #body { max-width: 1024px; margin: 0 auto; padding: 110px 3% 2% 3
 <a href="?Prev" title="Previous page" class="nav left" onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
 <a href="?Next" title="Next page" class="nav right" onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
 </div>
-<div id='body' class=''>
+<div id='body'>
 
-<div id='java'><span class='red'>( Javascript and cookies required )</span></div>
+<div id='upin' class='home'><span class='java'>( Javascript and cookies required )<br></span></div>
 <div id='home1'>
 <a title="Return to last page read or TOC" href="?Bookmark" onclick="ABDO('Bookmark'); return false;">
 <div id='home2'>
@@ -318,7 +322,7 @@ One of three hundred seventy-six versions<br>
 One of one hundred sixty-five languages<br>
 Anonymous on TOR network<br>
 100% free to copy &amp; print<br>
-Updated 12/15/2024 09:26:26<br>
+Updated 12/16/2024 03:49:11<br>
 <br>
 Also known as 'The Purple Bible'
 </div>
@@ -340,7 +344,7 @@ Also known as 'The Purple Bible'
 
 <script>
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// Globals
+// Globals to control javascript paging
 var AB_Accessible	= null;
 var AB_Bookmark		= 'TOC';
 var AB_Bookmark2	= 'TOC';
@@ -351,7 +355,7 @@ var AB_Page			= 0;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// Bible pages map
+// Bible pages object map page name to AB_Bible index
 const AB_Map = {
 'PWA'		:	0,
 'TOC'		:	1,
@@ -382,7 +386,7 @@ const AB_Map = {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// Bible pages
+// Bible pages array of all Bible content by chapter
 const AB_Bible = [
 
 
@@ -390,7 +394,7 @@ const AB_Bible = [
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// Homepage populated dynamically from HTML #body on page load
+// Homepage populated dynamically from HTML #body on page load so homepage is only defined one place
 ``,
 
 
@@ -398,7 +402,7 @@ const AB_Bible = [
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// TOC
+// TOC - Table of Contents
 `
 <h2 class='title'>
 <a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
@@ -407,8 +411,7 @@ Table of Contents
 <a title="Return to last page read or TOC" href="?Bookmark" onclick="ABDO('Bookmark'); return false;">Chergash Luke<br><span class='ff lan'  >Chergash Luka</span></a>
 </h2>
 <a title="AionianBible.org online"		href="https://www.AionianBible.org/Read" target="_blank">AionianBible.org for all Bibles</a><br>
-<a title='Internet connection required'	href='?TOC' onclick="AionianBible_Reload();return false;">Update Bible App</a><br>
-<a title='Internet connection required'	href='?TOC' onclick="AionianBible_PWA_ReInstall();return false;">Update Bible App Cache</a><br>
+<div id='upin'></div>
 <a title="Copyright"					href="?Copyright"	onclick="ABDO('Copyright');	return false;">Copyright</a><br>
 <a title="Preface"						href="?Preface"		onclick="ABDO('Preface');	return false;">Preface</a><br>
 <a title="Aiōnios and Aïdios"			href="?Aionian"		onclick="ABDO('Aionian');	return false;">Aiōnios and Aïdios</a>
@@ -451,7 +454,7 @@ Copyright
 Publisher: Nainoia Inc<br>
 Copyright: <a href='https://creativecommons.org/licenses/by/4.0/' target='_blank'>Creative Commons Attribution 4.0 International, 2018-2024</a><br>
 Language: Romani Vlax, Chergash / <span class='ff lan'  >Chergash Romani</span><br>
-Formatted: ABCMS <a href='https://en.wikipedia.org/wiki/Progressive_web_app' target='_blank' title='Web pages designed for off-line viewing'>Progressive Web Application</a> on 12/15/2024 09:26:26<br>
+Formatted: ABCMS <a href='https://en.wikipedia.org/wiki/Progressive_web_app' target='_blank' title='Web pages designed for off-line viewing'>Progressive Web Application</a> on 12/16/2024 03:49:11<br>
 Formats:
 <a href='https://www.AionianBible.org/Bibles/Romani-Vlax---Chergash-Luke' target='_blank' title='Read online'>Online</a>,
 <a href='https://www.AionianBible.org/TOR/Bibles/Romani-Vlax---Chergash-Luke' target='_blank' title='Read TOR anonymously'>TOR Anonymously</a>,
@@ -464,7 +467,7 @@ Formats:
 <br>
 Source: Pioneers.org<br>
 Source copyright: Creative Commons Attribution 4.0<br>
-Source version: 12/6/2024<br>
+Source version: 12/14/2024<br>
 Source text: <a href='https://ebible.org/details.php?id=rmyChergash' target='_blank' title='Download Source File'>https://ebible.org/details.php?id=rmyChergash</a><br>
 <br>
 We pray for a modern public domain translation in every language.<br>
@@ -584,7 +587,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>16 </span><span class='ff tex'  >Vo boldela e but Izraelconen e Gospodešće lenđe Devlešće.</span></span>
 <span class='ff ver'  ><span class='num'>17 </span><span class='ff tex'  >Džala anglo Gospod sago glasniko pherdo duho thaj sila, sago o proroko Ilija. Pomirila e daden lenđe čhavenca a e nepokorne umurja boldela gajda te prihvatin o razumnost okolengo save si pravedne. Pripremila e theme pale e vrjama kana o Gospod avela.”</span></span>
 <span class='ff ver'  ><span class='num'>18 </span><span class='ff tex'  >A o Zaharija phendas e anđelošće: “Sar me džanava kaj godova avela čače? Kaj me sem purano thaj e romnji mungri dija ande pire purane brš.”</span></span>
-<span class='ff ver'  ><span class='num'>19 </span><span class='ff tex'  >A o anđelo phendas lešće: “Me sem o anđelo Gavrilo, savo ačhav anglo Del te služiv thaj bičhaldo sem te ćerav svato tuva thaj te javiv tuće akaja bahtali nevimata.</span></span>
+<span class='ff ver'  ><span class='num'>19 </span><span class='ff tex'  >A o anđelo phendas lešće: “Me sem o anđelo Gavrilo, savo ačhav anglo Del te služiv thaj bičhaldo sem te ćerav svato tusa thaj te javiv tuće akaja bahtali nevimata.</span></span>
 <span class='ff ver'  ><span class='num'>20 </span><span class='ff tex'  >A akana andar godova kaj či paćajan zanemija thaj našti ćereja svato džiko đes dok či avel e vrjama pale godova thaj mungre alava či pherdon.”</span></span>
 <span class='ff ver'  ><span class='num'>21 </span><span class='ff tex'  >A o them ažućarelas avri e Zaharija thaj začudisajle so gaći zadržisajlo ando svetište e Hramosko.</span></span>
 <span class='ff ver'  ><span class='num'>22 </span><span class='ff tex'  >A kana napokon inljisto, našti ćerelas svato, nego e znakonenca probisarda te phenel lenđe so sas ando Hramo thaj von haćardine kaj sas les viđenje ando svetište e Hramosko.</span></span>
@@ -756,7 +759,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>20 </span><span class='ff tex'  >pe sa godova još vi e Jovane čhuda ande tamnica.</span></span>
 <span class='ff ver'  ><span class='num'>21 </span><span class='ff tex'  >Kana o Jovano bolelas sa e themes, bolape vi o Isus. Dok o Isus molisajlo, putajlo o nebo,</span></span>
 <span class='ff ver'  ><span class='num'>22 </span><span class='ff tex'  >thaj fuljisto pe leste o Sveto Duho ando telesno obliko sago golubo, thaj andar o nebo ašundilo o glaso savo phendas: “Tu san mungro voljeno Čhavo. Tu san mungri bah!”</span></span>
-<span class='ff ver'  ><span class='num'>23 </span><span class='ff tex'  >Kana o Isus započnisardas e javno služba katar o Del, sas les varekaj katar trjanda brš. Inćarelas pe kaj si o Isus čhavo e Josifesko. O Josif sas e Ilijesko čhavo,</span></span>
+<span class='ff ver'  ><span class='num'>23 </span><span class='ff tex'  >Kana o Isus započnisardas e javno služba katar o Del, sas les varekaj katar trijanda brš. Inćarelas pe kaj si o Isus čhavo e Josifesko. O Josif sas e Ilijesko čhavo,</span></span>
 <span class='ff ver'  ><span class='num'>24 </span><span class='ff tex'  >o Ilija sas e Matatesko čhavo, a o Matat e Levijesko čhavo, o Levije sas e Melhijesko čhavo, o Melhi sas e Janajesko čhavo, o Janaj e Josifesko čhavo,</span></span>
 <span class='ff ver'  ><span class='num'>25 </span><span class='ff tex'  >o Josif sas e Matatesko čhavo, o Matatija sas e Amosesko čhavo, o Amos sas e Naumasko čhavo, o Naum sas e Eslijesko čhavo, o Eslija sas e Nangejesko čhavo,</span></span>
 <span class='ff ver'  ><span class='num'>26 </span><span class='ff tex'  >o Nangej sas e Maatesko čhavo, o Maat sas e Matatijesko čhavo, o Matatija sas e Semeinasko čhavo, o Semein sas e Josihesko čhavo, o Josih sas e Jodasko čhavo,</span></span>
@@ -910,14 +913,14 @@ New Testament
 
 <div class='chap'>
 <span class='ff ver'  ><span class='num'>1 </span><span class='ff tex'  >Jek savato kana o Isus naćhelas maškar e njive, lešće učenikurja trgonas o điv e vastenca thaj hanas.</span></span>
-<span class='ff ver'  ><span class='num'>2 </span><span class='ff tex'  >A varesave katar e fariseja phendine e Isusešće: “Sostar ćeren, okova so po zakono naj muklo te ćerelpe savatone?”</span></span>
+<span class='ff ver'  ><span class='num'>2 </span><span class='ff tex'  >A varesave katar e fariseja phendine e Isusešće: “Sostar ćeren, okova so po zakono naj muklo te ćerel pe savatone?”</span></span>
 <span class='ff ver'  ><span class='num'>3 </span><span class='ff tex'  >A o Isus phendas lenđe: “Sigurno čitosardine ando Sveto lil so o David ćerda, kana vo thaj okola save sas lesa bokhajle a nas len so te han.</span></span>
 <span class='ff ver'  ><span class='num'>4 </span><span class='ff tex'  >Dijas ande Devlesko ćher thaj lijas e svete mangre save či tromal te hal khonik osim e rašaja, hala thaj dija vi okolenđe save džanas pale leste.”</span></span>
 <span class='ff ver'  ><span class='num'>5 </span><span class='ff tex'  >Thaj phendas lenđe: “Kaj me, o Čhavo e Manušesko, gospodari sem e savatosko.”</span></span>
 <span class='ff ver'  ><span class='num'>6 </span><span class='ff tex'  >A jek aver savato, o Isus dija ande sinagoga thaj sikavelas, a okote sas jek manuš e šuće vastesa.</span></span>
 <span class='ff ver'  ><span class='num'>7 </span><span class='ff tex'  >E fariseja thaj e sikavne e Mojsiješće zakonestar inćarenas e jakha pe leste te dićhen dali sastarel lat ando savato te došaren les.</span></span>
 <span class='ff ver'  ><span class='num'>8 </span><span class='ff tex'  >A vo džanglas e gndimata lenđe thaj phendas e manušešće e šuće vastesa: “Ušti thaj ačh maškare.” A vo uštilo thaj ačhilo angle manuša.</span></span>
-<span class='ff ver'  ><span class='num'>9 </span><span class='ff tex'  >A o Isus phendas lenđe: Te phučav tumen: “Dali tromal pe savatone te ćerelpe lačhipe ili bilačhipe, o trajo te spasilpe ili te hasarelpe?” A von samo ačhenas.</span></span>
+<span class='ff ver'  ><span class='num'>9 </span><span class='ff tex'  >A o Isus phendas lenđe: Te phučav tumen: “Dali tromal pe savatone te ćerel pe lačhipe ili bilačhipe, o trajo te spasilpe ili te hasarelpe?” A von samo ačhenas.</span></span>
 <span class='ff ver'  ><span class='num'>10 </span><span class='ff tex'  >O Isus dikhla pe lende savorende thaj phendas e manušešće e šuće vastesa: “Inzar ćo vas.” A vo ćerda gajda thaj o vas lesko sastilo thaj sas sasto sago vi aver.</span></span>
 <span class='ff ver'  ><span class='num'>11 </span><span class='ff tex'  >A e fariseja thaj e sikavne e Mojsiješće zakonestar holjajle thaj ćerdine svato maškar pende so te ćeren e Isuseja.</span></span>
 <span class='ff ver'  ><span class='num'>12 </span><span class='ff tex'  >Ande godoja vrjama o Isus đelo pe gora te molil pe. Okote ačhilo sasti rjat thaj molilas pe e Devlešće.</span></span>
@@ -1094,7 +1097,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>48 </span><span class='ff tex'  >A vo phendas laće: “Čhejo, ćiro paćipe sastarda tut. Dža ando miro!”</span></span>
 <span class='ff ver'  ><span class='num'>49 </span><span class='ff tex'  >Dok o Isus još ćerelas svato e manušnjasa, avilo vareko andar e Jairesko ćher ko Jair savo sas vođa ande sinagoga thaj phendas: “Ćiri čhej muli. Na mučisar majbut e sikavne.”</span></span>
 <span class='ff ver'  ><span class='num'>50 </span><span class='ff tex'  >Ašunda godova o Isus thaj phendas: “Na dara! Samo paća thaj voj trajila!”</span></span>
-<span class='ff ver'  ><span class='num'>51 </span><span class='ff tex'  >Kana o Isus areslo ando ćher, či muklas khonikašće te den andre lesa osim o Petre, o Jovane, o Jakov thaj e čhorako dade thaj laće deja.</span></span>
+<span class='ff ver'  ><span class='num'>51 </span><span class='ff tex'  >Kana o Isus areslo ando ćher, či mukla khonikašće te den andre lesa osim o Petre, o Jovane, o Jakov thaj e čhorako dade thaj laće deja.</span></span>
 <span class='ff ver'  ><span class='num'>52 </span><span class='ff tex'  >A savora save sas ando ćher rovenas thaj žalinas pale čhori. A o Isus phendas lenđe: “Na roven! Či muli, nego samo sovel!”</span></span>
 <span class='ff ver'  ><span class='num'>53 </span><span class='ff tex'  >A von asanas lestar kaj džangline kaj muli.</span></span>
 <span class='ff ver'  ><span class='num'>54 </span><span class='ff tex'  >O Isus astarda lat palo vas thaj čhuta muj: “Čhorije, ušti!”</span></span>
@@ -1342,7 +1345,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>10 </span><span class='ff tex'  >Ali phenav tumenđe ko mothol vareso protiv o Čhavo e Manušesko, jartola pe lešće. Ali okolešće ko hulil po Sveto Duho, či jartola pe lešće.</span></span>
 <span class='ff ver'  ><span class='num'>11 </span><span class='ff tex'  >A kana anena tumen po sudo thaj ande sinagoge, angle poglavarja thaj angle vlast, na vodin briga so phenena te branin tumen!</span></span>
 <span class='ff ver'  ><span class='num'>12 </span><span class='ff tex'  >Kaj o Sveto Duho ande godova časo sikavela tumen so te phenen.”</span></span>
-<span class='ff ver'  ><span class='num'>13 </span><span class='ff tex'  >Vareko maškar o them phendas lešće: “Sikavneja, phen mungre phralešće te podelil manca so muklas amenđe amaro dad.”</span></span>
+<span class='ff ver'  ><span class='num'>13 </span><span class='ff tex'  >Vareko maškar o them phendas lešće: “Sikavneja, phen mungre phralešće te podelil manca so mukla amenđe amaro dad.”</span></span>
 <span class='ff ver'  ><span class='num'>14 </span><span class='ff tex'  >Pe godova o Isus phendas lešće: “Manušeja, ko čhuta man te avav tumaro sudco ili deliv maškar tumende?”</span></span>
 <span class='ff ver'  ><span class='num'>15 </span><span class='ff tex'  >Askal phendas savorenđe: “Len tumen majdur katar svako pohlepa, kaj o čačo trajo či avel katar okova so si tumen.”</span></span>
 <span class='ff ver'  ><span class='num'>16 </span><span class='ff tex'  >Askal o Isus phendas lenđe akaja usporedba: “Varesave barvale manušešće e phuv but bijanda</span></span>
@@ -1420,7 +1423,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>11 </span><span class='ff tex'  >Okote sas varesavi manušnji savi dešuohto brš sas grbavo thaj našti uspravilaspe. Ande late sas o bilačho duho savo ćerelas te avel nasvali.</span></span>
 <span class='ff ver'  ><span class='num'>12 </span><span class='ff tex'  >Kana o Isus dikhla lat, akharda lat peste thaj phendas: “Manušnjije, oslobodime san katar ćiro nasvalipe!”</span></span>
 <span class='ff ver'  ><span class='num'>13 </span><span class='ff tex'  >Thaj čhuta pire vas pe late, a voj odma uspravisajli thaj počnisarda te slavil e Devle.</span></span>
-<span class='ff ver'  ><span class='num'>14 </span><span class='ff tex'  >A okova savo sas vođa ande sinagoga holjajlo kaj o Isus sastardas ando savato, thaj phendas e themešće: “Šov si đes ando kurko kana trubul te ćerelpe bući! Ande godola đesa aven thaj saston, a na ande savatosko đes!”</span></span>
+<span class='ff ver'  ><span class='num'>14 </span><span class='ff tex'  >A okova savo sas vođa ande sinagoga holjajlo kaj o Isus sastardas ando savato, thaj phendas e themešće: “Šov si đes ando kurko kana trubul te ćerel pe bući! Ande godola đesa aven thaj saston, a na ande savatosko đes!”</span></span>
 <span class='ff ver'  ><span class='num'>15 </span><span class='ff tex'  >O Gospod askal phendas lešće: “Licemerja! Vi tumen ćeren bući savatone. Zar či svako tumendar savatone odrešil pire guruve ili magarco katar e jasle thaj inđarel les po paj te napoil les?</span></span>
 <span class='ff ver'  ><span class='num'>16 </span><span class='ff tex'  >Naj li vi voj čhej andar e Avraamesko plemeno, savja o Sotona phangla već dešuohto brš, či li trubujasas vi lat o Del te odrešil katar godova nasvalipe savo si laće okurja ande savatosko đes?”</span></span>
 <span class='ff ver'  ><span class='num'>17 </span><span class='ff tex'  >Pe godova sa lešće protivnikurja ladžajle, a sa aver raduisajle e šukar delenđe save o Isus ćerda.</span></span>
@@ -1696,7 +1699,7 @@ New Testament
 <span class='ff ver'  ><span class='num'>27 </span><span class='ff tex'  >A o Isus phendas: “So si nemoguće e manušenđe, moguće si e Devlešće.”</span></span>
 <span class='ff ver'  ><span class='num'>28 </span><span class='ff tex'  >Askal o Petar phendas: “Ake, amen muklam sa amaro thaj teljardam pale tute te sledis tut.”</span></span>
 <span class='ff ver'  ><span class='num'>29 </span><span class='ff tex'  >A o Isus phendas lenđe: “Čačes, phenav tumenđe, naj godova savo muklasas piro ćher, ili pire romnja, ili pire phralen, ili pire dade thaj pire deja, ili pire čhavren zbog e Devlesko carstvo,</span></span>
-<span class='ff ver'  ><span class='num'>30 </span><span class='ff tex avh'  >a te či već pe akava them primila majbut nego so muklas, a pe okova them savo avel vi večno trajo.” <span class='not' dir='ltr'><a href='?21' onclick='ABDO(21);return false;' title='View previous annotation'>&lt;</a> aiōn <a href="?Glossary#g165" onclick="ABDO('Glossary','g165');	return false;"	title='View definition'>g165</a>, aiōnios <a href="?Glossary#g166" onclick="ABDO('Glossary','g166');	return false;"	title='View definition'>g166</a> <a href='?25' onclick='ABDO(25);return false;' title='View next annotation'>&gt;</a></span></span></span>
+<span class='ff ver'  ><span class='num'>30 </span><span class='ff tex avh'  >a te či već pe akava them primila majbut nego so mukla, a pe okova them savo avel vi večno trajo.” <span class='not' dir='ltr'><a href='?21' onclick='ABDO(21);return false;' title='View previous annotation'>&lt;</a> aiōn <a href="?Glossary#g165" onclick="ABDO('Glossary','g165');	return false;"	title='View definition'>g165</a>, aiōnios <a href="?Glossary#g166" onclick="ABDO('Glossary','g166');	return false;"	title='View definition'>g166</a> <a href='?25' onclick='ABDO(25);return false;' title='View next annotation'>&gt;</a></span></span></span>
 <span class='ff ver'  ><span class='num'>31 </span><span class='ff tex'  >O Isus ćida oko peste e dešuduj apostolen thaj phendas lenđe: “Ake das ando Jerusalim, a okote dogodila pe sa so e prorokurja ramosardine ando Sveto lil, pale mande e Čhave e manušešće.</span></span>
 <span class='ff ver'  ><span class='num'>32 </span><span class='ff tex'  >Von predaina man ande vas e nevernikonenđe, save marena muj mandar, ladžarena man, vređona man,</span></span>
 <span class='ff ver'  ><span class='num'>33 </span><span class='ff tex'  >bičuina man thaj mudarena man, ali me o trito đes uštava andar e mule.”</span></span>
@@ -2028,13 +2031,13 @@ New Testament
 <span class='ff ver'  ><span class='num'>22 </span><span class='ff tex'  >Phučla len o Pilato trin drom: “Ali savo zločino vo ćerda? Me khanči či arakhav pe leste sova zaslužisardas smrto. Zato dava te bičuin les thaj mukava les.”</span></span>
 <span class='ff ver'  ><span class='num'>23 </span><span class='ff tex'  >A o them čholas muj thaj navalinas te razapnin e Isuse. Thaj čhonas muj sa majzurale thaj majzurale.</span></span>
 <span class='ff ver'  ><span class='num'>24 </span><span class='ff tex'  >O Pilato presudisarda te udovoljil lenđe.</span></span>
-<span class='ff ver'  ><span class='num'>25 </span><span class='ff tex'  >Thaj muklas o kole savo sas čhudino ando phanglipe zbog e pobuna thaj zbog o mudaripe, a e Isuse dijas ande vojnikonenđe vas te ćeren lesa okova so o them kamlas.</span></span>
+<span class='ff ver'  ><span class='num'>25 </span><span class='ff tex'  >Thaj mukla o kole savo sas čhudino ando phanglipe zbog e pobuna thaj zbog o mudaripe, a e Isuse dijas ande vojnikonenđe vas te ćeren lesa okova so o them kamlas.</span></span>
 <span class='ff ver'  ><span class='num'>26 </span><span class='ff tex'  >Dok inđarenas e Isuse, astardine varesave Simone andar o gav e Kirinija, savo boldelas pe andar o polje thaj čhutine pe leste o trušul te inđarel palo o Isus.</span></span>
 <span class='ff ver'  ><span class='num'>27 </span><span class='ff tex'  >Palo Isus džalas o but them thaj e manušnja save rovenas thaj kukinas pale leste.</span></span>
 <span class='ff ver'  ><span class='num'>28 </span><span class='ff tex'  >O Isus boldape lende thaj phendas lenđe: “Manušnjalen andar o Jerusalim, na roven pe mande, nego roven pe tumende thaj pe tumare čhavra.</span></span>
 <span class='ff ver'  ><span class='num'>29 </span><span class='ff tex'  >Kaj ake aven e đesa kana phenela pe: ‘Blago e nerotkinjenđe, blago e điješće savo či bijanda thaj blago e čučenđe save či pravardine.’</span></span>
 <span class='ff ver'  ><span class='num'>30 </span><span class='ff tex'  >Askal e manuša molina e gore te peren pe lende thaj e bregonen te učharen len.</span></span>
-<span class='ff ver'  ><span class='num'>31 </span><span class='ff tex'  >Kaj ako gajda ćerelpe e zelene kaštenca, so tek avela e šuće kaštenca?”</span></span>
+<span class='ff ver'  ><span class='num'>31 </span><span class='ff tex'  >Kaj ako gajda ćerel pe e zelene kaštenca, so tek avela e šuće kaštenca?”</span></span>
 <span class='ff ver'  ><span class='num'>32 </span><span class='ff tex'  >E Isuseja po mudaripe inđarenas vi aver duj zločinconen.</span></span>
 <span class='ff ver'  ><span class='num'>33 </span><span class='ff tex'  >Kana aviline po than savo akhardolas Lubanja, okote razapnisardine e Isuse, a paše leste vi godole zločinconen, jećhe pe lešći desno rig, a avre pe lešći levo rig.</span></span>
 <span class='ff ver'  ><span class='num'>34 </span><span class='ff tex'  >A o Isus phenelas: “Jartosar lenđe, Dade Devla, kaj či džanen so ćeren!” Pale godova e vojnikurja čhudine e kocka thaj gajda podelisardine maškar peste lešće drze.</span></span>
@@ -2556,7 +2559,7 @@ World Nations
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// PAGER
+// PAGER - The heart of the PWA that allows navigating through the page content array AB_Bible
 function ABDO(goto, anchor=null, push=true) {
 	// validate request
 	if      (typeof goto == 'number')  {				gonu = goto; }
@@ -2586,6 +2589,11 @@ function ABDO(goto, anchor=null, push=true) {
 	}
 	document.getElementById('body').innerHTML = AB_Bible[AB_Page];
 
+	// Set the update and install links 
+	if (AB_Page < 2) {
+		AionianBible_PWA_UpdateInstall();
+	}
+
 	// push history to browser
 	if (anchor && anchor[0]=='#') { anchor = anchor.substr(1); }
 	if (push && (window.history.state === null || typeof window.history.state.go == "undefined" || window.history.state.go != goto)) {
@@ -2607,7 +2615,7 @@ function ABDO(goto, anchor=null, push=true) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// BROWSER HISTORY
+// BROWSER HISTORY - Since we page without re-loading this sets the brower history
 window.addEventListener('popstate', function (event) {
     if (event.state) {
 		ABDO(event.state.go, null, false);
@@ -2619,7 +2627,7 @@ window.addEventListener('popstate', function (event) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// COOKIES
+// COOKIES - Used for bookmarking pages
 function AionianBible_writeCookie(cname, cvalue) {
 	var date = new Date();
 	date.setTime(date.getTime() + (1000 * 24 * 60 * 60 * 1000));
@@ -2645,7 +2653,7 @@ function AionianBible_readCookie(cname) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// BOOKMARK
+// BOOKMARK - Save bookmarks to Cookies
 function AionianBible_Set() {
 	AB_Bookmark2 = AB_Page;
 	AionianBible_writeCookie("AionianBible.Bookmark2", AB_Bookmark2);
@@ -2661,7 +2669,7 @@ function AionianBible_Get() {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// ACCESSIBILITY
+// ACCESSIBILITY - Increase font size for readability
 function AionianBible_Accessible() {
 	AB_Accessible = document.getElementById('body');
 	if (null !== AB_Accessible) {
@@ -2687,7 +2695,7 @@ function AionianBible_Accessible() {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// SWIPE
+// SWIPE - Swipe pagination
 function AionianBible_SwipeListener(handleswipe) {
 	var swipedir, startX, startY, distX, distY, elapsedTime, startTime;
 	document.body.addEventListener('touchstart', function(e) {
@@ -2723,7 +2731,7 @@ AionianBible_SwipeLinks();
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// RELOAD
+// RELOAD - Reload the HTM file and all resources
 function AionianBible_Reload() {
 	const myRequest = new Request(window.location.href);
 	fetch(myRequest,{cache: 'reload'}).then((response) => {
@@ -2746,25 +2754,31 @@ function AionianBible_Reload() {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// PWA 
+// PWA - Display install and update links accordingly, called from various contexts
 var AionianBible_PWA_InstallPromptEvent = null;
-function AionianBible_PWA_Install() {
-	var java = document.getElementById('java');
-	if (java) { java.innerHTML = "<a href='?PWA' onclick='AionianBible_PWA_InstallPrompt();return false;' title='Install Progressive Web Application'>( Install Bible App )</a>"; }
+function AionianBible_PWA_UpdateInstall() {
+	var upin = document.getElementById('upin');
+	if (upin) {
+		// No install prompt or 'minimal-ui' display so must already be installed
+		if (!AionianBible_PWA_InstallPromptEvent || window.matchMedia('(display-mode: minimal-ui)').matches) {
+			upin.innerHTML = "<a title='Internet connection required' href='?PWA' onclick='AionianBible_Reload();return false;'>( Update Bible App )</a><br>";
+		}
+		// offer install function */
+		else {
+			upin.innerHTML = "<a href='?PWA' onclick='AionianBible_PWA_InstallPrompt();return false;' title='Install Progressive Web Application'>( Install Bible App )</a><br>";
+		}
+	}
 }
-function AionianBible_PWA_Update() {
-	var java = document.getElementById('java');
-	if (java) { java.innerHTML = "<a title='Internet connection required' href='?PWA' onclick='AionianBible_Reload();return false;'>( Update Bible App )</a>"; }
-}
-// install request
+// install prompt event captured on page load
 async function AionianBible_PWA_InstallPrompt() {
 	if (AionianBible_PWA_InstallPromptEvent) {
 		const result = await AionianBible_PWA_InstallPromptEvent.prompt();
 		console.log(`Aionian Bible App install prompt: ${result.outcome}`);
-		AionianBible_PWA_Update();
+		AionianBible_PWA_InstallPromptEvent = null;
+		AionianBible_PWA_UpdateInstall();
 	}
 }
-// recache message
+// message the service worker to reload the cache - currently unused
 async function AionianBible_PWA_ReInstall() {
 	if ("serviceWorker" in navigator && navigator.serviceWorker.controller) {
 		navigator.serviceWorker.controller.postMessage({
@@ -2778,7 +2792,7 @@ async function AionianBible_PWA_ReInstall() {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// ONLOAD
+// ONLOAD - Initialize the PWA
 window.onload = function() {
 	// bookmarks
 	AB_Bookmark = AionianBible_readCookie("AionianBible.Bookmark");
@@ -2792,22 +2806,30 @@ window.onload = function() {
 		AionianBible_writeCookie("AionianBible.Bookmark", AB_Bookmark2);
 	}
 
-	// homepage
-	AionianBible_PWA_Update();
+	// remove javascript warning and save homepage to array
+	var upin = document.getElementById('upin');
+	if (upin) { upin.innerHTML = ''; }
 	AB_Bible[0] = document.getElementById('body').innerHTML;
-	const query = window.location.search;
-	if (query && query != "?PWA") {	ABDO(query.substr(1), window.location.hash); }
-	else {							window.history.replaceState({go:'PWA'}, '', location.pathname + "?PWA"); }
 
-	// install
-	AionianBible_PWA_Update();
+	// load queried page
+	const query = window.location.search;
+	if (query && query != "?PWA") {
+		ABDO(query.substr(1), window.location.hash);
+	}
+	// homepage already loaded, but indicate update or install
+	else {
+		window.history.replaceState({go:'PWA'}, '', location.pathname + "?PWA");
+		AionianBible_PWA_UpdateInstall();
+	}
+
+	// seize the install prompt
 	window.addEventListener("beforeinstallprompt", (event) => {
 		event.preventDefault();
 		AionianBible_PWA_InstallPromptEvent = event;
-		AionianBible_PWA_Install();
+		AionianBible_PWA_UpdateInstall();
 	});
-	
-	// service worker
+
+	// register the service worker
 	if ("serviceWorker" in navigator) {
 		navigator.serviceWorker.register("pwa.js");
 	}

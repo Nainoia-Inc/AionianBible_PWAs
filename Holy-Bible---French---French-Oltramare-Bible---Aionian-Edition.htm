@@ -3,7 +3,7 @@
 <!-- Short: FOL -->
 <!-- Font:  -->
 <!-- Publisher: https://NAINOIA-INC.signedon.net -->
-<!-- Formatted: ABCMS on 12/15/2024 09:26:26 -->
+<!-- Formatted: ABCMS on 12/16/2024 03:49:11 -->
 <!-- Website: https://www.AionianBible.org -->
 <!-- Resources: https://resources.AionianBible.org -->
 <!-- Repository: https://github.com/Nainoia-Inc -->
@@ -14,6 +14,11 @@
 <!-- Source version: 12/28/2015 -->
 <!-- Source text: https://crosswire.org/sword/modules/ModInfo.jsp?modName=FreOltramare1874 -->
 
+<!-- The Aionian Bible project also serves all its translations as Progressive Web Apps. -->
+<!-- Each Bible translation is contained in a single HTM file using javascript to paginate. -->
+<!-- The PWA listing, manifests, service workers, and icons are served dynamically. -->
+<!-- Dynamic files could be pre-generated, but dynamic results in a simpler GitHub package. -->
+<!-- .htaccess rules masquerade each PWA into its own folder allowing multiple-installs. -->
 
 
 
@@ -29,7 +34,7 @@
 <meta name="description" content="Holy Bible Aionian Edition® ~ New Testament, Oltramare ~ The world's first Holy Bible untranslation! ~ Progressive Web Application PWA">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="generator" content="ABCMS™">
-<meta name="version" content="12/15/2024 09:26:26">
+<meta name="version" content="12/16/2024 03:49:11">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
@@ -125,8 +130,7 @@ a:hover { color: #9966CC; }
 #aion { padding: 0 0 15px 0; font-style: italic; font-size: 130%; font-weight: bold; color: #191919; }
 #moto { margin: 10px 0 0 0; color: #663399; }
 .RegisteredTM { font-size: 75%; }
-#java { text-align: center; font-weight: bold; }
-#java .red { color: red; }
+#upin.home { text-align: center; font-weight: bold; color: red; }
 
 /* PAGE HEAD */
 #page {	height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 10px; background-color: #FFFFFF; }
@@ -300,9 +304,9 @@ body.word-read #body { max-width: 1024px; margin: 0 auto; padding: 110px 3% 2% 3
 <a href="?Prev" title="Previous page" class="nav left" onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
 <a href="?Next" title="Next page" class="nav right" onclick="ABDO('Next');return false;"><span class="nav cgt">&gt;</span></a>
 </div>
-<div id='body' class=''>
+<div id='body'>
 
-<div id='java'><span class='red'>( Javascript and cookies required )</span></div>
+<div id='upin' class='home'><span class='java'>( Javascript and cookies required )<br></span></div>
 <div id='home1'>
 <a title="Return to last page read or TOC" href="?Bookmark" onclick="ABDO('Bookmark'); return false;">
 <div id='home2'>
@@ -318,7 +322,7 @@ One of three hundred seventy-six versions<br>
 One of one hundred sixty-five languages<br>
 Anonymous on TOR network<br>
 100% free to copy &amp; print<br>
-Updated 12/15/2024 09:26:26<br>
+Updated 12/16/2024 03:49:11<br>
 <br>
 Also known as 'The Purple Bible'
 </div>
@@ -340,7 +344,7 @@ Also known as 'The Purple Bible'
 
 <script>
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// Globals
+// Globals to control javascript paging
 var AB_Accessible	= null;
 var AB_Bookmark		= 'TOC';
 var AB_Bookmark2	= 'TOC';
@@ -351,7 +355,7 @@ var AB_Page			= 0;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// Bible pages map
+// Bible pages object map page name to AB_Bible index
 const AB_Map = {
 'PWA'		:	0,
 'TOC'		:	1,
@@ -382,7 +386,7 @@ const AB_Map = {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// Bible pages
+// Bible pages array of all Bible content by chapter
 const AB_Bible = [
 
 
@@ -390,7 +394,7 @@ const AB_Bible = [
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// Homepage populated dynamically from HTML #body on page load
+// Homepage populated dynamically from HTML #body on page load so homepage is only defined one place
 ``,
 
 
@@ -398,7 +402,7 @@ const AB_Bible = [
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// TOC
+// TOC - Table of Contents
 `
 <h2 class='title'>
 <a title='Previous Page' class='nav left' href='?Prev' onclick="ABDO('Prev');return false;"><span class="nav clt">&lt;</span></a>
@@ -407,8 +411,7 @@ Table of Contents / <span class='ff' lang='fr' >Table des Matières</span>
 <a title="Return to last page read or TOC" href="?Bookmark" onclick="ABDO('Bookmark'); return false;">New Testament, Oltramare<br><span class='ff lan' lang='fr' >Nouveau Testament, Oltramare</span></a>
 </h2>
 <a title="AionianBible.org online"		href="https://www.AionianBible.org/Read" target="_blank">AionianBible.org for all Bibles</a><br>
-<a title='Internet connection required'	href='?TOC' onclick="AionianBible_Reload();return false;">Update Bible App</a><br>
-<a title='Internet connection required'	href='?TOC' onclick="AionianBible_PWA_ReInstall();return false;">Update Bible App Cache</a><br>
+<div id='upin'></div>
 <a title="Copyright"					href="?Copyright"	onclick="ABDO('Copyright');	return false;">Copyright</a><br>
 <a title="Preface"						href="?Preface"		onclick="ABDO('Preface');	return false;">Preface / <span class='ff' lang='fr' >Préface</span></a><br>
 <a title="Aiōnios and Aïdios"			href="?Aionian"		onclick="ABDO('Aionian');	return false;">Aiōnios and Aïdios</a>
@@ -451,7 +454,7 @@ Copyright
 Publisher: Nainoia Inc<br>
 Copyright: <a href='https://creativecommons.org/licenses/by/4.0/' target='_blank'>Creative Commons Attribution 4.0 International, 2018-2024</a><br>
 Language: French / <span class='ff lan' lang='fr' >Français</span><br>
-Formatted: ABCMS <a href='https://en.wikipedia.org/wiki/Progressive_web_app' target='_blank' title='Web pages designed for off-line viewing'>Progressive Web Application</a> on 12/15/2024 09:26:26<br>
+Formatted: ABCMS <a href='https://en.wikipedia.org/wiki/Progressive_web_app' target='_blank' title='Web pages designed for off-line viewing'>Progressive Web Application</a> on 12/16/2024 03:49:11<br>
 Formats:
 <a href='https://www.AionianBible.org/Bibles/French---French-Oltramare-Bible' target='_blank' title='Read online'>Online</a>,
 <a href='https://www.AionianBible.org/TOR/Bibles/French---French-Oltramare-Bible' target='_blank' title='Read TOR anonymously'>TOR Anonymously</a>,
@@ -13840,7 +13843,7 @@ World Nations
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// PAGER
+// PAGER - The heart of the PWA that allows navigating through the page content array AB_Bible
 function ABDO(goto, anchor=null, push=true) {
 	// validate request
 	if      (typeof goto == 'number')  {				gonu = goto; }
@@ -13870,6 +13873,11 @@ function ABDO(goto, anchor=null, push=true) {
 	}
 	document.getElementById('body').innerHTML = AB_Bible[AB_Page];
 
+	// Set the update and install links 
+	if (AB_Page < 2) {
+		AionianBible_PWA_UpdateInstall();
+	}
+
 	// push history to browser
 	if (anchor && anchor[0]=='#') { anchor = anchor.substr(1); }
 	if (push && (window.history.state === null || typeof window.history.state.go == "undefined" || window.history.state.go != goto)) {
@@ -13891,7 +13899,7 @@ function ABDO(goto, anchor=null, push=true) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// BROWSER HISTORY
+// BROWSER HISTORY - Since we page without re-loading this sets the brower history
 window.addEventListener('popstate', function (event) {
     if (event.state) {
 		ABDO(event.state.go, null, false);
@@ -13903,7 +13911,7 @@ window.addEventListener('popstate', function (event) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// COOKIES
+// COOKIES - Used for bookmarking pages
 function AionianBible_writeCookie(cname, cvalue) {
 	var date = new Date();
 	date.setTime(date.getTime() + (1000 * 24 * 60 * 60 * 1000));
@@ -13929,7 +13937,7 @@ function AionianBible_readCookie(cname) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// BOOKMARK
+// BOOKMARK - Save bookmarks to Cookies
 function AionianBible_Set() {
 	AB_Bookmark2 = AB_Page;
 	AionianBible_writeCookie("AionianBible.Bookmark2", AB_Bookmark2);
@@ -13945,7 +13953,7 @@ function AionianBible_Get() {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// ACCESSIBILITY
+// ACCESSIBILITY - Increase font size for readability
 function AionianBible_Accessible() {
 	AB_Accessible = document.getElementById('body');
 	if (null !== AB_Accessible) {
@@ -13971,7 +13979,7 @@ function AionianBible_Accessible() {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// SWIPE
+// SWIPE - Swipe pagination
 function AionianBible_SwipeListener(handleswipe) {
 	var swipedir, startX, startY, distX, distY, elapsedTime, startTime;
 	document.body.addEventListener('touchstart', function(e) {
@@ -14007,7 +14015,7 @@ AionianBible_SwipeLinks();
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// RELOAD
+// RELOAD - Reload the HTM file and all resources
 function AionianBible_Reload() {
 	const myRequest = new Request(window.location.href);
 	fetch(myRequest,{cache: 'reload'}).then((response) => {
@@ -14030,25 +14038,31 @@ function AionianBible_Reload() {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// PWA 
+// PWA - Display install and update links accordingly, called from various contexts
 var AionianBible_PWA_InstallPromptEvent = null;
-function AionianBible_PWA_Install() {
-	var java = document.getElementById('java');
-	if (java) { java.innerHTML = "<a href='?PWA' onclick='AionianBible_PWA_InstallPrompt();return false;' title='Install Progressive Web Application'>( Install Bible App )</a>"; }
+function AionianBible_PWA_UpdateInstall() {
+	var upin = document.getElementById('upin');
+	if (upin) {
+		// No install prompt or 'minimal-ui' display so must already be installed
+		if (!AionianBible_PWA_InstallPromptEvent || window.matchMedia('(display-mode: minimal-ui)').matches) {
+			upin.innerHTML = "<a title='Internet connection required' href='?PWA' onclick='AionianBible_Reload();return false;'>( Update Bible App )</a><br>";
+		}
+		// offer install function */
+		else {
+			upin.innerHTML = "<a href='?PWA' onclick='AionianBible_PWA_InstallPrompt();return false;' title='Install Progressive Web Application'>( Install Bible App )</a><br>";
+		}
+	}
 }
-function AionianBible_PWA_Update() {
-	var java = document.getElementById('java');
-	if (java) { java.innerHTML = "<a title='Internet connection required' href='?PWA' onclick='AionianBible_Reload();return false;'>( Update Bible App )</a>"; }
-}
-// install request
+// install prompt event captured on page load
 async function AionianBible_PWA_InstallPrompt() {
 	if (AionianBible_PWA_InstallPromptEvent) {
 		const result = await AionianBible_PWA_InstallPromptEvent.prompt();
 		console.log(`Aionian Bible App install prompt: ${result.outcome}`);
-		AionianBible_PWA_Update();
+		AionianBible_PWA_InstallPromptEvent = null;
+		AionianBible_PWA_UpdateInstall();
 	}
 }
-// recache message
+// message the service worker to reload the cache - currently unused
 async function AionianBible_PWA_ReInstall() {
 	if ("serviceWorker" in navigator && navigator.serviceWorker.controller) {
 		navigator.serviceWorker.controller.postMessage({
@@ -14062,7 +14076,7 @@ async function AionianBible_PWA_ReInstall() {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-// ONLOAD
+// ONLOAD - Initialize the PWA
 window.onload = function() {
 	// bookmarks
 	AB_Bookmark = AionianBible_readCookie("AionianBible.Bookmark");
@@ -14076,22 +14090,30 @@ window.onload = function() {
 		AionianBible_writeCookie("AionianBible.Bookmark", AB_Bookmark2);
 	}
 
-	// homepage
-	AionianBible_PWA_Update();
+	// remove javascript warning and save homepage to array
+	var upin = document.getElementById('upin');
+	if (upin) { upin.innerHTML = ''; }
 	AB_Bible[0] = document.getElementById('body').innerHTML;
-	const query = window.location.search;
-	if (query && query != "?PWA") {	ABDO(query.substr(1), window.location.hash); }
-	else {							window.history.replaceState({go:'PWA'}, '', location.pathname + "?PWA"); }
 
-	// install
-	AionianBible_PWA_Update();
+	// load queried page
+	const query = window.location.search;
+	if (query && query != "?PWA") {
+		ABDO(query.substr(1), window.location.hash);
+	}
+	// homepage already loaded, but indicate update or install
+	else {
+		window.history.replaceState({go:'PWA'}, '', location.pathname + "?PWA");
+		AionianBible_PWA_UpdateInstall();
+	}
+
+	// seize the install prompt
 	window.addEventListener("beforeinstallprompt", (event) => {
 		event.preventDefault();
 		AionianBible_PWA_InstallPromptEvent = event;
-		AionianBible_PWA_Install();
+		AionianBible_PWA_UpdateInstall();
 	});
-	
-	// service worker
+
+	// register the service worker
 	if ("serviceWorker" in navigator) {
 		navigator.serviceWorker.register("pwa.js");
 	}
